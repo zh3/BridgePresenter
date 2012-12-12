@@ -3,74 +3,52 @@ using BridgePresenter;
 
 namespace BridgePresenterTest
 {
-    public class FakeShowWindow : IJointShowWindow
+    public class FakeShowWindow : BaseShowWindow
     {
-        public event EventHandler<EventArgs> CloseWindowRequested;
-        public event EventHandler<EventArgs> ShowRequested;
-        public event EventHandler<EventArgs> CreateJointShowRequested;
-        public event EventHandler<ShowEventArgs> EditShowRequested;
-        public event EventHandler<ShowEventArgs> RemoveShowRequested;
-        public event EventHandler<ShowEventArgs> CopyShowRequested;
+        private string _selectedItemString;
+        protected override string SelectedItemString { get { return _selectedItemString; } }
 
-        public bool Closed { get; private set; }
-        public string SelectedItemString;
+        public bool WindowClosed { get; private set; }
+        public string FakeSelectedItemString { get { return SelectedItemString; } set { _selectedItemString = value; } }
 
-        public FakeShowWindow()
+        public FakeShowWindow(IJointShowModel model) : base(model)
         {
-            Closed = false;
+            WindowClosed = false;
         }
 
-        public void OnCloseRequested()
+        public override void CloseWindow()
         {
-            EventHandler<EventArgs> closeRequested = CloseWindowRequested;
-
-            if (closeRequested != null)
-                closeRequested(this, new EventArgs());
+            WindowClosed = true;
         }
 
-        public void OnShowRequested()
+        public void FireOnShowRequested()
         {
-            EventHandler<EventArgs> showRequested = ShowRequested;
-
-            if (showRequested != null)
-                showRequested(this, new EventArgs());
+            OnShowRequested();
         }
 
-        public void OnCreateJointShowRequested()
+        public void FireOnCreateJointShowRequested()
         {
-            EventHandler<EventArgs> createJointShowRequested = CreateJointShowRequested;
-
-            if (createJointShowRequested != null)
-                createJointShowRequested(this, new EventArgs());
+            OnCreateJointShowRequested();
         }
 
-        public void OnEditShowRequested()
+        public void FireOnEditShowRequested()
         {
-            EventHandler<ShowEventArgs> editShowRequested = EditShowRequested;
-
-            if (editShowRequested != null)
-                editShowRequested(this, new ShowEventArgs(SelectedItemString));
+            OnEditShowRequested();
         }
 
-        public void OnRemoveShowRequested()
+        public void FireOnRemoveShowRequested()
         {
-            EventHandler<ShowEventArgs> removeShowRequested = RemoveShowRequested;
-
-            if (removeShowRequested != null)
-                removeShowRequested(this, new ShowEventArgs(SelectedItemString));
+            OnRemoveShowRequested();
         }
 
-        public void OnCopyShowRequested()
+        public void FireOnCopyShowRequested()
         {
-            EventHandler<ShowEventArgs> copyShowRequested = CopyShowRequested;
-
-            if (copyShowRequested != null)
-                copyShowRequested(this, new ShowEventArgs(SelectedItemString));
+            OnCopyShowRequested();
         }
 
-        public void CloseWindow()
+        public void FireOnCloseWindowRequested()
         {
-            Closed = true;
+            OnCloseWindowRequested();
         }
     }
 }

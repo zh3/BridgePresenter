@@ -175,6 +175,9 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="BaseShowWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="IJointShowModel.cs" />
     <Compile Include="IJointShowWindow.cs" />
     <Compile Include="JointShowController.cs" />
@@ -184,6 +187,9 @@
     </Compile>
     <Compile Include="JointShowWindow.Designer.cs">
       <DependentUpon>JointShowWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MockShowWindow.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

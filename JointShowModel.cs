@@ -11,7 +11,7 @@ namespace BridgePresenter
             throw new NotImplementedException();
         }
 
-        public void AddJointShow(string fullPath)
+        public void AddJointShow()
         {
             throw new NotImplementedException();
         }
@@ -21,7 +21,7 @@ namespace BridgePresenter
             throw new NotImplementedException();
         }
 
-        public void RenameJointShow(string oldName, string newName)
+        public void EditJointShow(string showName)
         {
             throw new NotImplementedException();
         }

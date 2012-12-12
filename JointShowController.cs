@@ -27,27 +27,27 @@ namespace BridgePresenter
 
         public void showWindow_ShowRequested(object sender, EventArgs e)
         {
-            
+            _showModel.Show();
         }
 
         public void showWindow_CreateJointShowRequested(object sender, EventArgs e)
         {
-            
+            _showModel.AddJointShow();
         }
 
         public void showWindow_EditShowRequested(object sender, ShowEventArgs e)
         {
-            
+            _showModel.EditJointShow("Fake");
         }
 
         public void showWindow_RemoveShowRequested(object sender, ShowEventArgs e)
         {
-            
+            _showModel.RemoveJointShow("Fake");
         }
 
         public void showWindow_CopyShowRequested(object sender, ShowEventArgs e)
         {
-            
+            _showModel.CopyJointShow("Fake");
         }
     }
 }

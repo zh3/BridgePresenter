@@ -3,23 +3,18 @@ using System.Windows.Forms;
 
 namespace BridgePresenter
 {
-    public partial class JointShowWindow : Form, IJointShowWindow
+// Visual studio designer doesn't support abstract classes one level up from a form class.
+// Workaround using an empty intermediate class.
+#if DEBUG
+    public partial class JointShowWindow : MockShowWindow
+#else
+    public partial class JointShowWindow : BaseShowWindow
+#endif
     {
-        public event EventHandler<EventArgs> CloseWindowRequested;
-        public event EventHandler<EventArgs> ShowRequested;
-        public event EventHandler<EventArgs> CreateJointShowRequested;
-        public event EventHandler<ShowEventArgs> EditShowRequested;
-        public event EventHandler<ShowEventArgs> RemoveShowRequested;
-        public event EventHandler<ShowEventArgs> CopyShowRequested;
+        protected override string SelectedItemString { get { return jointShowList.SelectedItem.ToString(); } }
 
-        private string SelectedItemString { get { return jointShowList.SelectedItem.ToString(); } }
-
-        private IJointShowModel _model;
-
-        public JointShowWindow(IJointShowModel model)
+        public JointShowWindow(IJointShowModel model) : base(model)
         {
-            _model = model;
-
             InitializeComponent();
         }
 
@@ -53,55 +48,7 @@ namespace BridgePresenter
             OnShowRequested();
         }
 
-        public void OnCloseWindowRequested()
-        {
-            EventHandler<EventArgs> closeWindowRequested = CloseWindowRequested;
-
-            if (closeWindowRequested != null)
-                closeWindowRequested(this, new EventArgs());
-        }
-
-        protected void OnShowRequested()
-        {
-            EventHandler<EventArgs> showRequested = ShowRequested;
-
-            if (showRequested != null)
-                showRequested(this, new EventArgs());
-        }
-
-        protected void OnCreateJointShowRequested()
-        {
-            EventHandler<EventArgs> createJointShowRequested = CreateJointShowRequested;
-
-            if (createJointShowRequested != null)
-                createJointShowRequested(this, new EventArgs());
-        }
-
-        protected void OnEditShowRequested()
-        {
-            EventHandler<ShowEventArgs> editShowRequested = EditShowRequested;
-
-            if (editShowRequested != null)
-                editShowRequested(this, new ShowEventArgs(SelectedItemString));
-        }
-
-        protected void OnRemoveShowRequested()
-        {
-            EventHandler<ShowEventArgs> removeShowRequested = RemoveShowRequested;
-
-            if (removeShowRequested != null)
-                removeShowRequested(this, new ShowEventArgs(SelectedItemString));
-        }
-
-        protected void OnCopyShowRequested()
-        {
-            EventHandler<ShowEventArgs> copyShowRequested = CopyShowRequested;
-
-            if (copyShowRequested != null)
-                copyShowRequested(this, new ShowEventArgs(SelectedItemString));
-        }
-
-        public void CloseWindow()
+        public override void CloseWindow()
         {
             Close();
         }

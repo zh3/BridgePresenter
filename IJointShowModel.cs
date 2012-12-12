@@ -7,9 +7,9 @@ namespace BridgePresenter
         event EventHandler<JointShowListChangedEventArgs> JointShowListChanged;
 
         void Show();
-        void AddJointShow(string fullPath);
+        void AddJointShow();
         void RemoveJointShow(string showName);
-        void RenameJointShow(string oldName, string newName);
+        void EditJointShow(string showName);
         void CopyJointShow(string showName);
     }
 }
