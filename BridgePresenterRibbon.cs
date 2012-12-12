@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Office.Tools.Ribbon;
+﻿using Microsoft.Office.Tools.Ribbon;
 
 namespace BridgePresenter
 {
@@ -11,6 +7,15 @@ namespace BridgePresenter
         private void BridgePresenterRibbon_Load(object sender, RibbonUIEventArgs e)
         {
 
+        }
+
+        private void setupJointShowsButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            JointShowModel model = new JointShowModel();
+            JointShowWindow window = new JointShowWindow(model);
+            new JointShowController(window, model);
+
+            window.ShowDialog();
         }
     }
 }

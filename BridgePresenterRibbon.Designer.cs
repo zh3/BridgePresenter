@@ -71,6 +71,7 @@
             this.setupJointShowsButton.Name = "setupJointShowsButton";
             this.setupJointShowsButton.OfficeImageId = "SlideShowCustomMenu";
             this.setupJointShowsButton.ShowImage = true;
+            this.setupJointShowsButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.setupJointShowsButton_Click);
             // 
             // BridgePresenterRibbon
             // 

@@ -175,9 +175,22 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="IJointShowModel.cs" />
+    <Compile Include="IJointShowWindow.cs" />
+    <Compile Include="JointShowController.cs" />
+    <Compile Include="JointShowListChangedEventArgs.cs" />
+    <Compile Include="JointShowWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JointShowWindow.Designer.cs">
+      <DependentUpon>JointShowWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <EmbeddedResource Include="JointShowWindow.resx">
+      <DependentUpon>JointShowWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -205,6 +218,8 @@
     <Compile Include="BridgePresenterRibbon.Designer.cs">
       <DependentUpon>BridgePresenterRibbon.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShowEventArgs.cs" />
+    <Compile Include="JointShowModel.cs" />
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
     </Compile>
