@@ -1,6 +1,7 @@
 ﻿using System;
+using BridgePresenter.Model;
 
-namespace BridgePresenter
+namespace BridgePresenter.View
 {
     public class MockShowWindow : BaseShowWindow
     {

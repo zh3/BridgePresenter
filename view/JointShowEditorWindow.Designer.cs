@@ -1,4 +1,4 @@
-﻿namespace BridgePresenter
+﻿namespace BridgePresenter.View
 {
     partial class JointShowEditorWindow
     {

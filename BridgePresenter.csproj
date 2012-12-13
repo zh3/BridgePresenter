@@ -175,44 +175,44 @@
     can be found.
   -->
   <ItemGroup>
-    <Compile Include="view\BaseJointShowEditorWindow.cs">
+    <Compile Include="View\BaseJointShowEditorWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\BaseShowWindow.cs">
+    <Compile Include="View\BaseShowWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\IJointShowEditorWindow.cs" />
-    <Compile Include="model\IJointShowModel.cs" />
-    <Compile Include="view\IJointShowWindow.cs" />
-    <Compile Include="model\JointShow.cs" />
-    <Compile Include="controller\JointShowController.cs" />
-    <Compile Include="view\JointShowEditorWindow.cs">
+    <Compile Include="View\IJointShowEditorWindow.cs" />
+    <Compile Include="Model\IJointShowModel.cs" />
+    <Compile Include="View\IJointShowWindow.cs" />
+    <Compile Include="Model\JointShow.cs" />
+    <Compile Include="Controller\JointShowController.cs" />
+    <Compile Include="View\JointShowEditorWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\JointShowEditorWindow.Designer.cs">
+    <Compile Include="View\JointShowEditorWindow.Designer.cs">
       <DependentUpon>JointShowEditorWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="model\JointShowListChangedEventArgs.cs" />
-    <Compile Include="view\JointShowWindow.cs">
+    <Compile Include="Model\JointShowListChangedEventArgs.cs" />
+    <Compile Include="View\JointShowWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\JointShowWindow.Designer.cs">
+    <Compile Include="View\JointShowWindow.Designer.cs">
       <DependentUpon>JointShowWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\MockJointShowEditorWindow.cs">
+    <Compile Include="View\MockJointShowEditorWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\MockShowWindow.cs">
+    <Compile Include="View\MockShowWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\PresentationEventArgs.cs" />
+    <Compile Include="View\PresentationEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <EmbeddedResource Include="view\JointShowEditorWindow.resx">
+    <EmbeddedResource Include="View\JointShowEditorWindow.resx">
       <DependentUpon>JointShowEditorWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\JointShowWindow.resx">
+    <EmbeddedResource Include="View\JointShowWindow.resx">
       <DependentUpon>JointShowWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -243,8 +243,8 @@
     <Compile Include="BridgePresenterRibbon.Designer.cs">
       <DependentUpon>BridgePresenterRibbon.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\ShowEventArgs.cs" />
-    <Compile Include="model\JointShowModel.cs" />
+    <Compile Include="View\ShowEventArgs.cs" />
+    <Compile Include="Model\JointShowModel.cs" />
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
     </Compile>

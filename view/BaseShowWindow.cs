@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
+using BridgePresenter.Model;
 
-namespace BridgePresenter
+namespace BridgePresenter.View
 {
     public abstract class BaseShowWindow : Form, IJointShowWindow
     {

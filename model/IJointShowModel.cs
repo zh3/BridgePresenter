@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BridgePresenter
+﻿namespace BridgePresenter.Model
 {
     public interface IJointShowModel
     {

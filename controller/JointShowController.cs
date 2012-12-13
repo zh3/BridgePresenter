@@ -1,6 +1,8 @@
 ﻿using System;
+using BridgePresenter.Model;
+using BridgePresenter.View;
 
-namespace BridgePresenter
+namespace BridgePresenter.Controller
 {
     public class JointShowController
     {

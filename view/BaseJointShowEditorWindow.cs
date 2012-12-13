@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
+using BridgePresenter.Model;
 
-namespace BridgePresenter
+namespace BridgePresenter.View
 {
     public abstract class BaseJointShowEditorWindow : Form, IJointShowEditorWindow
     {
+        private IJointShowModel _model;
+
         public event EventHandler<EventArgs> AcceptRequested;
         public event EventHandler<EventArgs> CancelRequested;
         public event EventHandler<EventArgs> ImportRequested;
@@ -13,6 +16,11 @@ namespace BridgePresenter
         public event EventHandler<PresentationEventArgs> DeletePresentationRequested;
         public event EventHandler<PresentationEventArgs> MovePresentationUpRequested;
         public event EventHandler<PresentationEventArgs> MovePresentationDownRequested;
+
+        protected BaseJointShowEditorWindow(IJointShowModel model)
+        {
+            _model = model;
+        }
 
         protected void OnAcceptRequested()
         {

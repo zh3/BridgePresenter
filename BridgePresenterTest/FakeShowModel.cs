@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using BridgePresenter;
+using BridgePresenter.Model;
 
 namespace BridgePresenterTest
 {

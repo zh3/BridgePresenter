@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using BridgePresenter;
+﻿using BridgePresenter.Controller;
+using BridgePresenter.Model;
 using NUnit.Framework;
 
 namespace BridgePresenterTest
@@ -55,6 +52,17 @@ namespace BridgePresenterTest
             _fakeShowWindow.FireOnEditShowRequested();
             _fakeShowWindow.FireOnEditShowRequested();
             Assert.AreEqual(2, _fakeShowWindow.NumDisplayedJointShows);
+        }
+
+        [Test]
+        public void TestCopyJointShow()
+        {
+            _fakeShowWindow.FireOnCreateJointShowRequested();
+            _fakeShowWindow.FireOnCreateJointShowRequested();
+            Assert.AreEqual(2, _fakeShowWindow.NumDisplayedJointShows);
+
+            _fakeShowWindow.FireOnCopyShowRequested();
+            Assert.AreEqual(3, _fakeShowWindow.NumDisplayedJointShows);
         }
     }
 }

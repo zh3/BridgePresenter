@@ -1,4 +1,7 @@
-﻿using Microsoft.Office.Tools.Ribbon;
+﻿using BridgePresenter.Controller;
+using BridgePresenter.Model;
+using BridgePresenter.View;
+using Microsoft.Office.Tools.Ribbon;
 
 namespace BridgePresenter
 {

@@ -1,4 +1,5 @@
 ﻿using BridgePresenter;
+using BridgePresenter.Controller;
 using NUnit.Framework;
 
 namespace BridgePresenterTest

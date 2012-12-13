@@ -1,11 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using BridgePresenter.Model;
 
-namespace BridgePresenter
+namespace BridgePresenter.View
 {
     public class MockJointShowEditorWindow : BaseJointShowEditorWindow
     {
+        public MockJointShowEditorWindow(IJointShowModel model)
+            : base(model)
+        {
+        }
+
+        public MockJointShowEditorWindow()
+            : base(null)
+        {
+        }
     }
 }

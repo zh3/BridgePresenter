@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace BridgePresenter
+namespace BridgePresenter.Model
 {
     public class JointShowModel : IJointShowModel
     {

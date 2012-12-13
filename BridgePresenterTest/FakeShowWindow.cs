@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using BridgePresenter;
+using BridgePresenter.Model;
+using BridgePresenter.View;
 
 namespace BridgePresenterTest
 {

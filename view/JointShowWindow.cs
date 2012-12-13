@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Windows.Forms;
+using BridgePresenter.Model;
 
-namespace BridgePresenter
+namespace BridgePresenter.View
 {
 // Visual studio designer doesn't support abstract classes one level up from a form class.
 // Workaround using an empty intermediate class.

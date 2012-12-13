@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BridgePresenter
+namespace BridgePresenter.Model
 {
     public class JointShowListChangedEventArgs : EventArgs
     {
