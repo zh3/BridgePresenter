@@ -1,11 +1,12 @@
 ﻿using System;
+using System.ComponentModel;
 using BridgePresenter;
 
 namespace BridgePresenterTest
 {
     public class FakeShowModel : IJointShowModel
     {
-        public event EventHandler<JointShowListChangedEventArgs> JointShowListChanged;
+        public object DataSource { get { return null; } }
 
         public int PresentationCount { get; private set; }
         public int JointShowCount { get; private set; }
@@ -23,7 +24,7 @@ namespace BridgePresenterTest
             PresentationCount++;
         }
 
-        public void AddJointShow()
+        public void CreateJointShow()
         {
             JointShowCount++;
         }

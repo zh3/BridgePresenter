@@ -175,26 +175,44 @@
     can be found.
   -->
   <ItemGroup>
-    <Compile Include="BaseShowWindow.cs">
+    <Compile Include="view\BaseJointShowEditorWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IJointShowModel.cs" />
-    <Compile Include="IJointShowWindow.cs" />
-    <Compile Include="JointShowController.cs" />
-    <Compile Include="JointShowListChangedEventArgs.cs" />
-    <Compile Include="JointShowWindow.cs">
+    <Compile Include="view\BaseShowWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="JointShowWindow.Designer.cs">
+    <Compile Include="view\IJointShowEditorWindow.cs" />
+    <Compile Include="model\IJointShowModel.cs" />
+    <Compile Include="view\IJointShowWindow.cs" />
+    <Compile Include="model\JointShow.cs" />
+    <Compile Include="controller\JointShowController.cs" />
+    <Compile Include="view\JointShowEditorWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\JointShowEditorWindow.Designer.cs">
+      <DependentUpon>JointShowEditorWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="model\JointShowListChangedEventArgs.cs" />
+    <Compile Include="view\JointShowWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\JointShowWindow.Designer.cs">
       <DependentUpon>JointShowWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="MockShowWindow.cs">
+    <Compile Include="view\MockJointShowEditorWindow.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="view\MockShowWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\PresentationEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <EmbeddedResource Include="JointShowWindow.resx">
+    <EmbeddedResource Include="view\JointShowEditorWindow.resx">
+      <DependentUpon>JointShowEditorWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\JointShowWindow.resx">
       <DependentUpon>JointShowWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -205,6 +223,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="BridgePresenterRibbon.resx">
       <DependentUpon>BridgePresenterRibbon.cs</DependentUpon>
@@ -224,8 +243,8 @@
     <Compile Include="BridgePresenterRibbon.Designer.cs">
       <DependentUpon>BridgePresenterRibbon.cs</DependentUpon>
     </Compile>
-    <Compile Include="ShowEventArgs.cs" />
-    <Compile Include="JointShowModel.cs" />
+    <Compile Include="view\ShowEventArgs.cs" />
+    <Compile Include="model\JointShowModel.cs" />
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -236,6 +255,12 @@
       <DependentUpon>ThisAddIn.Designer.xml</DependentUpon>
     </Compile>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\downArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\upArrow.png" />
   </ItemGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

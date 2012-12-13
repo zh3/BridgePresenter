@@ -9,18 +9,17 @@ namespace BridgePresenter
     {
         protected abstract string SelectedItemString { get; }
         protected IJointShowModel Model;
-
-        protected BaseShowWindow(IJointShowModel model)
-        {
-            Model = model;
-        }
-
         public event EventHandler<EventArgs> CloseWindowRequested;
         public event EventHandler<EventArgs> ShowRequested;
         public event EventHandler<EventArgs> CreateJointShowRequested;
         public event EventHandler<ShowEventArgs> EditShowRequested;
         public event EventHandler<ShowEventArgs> RemoveShowRequested;
         public event EventHandler<ShowEventArgs> CopyShowRequested;
+
+        protected BaseShowWindow(IJointShowModel model)
+        {
+            Model = model;
+        }
 
         public void OnCloseWindowRequested()
         {

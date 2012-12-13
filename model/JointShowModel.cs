@@ -1,19 +1,32 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace BridgePresenter
 {
-    class JointShowModel : IJointShowModel
+    public class JointShowModel : IJointShowModel
     {
         public event EventHandler<JointShowListChangedEventArgs> JointShowListChanged;
+        private BindingList<JointShow> _jointShows;
+
+        public object DataSource { get { return _jointShows;  } }
+
+        public JointShowModel()
+        {
+            _jointShows = new BindingList<JointShow>();
+            _jointShows.Add(new JointShow());
+            _jointShows.Add(new JointShow());
+            _jointShows.Add(new JointShow());
+        }
 
         public void Show()
         {
             throw new NotImplementedException();
         }
 
-        public void AddJointShow()
+        public void CreateJointShow()
         {
-            throw new NotImplementedException();
+            _jointShows.RemoveAt(0);
+            //throw new NotImplementedException();
         }
 
         public void RemoveJointShow(string showName)

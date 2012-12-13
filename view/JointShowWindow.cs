@@ -16,6 +16,8 @@ namespace BridgePresenter
         public JointShowWindow(IJointShowModel model) : base(model)
         {
             InitializeComponent();
+
+            jointShowList.DataSource = model.DataSource;
         }
 
         private void newButton_Click(object sender, EventArgs e)

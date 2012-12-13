@@ -4,10 +4,10 @@ namespace BridgePresenter
 {
     public interface IJointShowModel
     {
-        event EventHandler<JointShowListChangedEventArgs> JointShowListChanged;
+        object DataSource { get; }
 
         void Show();
-        void AddJointShow();
+        void CreateJointShow();
         void RemoveJointShow(string showName);
         void EditJointShow(string showName);
         void CopyJointShow(string showName);

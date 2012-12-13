@@ -32,7 +32,7 @@ namespace BridgePresenter
 
         public void showWindow_CreateJointShowRequested(object sender, EventArgs e)
         {
-            _showModel.AddJointShow();
+            _showModel.CreateJointShow();
         }
 
         public void showWindow_EditShowRequested(object sender, ShowEventArgs e)

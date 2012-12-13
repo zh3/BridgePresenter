@@ -1,24 +1,25 @@
 ﻿using System;
+using System.Windows.Forms;
 using BridgePresenter;
 
 namespace BridgePresenterTest
 {
     public class FakeShowWindow : BaseShowWindow
     {
+        private ListBox _fakeShowListBox;
         private string _selectedItemString;
         protected override string SelectedItemString { get { return _selectedItemString; } }
 
+        public int NumDisplayedJointShows { get { return _fakeShowListBox.Items.Count; } }
         public bool WindowClosed { get; private set; }
         public string FakeSelectedItemString { get { return SelectedItemString; } set { _selectedItemString = value; } }
 
         public FakeShowWindow(IJointShowModel model) : base(model)
         {
             WindowClosed = false;
-        }
 
-        public override void CloseWindow()
-        {
-            WindowClosed = true;
+            _fakeShowListBox = new ListBox();
+            _fakeShowListBox.DataSource = model.DataSource;
         }
 
         public void FireOnShowRequested()
@@ -49,6 +50,11 @@ namespace BridgePresenterTest
         public void FireOnCloseWindowRequested()
         {
             OnCloseWindowRequested();
+        }
+
+        public override void CloseWindow()
+        {
+            WindowClosed = true;
         }
     }
 }
