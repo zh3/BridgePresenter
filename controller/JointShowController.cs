@@ -8,8 +8,14 @@ namespace BridgePresenter.Controller
     {
         private IJointShowWindow _showWindow;
         private IJointShowModel _showModel;
+        private IJointShowEditorWindowFactory _editorWindowFactory;
 
         public JointShowController(IJointShowWindow showWindow, IJointShowModel showModel)
+            : this(showWindow, showModel, new JointShowEditorWindowFactory())
+        {
+        }
+
+        public JointShowController(IJointShowWindow showWindow, IJointShowModel showModel, IJointShowEditorWindowFactory factory)
         {
             _showWindow = showWindow;
             _showModel = showModel;
@@ -20,6 +26,8 @@ namespace BridgePresenter.Controller
             _showWindow.EditShowRequested += showWindow_EditShowRequested;
             _showWindow.RemoveShowRequested += showWindow_RemoveShowRequested;
             _showWindow.CopyShowRequested += showWindow_CopyShowRequested;
+
+            _editorWindowFactory = factory;
         }
 
         public void showWindow_CloseWindowRequested(object sender, EventArgs e)
@@ -34,7 +42,8 @@ namespace BridgePresenter.Controller
 
         public void showWindow_CreateJointShowRequested(object sender, EventArgs e)
         {
-            _showModel.CreateJointShow();
+            Tuple<IJointShowEditorWindow, JointShowEditorController> mwc = _editorWindowFactory.CreateEditorWindow(_showModel);
+            mwc.Item1.ShowWindow();
         }
 
         public void showWindow_EditShowRequested(object sender, ShowEventArgs e)
@@ -50,6 +59,13 @@ namespace BridgePresenter.Controller
         public void showWindow_CopyShowRequested(object sender, ShowEventArgs e)
         {
             _showModel.CopyJointShow("Fake");
+        }
+
+        private void OpenEditorWindow()
+        {
+            JointShowEditorWindow editorWindow = new JointShowEditorWindow(_showModel);
+            JointShowEditorController editorController = new JointShowEditorController(editorWindow, _showModel);
+            editorWindow.ShowDialog();
         }
     }
 }

@@ -9,11 +9,14 @@ namespace BridgePresenter.View
     public partial class JointShowEditorWindow : BaseJointShowEditorWindow
 #endif
     {
-
-
         public JointShowEditorWindow(IJointShowModel model) : base(model)
         {
             InitializeComponent();
+        }
+
+        public override void ShowWindow()
+        {
+            ShowDialog();
         }
     }
 }

@@ -13,5 +13,6 @@ namespace BridgePresenter.View
         event EventHandler<ShowEventArgs> CopyShowRequested;
 
         void CloseWindow();
+        void ShowWindow();
     }
 }

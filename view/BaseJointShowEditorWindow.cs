@@ -85,5 +85,7 @@ namespace BridgePresenter.View
             if (onMovePresentationDownRequested != null)
                 onMovePresentationDownRequested(this, new PresentationEventArgs());
         }
+
+        public abstract void ShowWindow();
     }
 }

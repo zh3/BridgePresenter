@@ -175,6 +175,11 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="Controller\JointShowEditorWindowFactory.cs" />
+    <Compile Include="Controller\IJointShowEditorWindowFactory.cs" />
+    <Compile Include="Controller\IJointShowWindowFactory.cs" />
+    <Compile Include="Controller\JointShowEditorController.cs" />
+    <Compile Include="Controller\JointShowWindowFactory.cs" />
     <Compile Include="View\BaseJointShowEditorWindow.cs">
       <SubType>Form</SubType>
     </Compile>

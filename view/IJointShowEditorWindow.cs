@@ -12,5 +12,7 @@ namespace BridgePresenter.View
         event EventHandler<PresentationEventArgs> DeletePresentationRequested;
         event EventHandler<PresentationEventArgs> MovePresentationUpRequested;
         event EventHandler<PresentationEventArgs> MovePresentationDownRequested;
+
+        void ShowWindow();
     }
 }

@@ -13,5 +13,10 @@ namespace BridgePresenter.View
             : base(null)
         {
         }
+
+        public override void ShowWindow()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
