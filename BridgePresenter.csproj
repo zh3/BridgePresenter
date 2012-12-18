@@ -180,6 +180,8 @@
     <Compile Include="Controller\IJointShowWindowFactory.cs" />
     <Compile Include="Controller\JointShowEditorController.cs" />
     <Compile Include="Controller\JointShowWindowFactory.cs" />
+    <Compile Include="Model\IJointShow.cs" />
+    <Compile Include="Model\NullShow.cs" />
     <Compile Include="View\BaseJointShowEditorWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,7 +189,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\IJointShowEditorWindow.cs" />
-    <Compile Include="Model\IJointShowModel.cs" />
+    <Compile Include="Model\IJointShows.cs" />
     <Compile Include="View\IJointShowWindow.cs" />
     <Compile Include="Model\JointShow.cs" />
     <Compile Include="Controller\JointShowController.cs" />
@@ -249,7 +251,7 @@
       <DependentUpon>BridgePresenterRibbon.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ShowEventArgs.cs" />
-    <Compile Include="Model\JointShowModel.cs" />
+    <Compile Include="Model\JointShows.cs" />
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -1,14 +1,15 @@
 ﻿using System;
+using BridgePresenter.Model;
 
 namespace BridgePresenter.View
 {
     public class ShowEventArgs : EventArgs
     {
-        public string ShowName { get; private set; }
+        public IJointShow Show { get; private set; }
 
-        public ShowEventArgs(string showName)
+        public ShowEventArgs(IJointShow show)
         {
-            ShowName = showName;
+            Show = show;
         }
     }
 }

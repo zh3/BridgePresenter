@@ -6,12 +6,12 @@ namespace BridgePresenter.Controller
     public class JointShowEditorController
     {
         private IJointShowEditorWindow _window;
-        private IJointShowModel _model;
+        private IJointShow _showToEdit;
 
-        public JointShowEditorController(IJointShowEditorWindow window, IJointShowModel model)
+        public JointShowEditorController(IJointShowEditorWindow window, IJointShow showToEdit)
         {
             _window = window;
-            _model = model;
+            _showToEdit = showToEdit;
         }
     }
 }

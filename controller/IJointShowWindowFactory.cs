@@ -6,6 +6,6 @@ namespace BridgePresenter.Controller
 {
     public interface IJointShowWindowFactory
     {
-        Tuple<IJointShowModel, IJointShowWindow, JointShowController> CreateJointShowWindow();
+        Tuple<IJointShows, IJointShowWindow, JointShowController> CreateJointShowWindow();
     }
 }

@@ -5,7 +5,7 @@ using BridgePresenter.Model;
 
 namespace BridgePresenterTest
 {
-    public class FakeShowModel : IJointShowModel
+    public class FakeShowModel : IJointShows
     {
         public object DataSource { get { return null; } }
 

@@ -6,10 +6,10 @@ namespace BridgePresenter.Controller
 {
     public class JointShowEditorWindowFactory : IJointShowEditorWindowFactory
     {
-        public Tuple<IJointShowEditorWindow, JointShowEditorController> CreateEditorWindow(IJointShowModel model)
+        public Tuple<IJointShowEditorWindow, JointShowEditorController> CreateEditorWindow(IJointShow showModel)
         {
-            JointShowEditorWindow window = new JointShowEditorWindow(model);
-            JointShowEditorController controller = new JointShowEditorController(window, model);
+            JointShowEditorWindow window = new JointShowEditorWindow(showModel);
+            JointShowEditorController controller = new JointShowEditorController(window, showModel);
 
             return new Tuple<IJointShowEditorWindow, JointShowEditorController>(window, controller);
         }

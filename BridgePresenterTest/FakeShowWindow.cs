@@ -9,14 +9,23 @@ namespace BridgePresenterTest
     public class FakeShowWindow : BaseShowWindow
     {
         private ListBox _fakeShowListBox;
-        private string _selectedItemString;
-        protected override string SelectedItemString { get { return _selectedItemString; } }
+        private IJointShow _fakeSelectedShow;
 
         public int NumDisplayedJointShows { get { return _fakeShowListBox.Items.Count; } }
         public bool WindowClosed { get; private set; }
-        public string FakeSelectedItemString { get { return SelectedItemString; } set { _selectedItemString = value; } }
 
-        public FakeShowWindow(IJointShowModel model) : base(model)
+        public IJointShow FakeSelectedShow
+        {
+            get { return _fakeSelectedShow; }
+            set { _fakeSelectedShow = value; }
+        }
+
+        public override IJointShow SelectedShow
+        {
+            get { return _fakeSelectedShow; }
+        }
+
+        public FakeShowWindow(IJointShows model) : base(model)
         {
             WindowClosed = false;
 

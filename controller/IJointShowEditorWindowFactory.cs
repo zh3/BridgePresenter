@@ -6,6 +6,6 @@ namespace BridgePresenter.Controller
 {
     public interface IJointShowEditorWindowFactory
     {
-        Tuple<IJointShowEditorWindow, JointShowEditorController> CreateEditorWindow(IJointShowModel model);
+        Tuple<IJointShowEditorWindow, JointShowEditorController> CreateEditorWindow(IJointShow show);
     }
 }

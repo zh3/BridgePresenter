@@ -6,8 +6,9 @@ namespace BridgePresenter.View
 {
     public abstract class BaseShowWindow : Form, IJointShowWindow
     {
-        protected abstract string SelectedItemString { get; }
-        protected IJointShowModel Model;
+        protected IJointShows Model;
+
+        public abstract IJointShow SelectedShow { get; }
         public event EventHandler<EventArgs> CloseWindowRequested;
         public event EventHandler<EventArgs> ShowRequested;
         public event EventHandler<EventArgs> CreateJointShowRequested;
@@ -15,7 +16,7 @@ namespace BridgePresenter.View
         public event EventHandler<ShowEventArgs> RemoveShowRequested;
         public event EventHandler<ShowEventArgs> CopyShowRequested;
 
-        protected BaseShowWindow(IJointShowModel model)
+        protected BaseShowWindow(IJointShows model)
         {
             Model = model;
         }
@@ -49,7 +50,7 @@ namespace BridgePresenter.View
             EventHandler<ShowEventArgs> editShowRequested = EditShowRequested;
 
             if (editShowRequested != null)
-                editShowRequested(this, new ShowEventArgs(SelectedItemString));
+                editShowRequested(this, new ShowEventArgs(SelectedShow));
         }
 
         protected void OnRemoveShowRequested()
@@ -57,7 +58,7 @@ namespace BridgePresenter.View
             EventHandler<ShowEventArgs> removeShowRequested = RemoveShowRequested;
 
             if (removeShowRequested != null)
-                removeShowRequested(this, new ShowEventArgs(SelectedItemString));
+                removeShowRequested(this, new ShowEventArgs(SelectedShow));
         }
 
         protected void OnCopyShowRequested()
@@ -65,7 +66,7 @@ namespace BridgePresenter.View
             EventHandler<ShowEventArgs> copyShowRequested = CopyShowRequested;
 
             if (copyShowRequested != null)
-                copyShowRequested(this, new ShowEventArgs(SelectedItemString));
+                copyShowRequested(this, new ShowEventArgs(SelectedShow));
         }
 
         public abstract void CloseWindow();

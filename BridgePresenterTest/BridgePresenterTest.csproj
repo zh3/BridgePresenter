@@ -50,6 +50,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FakeJointShowEditorWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FakeJointShowEditorWindowFactory.cs" />
     <Compile Include="FakeShowModel.cs" />
     <Compile Include="FakeShowWindow.cs">
       <SubType>Form</SubType>

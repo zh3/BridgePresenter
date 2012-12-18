@@ -1,10 +1,10 @@
 ﻿namespace BridgePresenter.Model
 {
-    public class JointShow : IJointShow
+    public class NullShow : IJointShow
     {
         public override string ToString()
         {
-            return "HAHAHHAAHHAHA";
+            return "__NULL__";
         }
     }
 }

@@ -9,11 +9,11 @@ namespace BridgePresenter.View
         {
         }
 
-        public MockShowWindow(IJointShowModel model) : base(model)
+        public MockShowWindow(IJointShows model) : base(model)
         {
         }
 
-        protected override string SelectedItemString
+        public override IJointShow SelectedShow
         {
             get { throw new NotImplementedException(); }
         }

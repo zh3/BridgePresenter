@@ -6,7 +6,7 @@ namespace BridgePresenter.View
 {
     public abstract class BaseJointShowEditorWindow : Form, IJointShowEditorWindow
     {
-        private IJointShowModel _model;
+        private IJointShow _showModel;
 
         public event EventHandler<EventArgs> AcceptRequested;
         public event EventHandler<EventArgs> CancelRequested;
@@ -17,9 +17,9 @@ namespace BridgePresenter.View
         public event EventHandler<PresentationEventArgs> MovePresentationUpRequested;
         public event EventHandler<PresentationEventArgs> MovePresentationDownRequested;
 
-        protected BaseJointShowEditorWindow(IJointShowModel model)
+        protected BaseJointShowEditorWindow(IJointShow showModel)
         {
-            _model = model;
+            _showModel = showModel;
         }
 
         protected void OnAcceptRequested()

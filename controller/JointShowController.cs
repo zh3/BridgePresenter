@@ -7,15 +7,15 @@ namespace BridgePresenter.Controller
     public class JointShowController
     {
         private IJointShowWindow _showWindow;
-        private IJointShowModel _showModel;
+        private IJointShows _showModel;
         private IJointShowEditorWindowFactory _editorWindowFactory;
 
-        public JointShowController(IJointShowWindow showWindow, IJointShowModel showModel)
+        public JointShowController(IJointShowWindow showWindow, IJointShows showModel)
             : this(showWindow, showModel, new JointShowEditorWindowFactory())
         {
         }
 
-        public JointShowController(IJointShowWindow showWindow, IJointShowModel showModel, IJointShowEditorWindowFactory factory)
+        public JointShowController(IJointShowWindow showWindow, IJointShows showModel, IJointShowEditorWindowFactory factory)
         {
             _showWindow = showWindow;
             _showModel = showModel;
@@ -42,13 +42,18 @@ namespace BridgePresenter.Controller
 
         public void showWindow_CreateJointShowRequested(object sender, EventArgs e)
         {
-            Tuple<IJointShowEditorWindow, JointShowEditorController> mwc = _editorWindowFactory.CreateEditorWindow(_showModel);
-            mwc.Item1.ShowWindow();
+            
         }
 
         public void showWindow_EditShowRequested(object sender, ShowEventArgs e)
         {
-            _showModel.EditJointShow("Fake");
+            
+        }
+
+        private void ShowEditorWindow(IJointShow show)
+        {
+            Tuple<IJointShowEditorWindow, JointShowEditorController> mwc = _editorWindowFactory.CreateEditorWindow(_showWindow.SelectedShow);
+            mwc.Item1.ShowWindow();
         }
 
         public void showWindow_RemoveShowRequested(object sender, ShowEventArgs e)
@@ -59,13 +64,6 @@ namespace BridgePresenter.Controller
         public void showWindow_CopyShowRequested(object sender, ShowEventArgs e)
         {
             _showModel.CopyJointShow("Fake");
-        }
-
-        private void OpenEditorWindow()
-        {
-            JointShowEditorWindow editorWindow = new JointShowEditorWindow(_showModel);
-            JointShowEditorController editorController = new JointShowEditorController(editorWindow, _showModel);
-            editorWindow.ShowDialog();
         }
     }
 }

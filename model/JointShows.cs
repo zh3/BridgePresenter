@@ -3,16 +3,16 @@ using System.ComponentModel;
 
 namespace BridgePresenter.Model
 {
-    public class JointShowModel : IJointShowModel
+    public class JointShows : IJointShows
     {
-        public event EventHandler<JointShowListChangedEventArgs> JointShowListChanged;
-        private BindingList<JointShow> _jointShows;
+        public event EventHandler<JointShowListChangedEventArgs> JointShowsListChanged;
+        private BindingList<IJointShow> _jointShows;
 
         public object DataSource { get { return _jointShows;  } }
 
-        public JointShowModel()
+        public JointShows()
         {
-            _jointShows = new BindingList<JointShow>();
+            _jointShows = new BindingList<IJointShow>();
             _jointShows.Add(new JointShow());
             _jointShows.Add(new JointShow());
             _jointShows.Add(new JointShow());
@@ -25,16 +25,10 @@ namespace BridgePresenter.Model
 
         public void CreateJointShow()
         {
-            _jointShows.RemoveAt(0);
-            //throw new NotImplementedException();
-        }
-
-        public void RemoveJointShow(string showName)
-        {
             throw new NotImplementedException();
         }
 
-        public void EditJointShow(string showName)
+        public void RemoveJointShow(string showName)
         {
             throw new NotImplementedException();
         }

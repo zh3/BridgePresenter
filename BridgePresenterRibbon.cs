@@ -17,7 +17,7 @@ namespace BridgePresenter
 
         private void setupJointShowsButton_Click(object sender, RibbonControlEventArgs e)
         {
-            Tuple<IJointShowModel, IJointShowWindow, JointShowController> mwc = _factory.CreateJointShowWindow();
+            Tuple<IJointShows, IJointShowWindow, JointShowController> mwc = _factory.CreateJointShowWindow();
             mwc.Item2.ShowWindow();
         }
     }

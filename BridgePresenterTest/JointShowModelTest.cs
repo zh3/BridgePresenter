@@ -9,14 +9,14 @@ namespace BridgePresenterTest
     {
         private JointShowController _controller;
         private FakeShowWindow _fakeShowWindow;
-        private IJointShowModel _jointShowModel;
+        private IJointShows _jointShowsModel;
 
         [SetUp]
         public void Setup()
         {
-            _jointShowModel = new JointShowModel();
-            _fakeShowWindow = new FakeShowWindow(_jointShowModel);
-            _controller = new JointShowController(_fakeShowWindow, _jointShowModel);
+            _jointShowsModel = new JointShows();
+            _fakeShowWindow = new FakeShowWindow(_jointShowsModel);
+            _controller = new JointShowController(_fakeShowWindow, _jointShowsModel);
         }
 
         [Test]

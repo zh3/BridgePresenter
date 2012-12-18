@@ -11,9 +11,20 @@ namespace BridgePresenter.View
     public partial class JointShowWindow : BaseShowWindow
 #endif
     {
-        protected override string SelectedItemString { get { return jointShowList.SelectedItem.ToString(); } }
+        public override IJointShow SelectedShow 
+        {
+            get
+            {
+                object selectedItem = jointShowList.SelectedItem;
+                
+                if (selectedItem != null && selectedItem is IJointShow)
+                    return jointShowList.SelectedItem as IJointShow;
 
-        public JointShowWindow(IJointShowModel model) : base(model)
+                return new NullShow();
+            }
+        }
+
+        public JointShowWindow(IJointShows model) : base(model)
         {
             InitializeComponent();
 
