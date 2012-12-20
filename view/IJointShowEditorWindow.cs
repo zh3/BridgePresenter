@@ -4,6 +4,8 @@ namespace BridgePresenter.View
 {
     public interface IJointShowEditorWindow
     {
+        string ShowName { get; }
+
         event EventHandler<EventArgs> AcceptRequested;
         event EventHandler<EventArgs> CancelRequested;
         event EventHandler<EventArgs> ImportRequested;

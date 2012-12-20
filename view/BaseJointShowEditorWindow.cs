@@ -8,6 +8,7 @@ namespace BridgePresenter.View
     {
         private IJointShow _showModel;
 
+        public abstract string ShowName { get; }
         public event EventHandler<EventArgs> AcceptRequested;
         public event EventHandler<EventArgs> CancelRequested;
         public event EventHandler<EventArgs> ImportRequested;

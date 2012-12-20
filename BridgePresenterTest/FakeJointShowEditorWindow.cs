@@ -6,6 +6,10 @@ namespace BridgePresenterTest
     public class FakeJointShowEditorWindow : BaseJointShowEditorWindow
     {
         public string JointShowName { get; set; }
+        public override string ShowName
+        {
+            get { return JointShowName; }
+        }
 
         public FakeJointShowEditorWindow(IJointShow showModel) : base(showModel)
         {

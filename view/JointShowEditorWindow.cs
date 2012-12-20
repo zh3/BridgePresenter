@@ -9,6 +9,11 @@ namespace BridgePresenter.View
     public partial class JointShowEditorWindow : BaseJointShowEditorWindow
 #endif
     {
+        public override string ShowName
+        {
+            get { return jointShowNameTextBox.Text; }
+        }
+
         public JointShowEditorWindow(IJointShow model) : base(model)
         {
             InitializeComponent();
