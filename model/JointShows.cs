@@ -13,9 +13,9 @@ namespace BridgePresenter.Model
         public JointShows()
         {
             _jointShows = new BindingList<IJointShow>();
-            _jointShows.Add(new JointShow());
-            _jointShows.Add(new JointShow());
-            _jointShows.Add(new JointShow());
+            _jointShows.Add(new JointShow("hishow"));
+            _jointShows.Add(new JointShow("loshow"));
+            _jointShows.Add(new JointShow("mrpicolloshow"));
         }
 
         public void Show()
@@ -23,9 +23,11 @@ namespace BridgePresenter.Model
             throw new NotImplementedException();
         }
 
-        public void CreateJointShow()
+        public IJointShow CreateJointShow()
         {
-            throw new NotImplementedException();
+            JointShow newShow = new JointShow("abc");
+            _jointShows.Add(newShow);
+            return newShow;
         }
 
         public void RemoveJointShow(string showName)

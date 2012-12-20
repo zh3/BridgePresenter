@@ -54,13 +54,17 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FakeJointShowEditorWindowFactory.cs" />
-    <Compile Include="FakeShowModel.cs" />
+    <Compile Include="FakeShow.cs" />
+    <Compile Include="FakeShows.cs" />
     <Compile Include="FakeShowWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="JointShowControllerTest.cs" />
     <Compile Include="JointShowModelTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FakeShowWindow.resx">
+      <DependentUpon>FakeShowWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

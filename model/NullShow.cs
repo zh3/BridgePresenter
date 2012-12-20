@@ -1,10 +1,11 @@
 ﻿namespace BridgePresenter.Model
 {
-    public class NullShow : IJointShow
+    public class NullShow : BaseShow
     {
-        public override string ToString()
+        public const string NULL_NAME = "__NULL__";
+
+        public NullShow() : base(NULL_NAME)
         {
-            return "__NULL__";
         }
     }
 }

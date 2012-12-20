@@ -1,10 +1,9 @@
 ﻿namespace BridgePresenter.Model
 {
-    public class JointShow : IJointShow
+    public class JointShow : BaseShow
     {
-        public override string ToString()
+        public JointShow(string name) : base(name)
         {
-            return "HAHAHHAAHHAHA";
         }
     }
 }

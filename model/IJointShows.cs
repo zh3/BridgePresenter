@@ -5,7 +5,7 @@
         object DataSource { get; }
 
         void Show();
-        void CreateJointShow();
+        IJointShow CreateJointShow();
         void RemoveJointShow(string showName);
         void CopyJointShow(string showName);
     }

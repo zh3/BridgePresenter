@@ -3,9 +3,55 @@ using BridgePresenter.View;
 
 namespace BridgePresenterTest
 {
-    public class FakeJointShowEditorWindow : JointShowEditorWindow
+    public class FakeJointShowEditorWindow : BaseJointShowEditorWindow
     {
-        public FakeJointShowEditorWindow(IJointShows model) : base(model)
+        public string JointShowName { get; set; }
+
+        public FakeJointShowEditorWindow(IJointShow showModel) : base(showModel)
+        {
+        }
+
+        public void FireOnAcceptRequested()
+        {
+            OnAcceptRequested();
+        }
+
+        public void FireOnCancelRequested()
+        {
+            OnCancelRequested();
+        }
+
+        public void FireOnImportRequested()
+        {
+            OnImportRequested();
+        }
+
+        public void FireOnAddToShowRequested()
+        {
+            OnAddToShowRequested();
+        }
+
+        public void FireOnRemoveFromShowRequested()
+        {
+            OnRemoveFromShowRequested();
+        }
+
+        public void FireDeletePresentationRequested()
+        {
+            OnDeleteRequested();
+        }
+
+        public void FireMovePresentationUpRequested()
+        {
+            OnMovePresentationUpRequested();
+        }
+
+        public void FireMovePresentationDownRequested()
+        {
+            OnMovePresentationDownRequested();
+        }
+
+        public override void ShowWindow()
         {
         }
     }
