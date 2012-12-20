@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 using BridgePresenter.Model;
 
 namespace BridgePresenter.View
@@ -34,6 +35,8 @@ namespace BridgePresenter.View
         private void newButton_Click(object sender, EventArgs e)
         {
             OnCreateJointShowRequested();
+
+            jointShowList.RefreshDataSource();
         }
 
         private void editButton_Click(object sender, EventArgs e)

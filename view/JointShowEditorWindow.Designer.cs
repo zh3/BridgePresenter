@@ -117,6 +117,7 @@
             this.okButton.TabIndex = 6;
             this.okButton.Text = "OK";
             this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // cancelButton
             // 
@@ -128,6 +129,7 @@
             this.cancelButton.TabIndex = 7;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // addButton
             // 
@@ -138,6 +140,7 @@
             this.addButton.TabIndex = 8;
             this.addButton.Text = "Add >>";
             this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // removeButton
             // 
@@ -148,6 +151,7 @@
             this.removeButton.TabIndex = 9;
             this.removeButton.Text = "Remove";
             this.removeButton.UseVisualStyleBackColor = true;
+            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
             // 
             // presentationsPanel
             // 
@@ -203,6 +207,7 @@
             this.downButton.Size = new System.Drawing.Size(33, 33);
             this.downButton.TabIndex = 1;
             this.downButton.UseVisualStyleBackColor = true;
+            this.downButton.Click += new System.EventHandler(this.downButton_Click);
             // 
             // upButton
             // 
@@ -214,6 +219,7 @@
             this.upButton.Size = new System.Drawing.Size(33, 33);
             this.upButton.TabIndex = 0;
             this.upButton.UseVisualStyleBackColor = true;
+            this.upButton.Click += new System.EventHandler(this.upButton_Click);
             // 
             // importPresentationDialog
             // 
@@ -227,6 +233,7 @@
             this.importButton.TabIndex = 11;
             this.importButton.Text = "Import...";
             this.importButton.UseVisualStyleBackColor = true;
+            this.importButton.Click += new System.EventHandler(this.importButton_Click);
             // 
             // deleteButton
             // 
@@ -236,6 +243,7 @@
             this.deleteButton.TabIndex = 12;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // JointShowEditorWindow
             // 

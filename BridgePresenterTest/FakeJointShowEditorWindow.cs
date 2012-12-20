@@ -58,5 +58,9 @@ namespace BridgePresenterTest
         public override void ShowWindow()
         {
         }
+
+        public override void CloseWindow()
+        {
+        }
     }
 }

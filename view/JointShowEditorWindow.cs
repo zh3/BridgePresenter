@@ -23,5 +23,50 @@ namespace BridgePresenter.View
         {
             ShowDialog();
         }
+
+        public override void CloseWindow()
+        {
+            Close();
+        }
+
+        private void okButton_Click(object sender, System.EventArgs e)
+        {
+            OnAcceptRequested();
+        }
+
+        private void cancelButton_Click(object sender, System.EventArgs e)
+        {
+            OnCancelRequested();
+        }
+
+        private void importButton_Click(object sender, System.EventArgs e)
+        {
+            OnImportRequested();
+        }
+
+        private void deleteButton_Click(object sender, System.EventArgs e)
+        {
+            OnDeleteRequested();
+        }
+
+        private void addButton_Click(object sender, System.EventArgs e)
+        {
+            OnAddToShowRequested();
+        }
+
+        private void removeButton_Click(object sender, System.EventArgs e)
+        {
+            OnRemoveFromShowRequested();
+        }
+
+        private void upButton_Click(object sender, System.EventArgs e)
+        {
+            OnMovePresentationUpRequested();
+        }
+
+        private void downButton_Click(object sender, System.EventArgs e)
+        {
+            OnMovePresentationDownRequested();
+        }
     }
 }

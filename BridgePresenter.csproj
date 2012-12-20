@@ -183,6 +183,7 @@
     <Compile Include="Model\BaseShow.cs" />
     <Compile Include="Model\IJointShow.cs" />
     <Compile Include="Model\NullShow.cs" />
+    <Compile Include="PresenterUtils.cs" />
     <Compile Include="View\BaseJointShowEditorWindow.cs">
       <SubType>Form</SubType>
     </Compile>

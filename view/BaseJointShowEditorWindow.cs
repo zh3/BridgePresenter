@@ -88,5 +88,6 @@ namespace BridgePresenter.View
         }
 
         public abstract void ShowWindow();
+        public abstract void CloseWindow();
     }
 }
