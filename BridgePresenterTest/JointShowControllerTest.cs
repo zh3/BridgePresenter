@@ -40,7 +40,7 @@ namespace BridgePresenterTest
             Assert.AreEqual(4, _fakeShowModel.JointShowCount);
         }
 
-        private void CreateFakeJointShow(string showName)
+        private void CreateFakeJointShow()
         {
             _fakeShowWindow.FireOnCreateJointShowRequested();
             FakeJointShowEditorWindow fakeEditorWindow = _fakeFactory.FakeWindow;
@@ -72,26 +72,64 @@ namespace BridgePresenterTest
         }
 
         [Test]
-        public void TestEditRename()
+        public void TestCreateNamed()
         {
-            string origName = "arbitrary show 123";
-            string newName = "renamed show";
+            const string origName = "arbitrary show 123";
+            const string newName = "renamed show";
 
-            CreateFakeJointShow(origName);
+            IJointShow fakeShow = CreateFakeJointShow(origName);
+
+            EditorWindowChangeName(origName, newName);
+
+            Assert.AreEqual(newName, fakeShow.Name);
+        }
+
+        private IJointShow GetShow(string name)
+        {
+            SelectShow(name);
+            return _fakeShowWindow.SelectedShow;
+        }
+
+        private void EditorWindowChangeName(string origName, string newName)
+        {
             SelectShow(origName);
-            IJointShow fakeShow = _fakeShowWindow.SelectedShow;
-
             FakeJointShowEditorWindow fakeEditorWindow = OpenFakeEditorWindow();
             fakeEditorWindow.JointShowName = newName;
             fakeEditorWindow.FireOnAcceptRequested();
-
-            Assert.AreEqual(newName, fakeShow.Name);
         }
 
         private FakeJointShowEditorWindow OpenFakeEditorWindow()
         {
             _fakeShowWindow.FireOnEditShowRequested();
             return _fakeFactory.FakeWindow;
+        }
+
+        private IJointShow CreateFakeJointShow(string showName)
+        {
+            _fakeShowWindow.FireOnCreateJointShowRequested();
+            FakeJointShowEditorWindow fakeEditorWindow = _fakeFactory.FakeWindow;
+            fakeEditorWindow.JointShowName = showName;
+            fakeEditorWindow.FireOnAcceptRequested();
+
+            return GetShow(showName);
+        }
+
+        [Test]
+        public void TestEditNamed()
+        {
+            const string origName1 = "Fake show 1";
+            const string origName2 = "Fake show 2";
+            const string newName1 = "Renamed fake show 1";
+
+            CreateFakeJointShow(origName1);
+            IJointShow fakeShow1 = GetShow(origName1);
+            EditorWindowChangeName(origName1, newName1);
+
+            CreateFakeJointShow(origName2);
+            IJointShow fakeShow2 = GetShow(origName2);
+
+            Assert.AreEqual(newName1, fakeShow1.Name);
+            Assert.AreEqual(origName2, fakeShow2.Name);
         }
     }
 }

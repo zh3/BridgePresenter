@@ -10,13 +10,15 @@ namespace BridgePresenterTest
         private JointShowController _controller;
         private FakeShowWindow _fakeShowWindow;
         private IJointShows _jointShowsModel;
+        private FakeJointShowEditorWindowFactory _fakeFactory;
 
         [SetUp]
         public void Setup()
         {
             _jointShowsModel = new JointShows();
             _fakeShowWindow = new FakeShowWindow(_jointShowsModel);
-            _controller = new JointShowController(_fakeShowWindow, _jointShowsModel);
+            _fakeFactory = new FakeJointShowEditorWindowFactory();
+            _controller = new JointShowController(_fakeShowWindow, _jointShowsModel, _fakeFactory);
         }
 
         [Test]
