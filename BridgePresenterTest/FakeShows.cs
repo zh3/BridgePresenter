@@ -6,9 +6,9 @@ using BridgePresenter.Model;
 
 namespace BridgePresenterTest
 {
-    public class FakeShows : IJointShows
+    public class FakeShows : BaseShows
     {
-        public object DataSource { get { return _jointShows; } }
+        public override object DataSource { get { return _jointShows; } }
 
         public int PresentationCount { get; private set; }
         public int JointShowCount { get { return _jointShows.Count;  } }
@@ -22,26 +22,29 @@ namespace BridgePresenterTest
             _jointShows = new BindingList<IJointShow>();
         }
 
-        public void Show()
+        public override void Show()
         {
             PresentationCount++;
         }
 
-        public IJointShow CreateJointShow()
+        public override IJointShow CreateJointShow()
         {
             IJointShow jointShow = new FakeShow("");
             _jointShows.Add(jointShow);
             return jointShow;
         }
 
-        public void RemoveJointShow(string showName)
+        public override void RemoveJointShow(IJointShow show)
         {
-            //JointShowCount--;
+            _jointShows.Remove(show);
         }
 
-        public void CopyJointShow(string showName)
+        public override void CopyJointShow(IJointShow show)
         {
-            //JointShowCount++;
+        }
+
+        protected override void OnShowUpdated()
+        {
         }
     }
 }

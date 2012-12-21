@@ -30,13 +30,17 @@ namespace BridgePresenter.View
             InitializeComponent();
 
             jointShowList.DataSource = model.DataSource;
+            model.ShowUpdated += model_showUpdated;
+        }
+
+        private void model_showUpdated(object sender, EventArgs e)
+        {
+            jointShowList.RefreshDataSource();
         }
 
         private void newButton_Click(object sender, EventArgs e)
         {
             OnCreateJointShowRequested();
-
-            jointShowList.RefreshDataSource();
         }
 
         private void editButton_Click(object sender, EventArgs e)

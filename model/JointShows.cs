@@ -3,36 +3,35 @@ using System.ComponentModel;
 
 namespace BridgePresenter.Model
 {
-    public class JointShows : IJointShows
+    public class JointShows : BaseShows
     {
-        public event EventHandler<JointShowListChangedEventArgs> JointShowsListChanged;
         private BindingList<IJointShow> _jointShows;
-
-        public object DataSource { get { return _jointShows;  } }
+        
+        public override object DataSource { get { return _jointShows;  } }
 
         public JointShows()
         {
             _jointShows = new BindingList<IJointShow>();
         }
 
-        public void Show()
+        public override void Show()
         {
             throw new NotImplementedException();
         }
 
-        public IJointShow CreateJointShow()
+        public override IJointShow CreateJointShow()
         {
             JointShow newShow = new JointShow("");
             _jointShows.Add(newShow);
             return newShow;
         }
 
-        public void RemoveJointShow(string showName)
+        public override void RemoveJointShow(IJointShow show)
         {
-            throw new NotImplementedException();
+            _jointShows.Remove(show);
         }
 
-        public void CopyJointShow(string showName)
+        public override void CopyJointShow(IJointShow show)
         {
             throw new NotImplementedException();
         }

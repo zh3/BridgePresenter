@@ -59,12 +59,12 @@ namespace BridgePresenter.Controller
 
         protected void showWindow_RemoveShowRequested(object sender, ShowEventArgs e)
         {
-            _showModel.RemoveJointShow("Fake");
+            _showModel.RemoveJointShow(_showWindow.SelectedShow);
         }
 
         protected void showWindow_CopyShowRequested(object sender, ShowEventArgs e)
         {
-            _showModel.CopyJointShow("Fake");
+            _showModel.CopyJointShow(_showWindow.SelectedShow);
         }
     }
 }

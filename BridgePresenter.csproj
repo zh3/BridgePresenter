@@ -181,6 +181,7 @@
     <Compile Include="Controller\JointShowEditorController.cs" />
     <Compile Include="Controller\JointShowWindowFactory.cs" />
     <Compile Include="Model\BaseShow.cs" />
+    <Compile Include="Model\BaseShows.cs" />
     <Compile Include="Model\IJointShow.cs" />
     <Compile Include="Model\NullShow.cs" />
     <Compile Include="PresenterUtils.cs" />
