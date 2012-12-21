@@ -7,11 +7,33 @@ namespace BridgePresenter.Model
 {
     public class BaseShow : IJointShow
     {
-        public string Name { get; set; }
+        public event EventHandler<EventArgs> ShowUpdated;
+
+        private string _name;
+        public string Name
+        {
+            get { return _name; } 
+            set
+            {
+                if (_name != value)
+                {
+                    _name = value;
+                    OnShowUpdated();
+                }
+            }
+        }
 
         public BaseShow(string name)
         {
-            Name = name;
+            _name = name;
+        }
+
+        protected virtual void OnShowUpdated()
+        {
+            EventHandler<EventArgs> showUpdated = ShowUpdated;
+
+            if (showUpdated != null)
+                showUpdated(this, new EventArgs());
         }
 
         public override string ToString()

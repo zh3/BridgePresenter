@@ -14,6 +14,7 @@ namespace BridgePresenterTest
         private ListBox fakeShowListBox;
 
         public int NumDisplayedJointShows { get { return fakeShowListBox.Items.Count; } }
+        public int ShowUpdateCount { get; private set; }
         public bool WindowClosed { get; private set; }
 
         public override IJointShow SelectedShow
@@ -27,6 +28,12 @@ namespace BridgePresenterTest
 
             WindowClosed = false;
             fakeShowListBox.DataSource = model.DataSource;
+            model.ShowUpdated += model_OnShowUpdated;
+        }
+
+        private void model_OnShowUpdated(object sender, EventArgs e)
+        {
+            ShowUpdateCount++;
         }
 
         public void SelectShow(string showName)

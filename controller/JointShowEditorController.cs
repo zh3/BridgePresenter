@@ -28,6 +28,7 @@ namespace BridgePresenter.Controller
         protected void window_AcceptRequested(object sender, EventArgs e)
         {
             _showToEdit.Name = _window.ShowName;
+
             _window.CloseWindow();
         }
 

@@ -61,6 +61,7 @@
     </Compile>
     <Compile Include="JointShowControllerTest.cs" />
     <Compile Include="JointShowModelTest.cs" />
+    <Compile Include="JointShowTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShowTester.cs" />
     <EmbeddedResource Include="FakeShowWindow.resx">

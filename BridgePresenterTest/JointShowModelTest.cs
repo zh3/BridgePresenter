@@ -7,7 +7,9 @@ namespace BridgePresenterTest
     [TestFixture]
     public class JointShowModelTest
     {
-        private const string OrigName1 = "OrigName";
+        private const string OrigName1 = "Original Name";
+        private const string NewName1 = "Revised Name";
+        private const string NewName2 = "Alternate Name";
 
         private JointShowController _controller;
         private FakeShowWindow _fakeShowWindow;
@@ -77,6 +79,11 @@ namespace BridgePresenterTest
             _showTester.CreateFakeJointShow(OrigName1);
             Assert.AreEqual(1, _fakeShowWindow.NumDisplayedJointShows, "Joint show creation failed");
 
+            Assert.AreEqual(0, _fakeShowWindow.ShowUpdateCount, "Update triggered before changes made");
+            _showTester.EditorWindowChangeName(OrigName1, NewName1);
+            Assert.AreEqual(1, _fakeShowWindow.ShowUpdateCount, "First edit did not trigger update");
+            _showTester.EditorWindowChangeName(OrigName1, NewName2);
+            Assert.AreEqual(2, _fakeShowWindow.ShowUpdateCount, "Second edit did not trigger update");
         }
     }
 }
