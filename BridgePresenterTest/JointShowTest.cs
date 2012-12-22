@@ -15,17 +15,19 @@ namespace BridgePresenterTest
         private FakeShow _testShow;
         private JointShowEditorController _jointShowController;
         private FakeJointShowEditorWindow _fakeJointShowEditorWindow;
+        private FakeMessageShower _fakeMessageShower;
 
         [SetUp]
         public void SetUp()
         {
             _testShow = new FakeShow(OrigName1);
             _fakeJointShowEditorWindow = new FakeJointShowEditorWindow(_testShow);
-            _jointShowController = new JointShowEditorController(_fakeJointShowEditorWindow, _testShow);
+            _fakeMessageShower = new FakeMessageShower();
+            _jointShowController = new JointShowEditorController(_fakeJointShowEditorWindow, _testShow, _fakeMessageShower);
         }
 
         [Test]
-        public void TestShowUpdated()
+        public void TestJointShowUpdated()
         {
             int updateCount = 0;
             _testShow.ShowUpdated += ((sender, e) => updateCount++);

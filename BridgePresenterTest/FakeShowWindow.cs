@@ -10,7 +10,6 @@ namespace BridgePresenterTest
 {
     public class FakeShowWindow : MockShowWindow
     {
-        private IJointShow _fakeSelectedShow;
         private ListBox fakeShowListBox;
 
         public int NumDisplayedJointShows { get { return fakeShowListBox.Items.Count; } }

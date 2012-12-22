@@ -9,11 +9,13 @@ namespace BridgePresenterTest
     {
         public FakeJointShowEditorWindow FakeWindow { get; private set; }
         public JointShowEditorController FakeEditorController { get; private set; }
+        public FakeMessageShower FakeMessageShower { get; private set; }
 
         public Tuple<IJointShowEditorWindow, JointShowEditorController> CreateEditorWindow(IJointShow showModel)
         {
             FakeWindow = new FakeJointShowEditorWindow(showModel);
-            FakeEditorController = new JointShowEditorController(FakeWindow, showModel);
+            FakeMessageShower = new FakeMessageShower();
+            FakeEditorController = new JointShowEditorController(FakeWindow, showModel, FakeMessageShower);
 
             return new Tuple<IJointShowEditorWindow, JointShowEditorController>(FakeWindow, FakeEditorController);
         }

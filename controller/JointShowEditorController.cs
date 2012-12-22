@@ -8,11 +8,13 @@ namespace BridgePresenter.Controller
     {
         private IJointShowEditorWindow _window;
         private IJointShow _showToEdit;
+        private IMessageShower _messageShower;
 
-        public JointShowEditorController(IJointShowEditorWindow window, IJointShow showToEdit)
+        public JointShowEditorController(IJointShowEditorWindow window, IJointShow showToEdit, IMessageShower messageShower)
         {
             _window = window;
             _showToEdit = showToEdit;
+            _messageShower = messageShower;
 
             _window.AcceptRequested += window_AcceptRequested;
             _window.CancelRequested += window_CancelRequested;
@@ -27,9 +29,16 @@ namespace BridgePresenter.Controller
 
         protected void window_AcceptRequested(object sender, EventArgs e)
         {
-            _showToEdit.Name = _window.ShowName;
+            if (_window.ShowName != string.Empty)
+            {
+                _showToEdit.Name = _window.ShowName;
 
-            _window.CloseWindow();
+                _window.CloseWindow();
+            }
+            else
+            {
+                _messageShower.ShowErrorMessage("Name Error", "Must specify the joint show name");
+            }
         }
 
         protected void window_CancelRequested(object sender, EventArgs e)
