@@ -85,17 +85,5 @@ namespace BridgePresenterTest
             _showTester.EditorWindowChangeName(OrigName1, NewName2);
             Assert.AreEqual(2, _fakeShowWindow.ShowUpdateCount, "Second edit did not trigger update");
         }
-
-        [Test]
-        public void TestEditShowToEmptyName()
-        {
-            _showTester.CreateFakeJointShow(OrigName1);
-            _showTester.EditorWindowChangeName(OrigName1, "");
-            IJointShow fakeShow1 = _showTester.GetShow(OrigName1);
-
-            Assert.AreEqual(OrigName1, fakeShow1.Name, "Name changed to empty string");
-
-            Assert.AreEqual("Must specify the joint show name", _showTester.FakeMessageShower.LastErrorMessage);
-        }
     }
 }
