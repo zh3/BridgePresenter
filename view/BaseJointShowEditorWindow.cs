@@ -87,7 +87,18 @@ namespace BridgePresenter.View
                 onMovePresentationDownRequested(this, new PresentationEventArgs());
         }
 
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            OnCancelRequested();
+            
+            base.OnClosing(e);
+        }
+
+        public virtual void CloseWindow()
+        {
+            OnCancelRequested();
+        }
+
         public abstract void ShowWindow();
-        public abstract void CloseWindow();
     }
 }

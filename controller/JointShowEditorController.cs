@@ -43,7 +43,7 @@ namespace BridgePresenter.Controller
 
         protected void window_CancelRequested(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void window_ImportRequested(object sender, EventArgs e)

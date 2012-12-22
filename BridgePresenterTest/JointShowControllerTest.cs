@@ -102,16 +102,25 @@ namespace BridgePresenterTest
         }
 
         [Test]
-        [Description("Test a show that has no non-empty name committed is removed on cancel")]
+        [Description("Shows that have just been created have empty names. If they are not given a name they should be removed on cancel")]
         public void TestCancelShowWithEmptyName()
         {
-            _showTester.CreateFakeJointShow(OrigName1);
-            _showTester.EditorWindowChangeName(OrigName1, "");
-            IJointShow fakeShow1 = _showTester.GetShow(OrigName1);
+            _fakeShowWindow.FireOnCreateJointShowRequested();
+            FakeJointShowEditorWindow fakeEditorWindow = _fakeFactory.FakeWindow;
+            fakeEditorWindow.FireOnCancelRequested();
 
-            Assert.AreEqual(OrigName1, fakeShow1.Name, "Name changed to empty string");
+            Assert.AreEqual(0, _fakeShowWindow.NumDisplayedJointShows, "Empty joint show not removed");
+        }
 
-            Assert.AreEqual("Must specify the joint show name", _showTester.FakeMessageShower.LastErrorMessage);
+        [Test]
+        [Description("Shows that have just been created have empty names. If they are not given a name they should be removed on close")]
+        public void TestCloseShowWithEmptyName()
+        {
+            _fakeShowWindow.FireOnCreateJointShowRequested();
+            FakeJointShowEditorWindow fakeEditorWindow = _fakeFactory.FakeWindow;
+            fakeEditorWindow.CloseWindow();
+
+            Assert.AreEqual(0, _fakeShowWindow.NumDisplayedJointShows, "Empty joint show not removed");
         }
     }
 }

@@ -43,17 +43,19 @@ namespace BridgePresenter.Controller
         protected void showWindow_CreateJointShowRequested(object sender, EventArgs e)
         {
             IJointShow jointShow = _showModel.CreateJointShow();
-            ShowEditorWindow(jointShow);
+            Tuple<IJointShowEditorWindow, JointShowEditorController> mwc = _editorWindowFactory.CreateEditorWindow(jointShow);
+            mwc.Item1.CancelRequested += delegate
+            {
+                if (jointShow.Name == string.Empty)
+                    _showModel.RemoveJointShow(jointShow);
+            };
+            mwc.Item1.ShowWindow();
         }
 
         protected void showWindow_EditShowRequested(object sender, ShowEventArgs e)
         {
-            ShowEditorWindow(_showWindow.SelectedShow);
-        }
+            Tuple<IJointShowEditorWindow, JointShowEditorController> mwc = _editorWindowFactory.CreateEditorWindow(_showWindow.SelectedShow);
 
-        protected void ShowEditorWindow(IJointShow show)
-        {
-            Tuple<IJointShowEditorWindow, JointShowEditorController> mwc = _editorWindowFactory.CreateEditorWindow(show);
             mwc.Item1.ShowWindow();
         }
 
