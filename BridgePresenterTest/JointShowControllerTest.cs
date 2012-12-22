@@ -100,5 +100,18 @@ namespace BridgePresenterTest
 
             Assert.AreEqual("Must specify the joint show name", _showTester.FakeMessageShower.LastErrorMessage);
         }
+
+        [Test]
+        [Description("Test a show that has no non-empty name committed is removed on cancel")]
+        public void TestCancelShowWithEmptyName()
+        {
+            _showTester.CreateFakeJointShow(OrigName1);
+            _showTester.EditorWindowChangeName(OrigName1, "");
+            IJointShow fakeShow1 = _showTester.GetShow(OrigName1);
+
+            Assert.AreEqual(OrigName1, fakeShow1.Name, "Name changed to empty string");
+
+            Assert.AreEqual("Must specify the joint show name", _showTester.FakeMessageShower.LastErrorMessage);
+        }
     }
 }
