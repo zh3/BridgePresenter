@@ -79,11 +79,11 @@ namespace BridgePresenterTest
             _showTester.CreateFakeJointShow(OrigName1);
             Assert.AreEqual(1, _fakeShowWindow.NumDisplayedJointShows, "Joint show creation failed");
 
-            Assert.AreEqual(0, _fakeShowWindow.ShowUpdateCount, "Update triggered before changes made");
+            Assert.AreEqual(1, _fakeShowWindow.ShowUpdateCount, "Update not triggered correctly for creation");
             _showTester.EditorWindowChangeName(OrigName1, NewName1);
-            Assert.AreEqual(1, _fakeShowWindow.ShowUpdateCount, "First edit did not trigger update");
+            Assert.AreEqual(2, _fakeShowWindow.ShowUpdateCount, "First edit did not trigger update");
             _showTester.EditorWindowChangeName(OrigName1, NewName2);
-            Assert.AreEqual(2, _fakeShowWindow.ShowUpdateCount, "Second edit did not trigger update");
+            Assert.AreEqual(3, _fakeShowWindow.ShowUpdateCount, "Second edit did not trigger update");
         }
     }
 }

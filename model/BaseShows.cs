@@ -31,12 +31,20 @@ namespace BridgePresenter.Model
         public virtual IJointShow CreateJointShow()
         {
             JointShow newShow = new JointShow("");
+            newShow.ShowUpdated += newShow_ShowUpdated;
+
             _jointShows.Add(newShow);
             return newShow;
         }
 
+        void newShow_ShowUpdated(object sender, EventArgs e)
+        {
+            OnShowUpdated();
+        }
+
         public virtual void RemoveJointShow(IJointShow show)
         {
+            show.ShowUpdated -= newShow_ShowUpdated;
             _jointShows.Remove(show);
         }
     }
