@@ -48,7 +48,8 @@ namespace BridgePresenter.Controller
 
         protected void window_ImportRequested(object sender, EventArgs e)
         {
-            _window.PromptForPresentationsToImport();
+            string[] pathsToImport = _window.PromptForPresentationsToImport();
+            
         }
 
         protected void window_AddToShowRequested(object sender, PresentationEventArgs e)

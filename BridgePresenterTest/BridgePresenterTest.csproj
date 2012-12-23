@@ -55,6 +55,7 @@
     </Compile>
     <Compile Include="FakeJointShowEditorWindowFactory.cs" />
     <Compile Include="FakeMessageShower.cs" />
+    <Compile Include="FakePresentation.cs" />
     <Compile Include="FakeShow.cs" />
     <Compile Include="FakeShows.cs" />
     <Compile Include="FakeShowWindow.cs">
