@@ -7,6 +7,6 @@ namespace BridgePresenter.Model
 {
     public interface IShow
     {
-        
+        string Path { get; }
     }
 }

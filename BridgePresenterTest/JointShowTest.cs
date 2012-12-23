@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using BridgePresenter.Controller;
+using BridgePresenter.Model;
 using NUnit.Framework;
 
 namespace BridgePresenterTest
@@ -11,6 +12,7 @@ namespace BridgePresenterTest
     {
         private const string OrigName1 = "Original name";
         private const string NewName1 = "new name";
+        private readonly string[] PresentationPaths = new[] { "file 1", "file 2", "file 3" };
 
         private FakeJointShow _testShow;
         private JointShowEditorController _jointShowController;
@@ -43,12 +45,50 @@ namespace BridgePresenterTest
         [Test]
         public void TestJointShowFilesImported()
         {
-            string[] presentationPaths = new [] {"file 1", "file 2", "file 3"};
+            SetupPresentations();
+        }
 
-            _fakeJointShowEditorWindow.PresentationsToImport = presentationPaths;
+        [Test]
+        public void TestJointShowDelete()
+        {
+            SetupPresentations();
+
+            _fakeJointShowEditorWindow.FireDeletePresentationRequested();
+            Assert.AreEqual(2, _fakeJointShowEditorWindow.NumImportedShowsDisplayed, "Show not correctly deleted");
+
+            _fakeJointShowEditorWindow.FireDeletePresentationRequested();
+            Assert.AreEqual(1, _fakeJointShowEditorWindow.NumImportedShowsDisplayed, "Show not correctly deleted");
+
+            _fakeJointShowEditorWindow.FireDeletePresentationRequested();
+            Assert.AreEqual(0, _fakeJointShowEditorWindow.NumImportedShowsDisplayed, "Show not correctly deleted");
+
+            _fakeJointShowEditorWindow.FireDeletePresentationRequested();
+            Assert.AreEqual(0, _fakeJointShowEditorWindow.NumImportedShowsDisplayed, "Deletion incorrect when shows empty");
+        }
+
+        private void SetupPresentations()
+        {
+            _fakeJointShowEditorWindow.PresentationsToImport = PresentationPaths;
             _fakeJointShowEditorWindow.FireOnImportRequested();
+            Assert.AreEqual(3, _fakeJointShowEditorWindow.NumImportedShowsDisplayed, "Shows not correctly imported");
+        }
+
+        [Test]
+        public void TestAddToShowOrder()
+        {
+            SetupPresentations();
+
+            _fakeJointShowEditorWindow.FireOnAddToShowRequested();
+            _fakeJointShowEditorWindow.SelectImportedPresentation(PresentationPaths[0]);
             
-            Assert.AreEqual(3, _fakeJointShowEditorWindow.NumImportedShowsDisplayed);
+            _fakeJointShowEditorWindow.FireOnAddToShowRequested();
+            Assert.IsTrue(ContainsPresentationWithPath(_fakeJointShowEditorWindow.ShowOrderItems, PresentationPaths[0]),
+                "Presentation not added successfully");
+        }
+
+        private static bool ContainsPresentationWithPath(IEnumerable<IShow> shows, string path)
+        {
+            return shows.Any(show => show.Path == path);
         }
     }
 }

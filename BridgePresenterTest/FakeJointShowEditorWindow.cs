@@ -1,21 +1,68 @@
-﻿using BridgePresenter.Model;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
+using BridgePresenter.Model;
 using BridgePresenter.View;
 
 namespace BridgePresenterTest
 {
     public class FakeJointShowEditorWindow : MockJointShowEditorWindow
     {
-        private System.Windows.Forms.ListBox fakeImportedShowListBox;
-        private System.Windows.Forms.ListBox fakeShowOrderListBox;
+        private ListBox fakeImportedShowListBox;
+        private ListBox fakeShowOrderListBox;
 
         public string JointShowName;
         public string[] PresentationsToImport;
         public int NumImportedShowsDisplayed { get { return fakeImportedShowListBox.Items.Count; } }
         public int NumShowsInShowOrderDisplayed { get { return fakeShowOrderListBox.Items.Count; } }
 
+        public List<IShow> ImportedShowItems
+        {
+            get { return ObjectCollectionToShowList(fakeImportedShowListBox.Items); }
+        }
+
+        public List<IShow> ShowOrderItems
+        {
+            get { return ObjectCollectionToShowList(fakeShowOrderListBox.Items); }
+        }
+
+        private List<IShow> ObjectCollectionToShowList(ListBox.ObjectCollection collection)
+        {
+            return collection.Cast<IShow>().ToList();
+        }
+
+        public override IShow ShowOrderSelectedShow
+        {
+            get { return fakeShowOrderListBox.SelectedItem as IShow; }
+        }
+
+        public override IShow ImportedSelectedShow
+        {
+            get { return fakeImportedShowListBox.SelectedItem as IShow; }
+        }
+
         public override string ShowName
         {
             get { return JointShowName; }
+        }
+
+        public void SelectImportedPresentation(string path)
+        {
+            SelectPresentation(path, fakeImportedShowListBox);
+        }
+
+        public void SelectShowOrderPresentation(string path)
+        {
+            SelectPresentation(path, fakeShowOrderListBox);
+        }
+
+        private void SelectPresentation(string path, ListBox listBox)
+        {
+            foreach (IShow show in listBox.Items)
+            {
+                if (show.Path == path)
+                    listBox.SelectedItem = show;
+            }
         }
 
         public FakeJointShowEditorWindow(IJointShow showModel) : base(showModel)

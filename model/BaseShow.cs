@@ -7,7 +7,7 @@ namespace BridgePresenter.Model
 {
     public class BaseShow : IShow
     {
-        protected string Path;
+        public string Path { get; private set; }
 
         public BaseShow(string path)
         {

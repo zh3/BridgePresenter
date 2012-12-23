@@ -59,7 +59,7 @@ namespace BridgePresenter.Model
 
         public void AddShowToShowOrder(IShow show)
         {
-            throw new NotImplementedException();
+            _showOrderList.Add(show);
         }
 
         public void RemoveShowFromShowOrder(int showIndex)
@@ -67,9 +67,10 @@ namespace BridgePresenter.Model
             throw new NotImplementedException();
         }
 
-        public void DeleteShow(IJointShow show)
+        public void DeleteShow(IShow show)
         {
-            throw new NotImplementedException();
+            while (_importedShows.Remove(show)) 
+                ;
         }
 
         public BaseJointShow(string name)

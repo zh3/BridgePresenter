@@ -16,6 +16,6 @@ namespace BridgePresenter.Model
         void RemoveShow(IShow show);
         void AddShowToShowOrder(IShow show);
         void RemoveShowFromShowOrder(int showIndex);
-        void DeleteShow(IJointShow show);
+        void DeleteShow(IShow show);
     }
 }

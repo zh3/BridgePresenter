@@ -29,6 +29,7 @@ namespace BridgePresenter.View
         {
             InitializeComponent();
 
+            jointShowNameTextBox.Text = model.Name;
             orderListBox.DataSource = model.ShowOrderDataSource;
             importedShowsListBox.DataSource = model.ImportedShowsDataSource;
         }

@@ -55,7 +55,7 @@ namespace BridgePresenter.Controller
 
         protected void window_AddToShowRequested(object sender, ShowEventArgs e)
         {
-            
+            _showToEdit.AddShowToShowOrder(_window.ImportedSelectedShow);
         }
 
         protected void window_RemoveFromShowRequested(object sender, ShowEventArgs e)
@@ -65,7 +65,7 @@ namespace BridgePresenter.Controller
 
         protected void window_DeletePresentationRequested(object sender, ShowEventArgs e)
         {
-
+            _showToEdit.DeleteShow(_window.ImportedSelectedShow);
         }
 
         protected void window_MovePresentationUpRequested(object sender, ShowEventArgs e)
