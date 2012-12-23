@@ -5,10 +5,13 @@ namespace BridgePresenterTest
 {
     public class FakeJointShowEditorWindow : MockJointShowEditorWindow
     {
-        public string JointShowName;
         private System.Windows.Forms.ListBox fakeImportedShowListBox;
         private System.Windows.Forms.ListBox fakeShowOrderListBox;
+
+        public string JointShowName;
         public string[] PresentationsToImport;
+        public int NumImportedShowsDisplayed { get { return fakeImportedShowListBox.Items.Count; } }
+        public int NumShowsInShowOrderDisplayed { get { return fakeShowOrderListBox.Items.Count; } }
 
         public override string ShowName
         {
@@ -17,6 +20,7 @@ namespace BridgePresenterTest
 
         public FakeJointShowEditorWindow(IJointShow showModel) : base(showModel)
         {
+            InitializeComponent();
         }
 
         public void FireOnAcceptRequested()

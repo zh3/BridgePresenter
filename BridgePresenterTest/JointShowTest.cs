@@ -46,8 +46,9 @@ namespace BridgePresenterTest
             string[] presentationPaths = new [] {"file 1", "file 2", "file 3"};
 
             _fakeJointShowEditorWindow.PresentationsToImport = presentationPaths;
-
+            _fakeJointShowEditorWindow.FireOnImportRequested();
             
+            Assert.AreEqual(3, _fakeJointShowEditorWindow.NumImportedShowsDisplayed);
         }
     }
 }

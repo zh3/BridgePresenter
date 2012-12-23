@@ -1,4 +1,5 @@
 ﻿using System;
+using BridgePresenter.Model;
 
 namespace BridgePresenter.View
 {
@@ -14,6 +15,8 @@ namespace BridgePresenter.View
         event EventHandler<ShowEventArgs> DeletePresentationRequested;
         event EventHandler<ShowEventArgs> MovePresentationUpRequested;
         event EventHandler<ShowEventArgs> MovePresentationDownRequested;
+        IShow ShowOrderSelectedShow { get; }
+        IShow ImportedSelectedShow { get; }
 
         void ShowWindow();
         void CloseWindow();

@@ -15,6 +15,16 @@ namespace BridgePresenter.View
             get { return jointShowNameTextBox.Text; }
         }
 
+        public override IShow ShowOrderSelectedShow
+        {
+            get { return orderListBox.SelectedItem as IShow; }
+        }
+
+        public override IShow ImportedSelectedShow
+        {
+            get { return presentationListBox.SelectedItem as IShow; }
+        }
+
         public JointShowEditorWindow(IJointShow model) : base(model)
         {
             InitializeComponent();

@@ -19,6 +19,16 @@ namespace BridgePresenter.View
             get { throw new System.NotImplementedException(); }
         }
 
+        public override IShow ShowOrderSelectedShow
+        {
+            get { throw new System.NotImplementedException(); }
+        }
+
+        public override IShow ImportedSelectedShow
+        {
+            get { throw new System.NotImplementedException(); }
+        }
+
         public override string[] PromptForPresentationsToImport()
         {
             throw new System.NotImplementedException();

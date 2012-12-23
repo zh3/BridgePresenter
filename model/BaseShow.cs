@@ -13,5 +13,10 @@ namespace BridgePresenter.Model
         {
             Path = path;
         }
+
+        public override string ToString()
+        {
+            return Path;
+        }
     }
 }
