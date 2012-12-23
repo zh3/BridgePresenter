@@ -15,9 +15,9 @@ namespace BridgePresenter.View
             get { return jointShowNameTextBox.Text; }
         }
 
-        public override IShow ShowOrderSelectedShow
+        public override int ShowOrderSelectedShowIndex
         {
-            get { return orderListBox.SelectedItem as IShow; }
+            get { return orderListBox.SelectedIndex; }
         }
 
         public override IShow ImportedSelectedShow

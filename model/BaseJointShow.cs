@@ -65,10 +65,8 @@ namespace BridgePresenter.Model
 
         public void RemoveShowFromShowOrder(int showIndex)
         {
-            throw new NotImplementedException();
+            _showOrderList.RemoveAt(showIndex);
         }
-
-        
 
         public BaseJointShow(string name)
         {

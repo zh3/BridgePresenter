@@ -31,9 +31,9 @@ namespace BridgePresenterTest
             return collection.Cast<IShow>().ToList();
         }
 
-        public override IShow ShowOrderSelectedShow
+        public override int ShowOrderSelectedShowIndex
         {
-            get { return fakeShowOrderListBox.SelectedItem as IShow; }
+            get { return fakeShowOrderListBox.SelectedIndex; }
         }
 
         public override IShow ImportedSelectedShow
@@ -51,9 +51,9 @@ namespace BridgePresenterTest
             SelectPresentation(path, fakeImportedShowListBox);
         }
 
-        public void SelectShowOrderPresentation(string path)
+        public void SelectShowOrderPresentation(int index)
         {
-            SelectPresentation(path, fakeShowOrderListBox);
+            fakeShowOrderListBox.SelectedIndex = index;
         }
 
         private void SelectPresentation(string path, ListBox listBox)
@@ -61,7 +61,10 @@ namespace BridgePresenterTest
             foreach (IShow show in listBox.Items)
             {
                 if (show.Path == path)
+                {
                     listBox.SelectedItem = show;
+                    return;
+                }
             }
         }
 

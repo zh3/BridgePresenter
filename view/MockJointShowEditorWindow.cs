@@ -19,7 +19,7 @@ namespace BridgePresenter.View
             get { throw new System.NotImplementedException(); }
         }
 
-        public override IShow ShowOrderSelectedShow
+        public override int ShowOrderSelectedShowIndex
         {
             get { throw new System.NotImplementedException(); }
         }

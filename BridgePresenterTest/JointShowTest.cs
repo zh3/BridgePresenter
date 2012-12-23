@@ -79,9 +79,8 @@ namespace BridgePresenterTest
             SetupPresentations();
 
             _fakeJointShowEditorWindow.FireOnAddToShowRequested();
-            _fakeJointShowEditorWindow.SelectImportedPresentation(PresentationPaths[0]);
-            
-            _fakeJointShowEditorWindow.FireOnAddToShowRequested();
+            AddPresentationToShowOrder(PresentationPaths[0]);
+
             Assert.IsTrue(ContainsPresentationWithPath(_fakeJointShowEditorWindow.ShowOrderItems, PresentationPaths[0]),
                 "Presentation not added successfully");
         }
@@ -89,6 +88,36 @@ namespace BridgePresenterTest
         private static bool ContainsPresentationWithPath(IEnumerable<IShow> shows, string path)
         {
             return shows.Any(show => show.Path == path);
+        }
+
+        [Test]
+        public void TestRemoveShowFromShowOrder()
+        {
+            SetupPresentations();
+
+            AddPresentationToShowOrder(PresentationPaths[0]);
+            AddPresentationToShowOrder(PresentationPaths[1]);
+            AddPresentationToShowOrder(PresentationPaths[2]);
+            AddPresentationToShowOrder(PresentationPaths[0]);
+
+            RemovePresentationFromShowOrder(2);
+
+            List<IShow> shows = _fakeJointShowEditorWindow.ShowOrderItems;
+            Assert.AreEqual(PresentationPaths[0], shows[0].Path);
+            Assert.AreEqual(PresentationPaths[1], shows[1].Path);
+            Assert.AreEqual(PresentationPaths[0], shows[2].Path);
+        }
+
+        private void AddPresentationToShowOrder(string path)
+        {
+            _fakeJointShowEditorWindow.SelectImportedPresentation(path);
+            _fakeJointShowEditorWindow.FireOnAddToShowRequested();
+        }
+
+        public void RemovePresentationFromShowOrder(int index)
+        {
+            _fakeJointShowEditorWindow.SelectShowOrderPresentation(index);
+            _fakeJointShowEditorWindow.FireOnRemoveFromShowRequested();
         }
     }
 }

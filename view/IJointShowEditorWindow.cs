@@ -15,8 +15,8 @@ namespace BridgePresenter.View
         event EventHandler<ShowEventArgs> DeletePresentationRequested;
         event EventHandler<ShowEventArgs> MovePresentationUpRequested;
         event EventHandler<ShowEventArgs> MovePresentationDownRequested;
-        IShow ShowOrderSelectedShow { get; }
         IShow ImportedSelectedShow { get; }
+        int ShowOrderSelectedShowIndex { get; }
 
         void ShowWindow();
         void CloseWindow();

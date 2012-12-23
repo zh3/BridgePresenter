@@ -60,7 +60,7 @@ namespace BridgePresenter.Controller
 
         protected void window_RemoveFromShowRequested(object sender, ShowEventArgs e)
         {
-
+            _showToEdit.RemoveShowFromShowOrder(_window.ShowOrderSelectedShowIndex);
         }
 
         protected void window_DeletePresentationRequested(object sender, ShowEventArgs e)
