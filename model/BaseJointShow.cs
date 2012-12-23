@@ -47,14 +47,15 @@ namespace BridgePresenter.Model
             return shows;
         }
 
-        public void RemoveShow(string path)
+        public void DeleteShow(string path)
         {
             throw new NotImplementedException();
         }
 
-        public void RemoveShow(IShow show)
+        public void DeleteShow(IShow show)
         {
-            throw new NotImplementedException();
+            while (_importedShows.Remove(show))
+                ;
         }
 
         public void AddShowToShowOrder(IShow show)
@@ -67,11 +68,7 @@ namespace BridgePresenter.Model
             throw new NotImplementedException();
         }
 
-        public void DeleteShow(IShow show)
-        {
-            while (_importedShows.Remove(show)) 
-                ;
-        }
+        
 
         public BaseJointShow(string name)
         {

@@ -12,10 +12,9 @@ namespace BridgePresenter.Model
 
         IShow AddShow(string path);
         IShow[] AddShows(string[] paths);
-        void RemoveShow(string path);
-        void RemoveShow(IShow show);
+        void DeleteShow(string path);
+        void DeleteShow(IShow show);
         void AddShowToShowOrder(IShow show);
         void RemoveShowFromShowOrder(int showIndex);
-        void DeleteShow(IShow show);
     }
 }
