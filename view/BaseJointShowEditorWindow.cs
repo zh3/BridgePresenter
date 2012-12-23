@@ -12,11 +12,11 @@ namespace BridgePresenter.View
         public event EventHandler<EventArgs> AcceptRequested;
         public event EventHandler<EventArgs> CancelRequested;
         public event EventHandler<EventArgs> ImportRequested;
-        public event EventHandler<PresentationEventArgs> AddToShowRequested;
-        public event EventHandler<PresentationEventArgs> RemoveFromShowRequested;
-        public event EventHandler<PresentationEventArgs> DeletePresentationRequested;
-        public event EventHandler<PresentationEventArgs> MovePresentationUpRequested;
-        public event EventHandler<PresentationEventArgs> MovePresentationDownRequested;
+        public event EventHandler<ShowEventArgs> AddToShowRequested;
+        public event EventHandler<ShowEventArgs> RemoveFromShowRequested;
+        public event EventHandler<ShowEventArgs> DeletePresentationRequested;
+        public event EventHandler<ShowEventArgs> MovePresentationUpRequested;
+        public event EventHandler<ShowEventArgs> MovePresentationDownRequested;
 
         protected BaseJointShowEditorWindow(IJointShow showModel)
         {
@@ -49,42 +49,42 @@ namespace BridgePresenter.View
 
         protected void OnAddToShowRequested()
         {
-            EventHandler<PresentationEventArgs> addToShowRequested = AddToShowRequested;
+            EventHandler<ShowEventArgs> addToShowRequested = AddToShowRequested;
 
             if (addToShowRequested != null)
-                addToShowRequested(this, new PresentationEventArgs());
+                addToShowRequested(this, new ShowEventArgs());
         }
 
         protected void OnRemoveFromShowRequested()
         {
-            EventHandler<PresentationEventArgs> removeFromShowRequested = RemoveFromShowRequested;
+            EventHandler<ShowEventArgs> removeFromShowRequested = RemoveFromShowRequested;
 
             if (removeFromShowRequested != null)
-                removeFromShowRequested(this, new PresentationEventArgs());
+                removeFromShowRequested(this, new ShowEventArgs());
         }
 
         protected void OnDeleteRequested()
         {
-            EventHandler<PresentationEventArgs> deletePresentationRequested = DeletePresentationRequested;
+            EventHandler<ShowEventArgs> deletePresentationRequested = DeletePresentationRequested;
 
             if (deletePresentationRequested != null)
-                deletePresentationRequested(this, new PresentationEventArgs());
+                deletePresentationRequested(this, new ShowEventArgs());
         }
 
         protected void OnMovePresentationUpRequested()
         {
-            EventHandler<PresentationEventArgs> onMovePresentationUpRequested = MovePresentationUpRequested;
+            EventHandler<ShowEventArgs> onMovePresentationUpRequested = MovePresentationUpRequested;
 
             if (onMovePresentationUpRequested != null)
-                onMovePresentationUpRequested(this, new PresentationEventArgs());
+                onMovePresentationUpRequested(this, new ShowEventArgs());
         }
 
         protected void OnMovePresentationDownRequested()
         {
-            EventHandler<PresentationEventArgs> onMovePresentationDownRequested = MovePresentationDownRequested;
+            EventHandler<ShowEventArgs> onMovePresentationDownRequested = MovePresentationDownRequested;
 
             if (onMovePresentationDownRequested != null)
-                onMovePresentationDownRequested(this, new PresentationEventArgs());
+                onMovePresentationDownRequested(this, new ShowEventArgs());
         }
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)

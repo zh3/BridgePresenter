@@ -52,27 +52,27 @@ namespace BridgePresenter.Controller
             
         }
 
-        protected void window_AddToShowRequested(object sender, PresentationEventArgs e)
+        protected void window_AddToShowRequested(object sender, ShowEventArgs e)
         {
             
         }
 
-        protected void window_RemoveFromShowRequested(object sender, PresentationEventArgs e)
+        protected void window_RemoveFromShowRequested(object sender, ShowEventArgs e)
         {
 
         }
 
-        protected void window_DeletePresentationRequested(object sender, PresentationEventArgs e)
+        protected void window_DeletePresentationRequested(object sender, ShowEventArgs e)
         {
 
         }
 
-        protected void window_MovePresentationUpRequested(object sender, PresentationEventArgs e)
+        protected void window_MovePresentationUpRequested(object sender, ShowEventArgs e)
         {
 
         }
 
-        protected void window_MovePresentationDownRequested(object sender, PresentationEventArgs e)
+        protected void window_MovePresentationDownRequested(object sender, ShowEventArgs e)
         {
 
         }

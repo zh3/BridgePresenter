@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace BridgePresenter.Model
 {
-    public class JointShows : BaseShows
+    public class JointShows : BaseJointShows
     {
         public override object DataSource { get { return _jointShows;  } }
 

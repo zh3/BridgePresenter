@@ -12,19 +12,19 @@ namespace BridgePresenterTest
         private const string NewName2 = "Alternate Name";
 
         private JointShowController _controller;
-        private FakeShowWindow _fakeShowWindow;
+        private FakeJointShowWindow _fakeShowWindow;
         private IJointShows _jointShowsModel;
         private FakeJointShowEditorWindowFactory _fakeFactory;
-        private ShowTester _showTester;
+        private JointShowTester _showTester;
 
         [SetUp]
         public void Setup()
         {
             _jointShowsModel = new JointShows();
-            _fakeShowWindow = new FakeShowWindow(_jointShowsModel);
+            _fakeShowWindow = new FakeJointShowWindow(_jointShowsModel);
             _fakeFactory = new FakeJointShowEditorWindowFactory();
             _controller = new JointShowController(_fakeShowWindow, _jointShowsModel, _fakeFactory);
-            _showTester = new ShowTester(_fakeShowWindow, _fakeFactory);
+            _showTester = new JointShowTester(_fakeShowWindow, _fakeFactory);
         }
 
         [Test]

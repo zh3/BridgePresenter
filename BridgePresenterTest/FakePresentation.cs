@@ -6,7 +6,7 @@ using BridgePresenter.Model;
 
 namespace BridgePresenterTest
 {
-    public class FakePresentation : BasePresentation
+    public class FakePresentation : BaseShow
     {
         public string FilePath { get { return Path; } }
 

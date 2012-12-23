@@ -12,7 +12,7 @@ namespace BridgePresenterTest
         private const string OrigName1 = "Original name";
         private const string NewName1 = "new name";
 
-        private FakeShow _testShow;
+        private FakeJointShow _testShow;
         private JointShowEditorController _jointShowController;
         private FakeJointShowEditorWindow _fakeJointShowEditorWindow;
         private FakeMessageShower _fakeMessageShower;
@@ -20,7 +20,7 @@ namespace BridgePresenterTest
         [SetUp]
         public void SetUp()
         {
-            _testShow = new FakeShow(OrigName1);
+            _testShow = new FakeJointShow(OrigName1);
             _fakeJointShowEditorWindow = new FakeJointShowEditorWindow(_testShow);
             _fakeMessageShower = new FakeMessageShower();
             _jointShowController = new JointShowEditorController(_fakeJointShowEditorWindow, _testShow, _fakeMessageShower);

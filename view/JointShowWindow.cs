@@ -7,7 +7,7 @@ namespace BridgePresenter.View
 // Visual studio designer doesn't support abstract classes one level up from a form class.
 // Workaround using an empty intermediate class.
 #if DEBUG
-    public partial class JointShowWindow : MockShowWindow
+    public partial class JointShowWindow : MockJointShowWindow
 #else
     public partial class JointShowWindow : BaseShowWindow
 #endif
@@ -21,7 +21,7 @@ namespace BridgePresenter.View
                 if (selectedItem != null && selectedItem is IJointShow)
                     return jointShowList.SelectedItem as IJointShow;
 
-                return new NullShow();
+                return new NullJointShow();
             }
         }
 

@@ -5,13 +5,10 @@ using System.Text;
 
 namespace BridgePresenter.Model
 {
-    public class BaseShow : IShow
+    public class Show : BaseShow
     {
-        protected string Path;
-
-        public BaseShow(string path)
+        public Show(string path) : base(path)
         {
-            Path = path;
         }
     }
 }

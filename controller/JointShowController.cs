@@ -52,19 +52,19 @@ namespace BridgePresenter.Controller
             mwc.Item1.ShowWindow();
         }
 
-        protected void showWindow_EditShowRequested(object sender, ShowEventArgs e)
+        protected void showWindow_EditShowRequested(object sender, JointShowEventArgs e)
         {
             Tuple<IJointShowEditorWindow, JointShowEditorController> mwc = _editorWindowFactory.CreateEditorWindow(_showWindow.SelectedShow);
 
             mwc.Item1.ShowWindow();
         }
 
-        protected void showWindow_RemoveShowRequested(object sender, ShowEventArgs e)
+        protected void showWindow_RemoveShowRequested(object sender, JointShowEventArgs e)
         {
             _showModel.RemoveJointShow(_showWindow.SelectedShow);
         }
 
-        protected void showWindow_CopyShowRequested(object sender, ShowEventArgs e)
+        protected void showWindow_CopyShowRequested(object sender, JointShowEventArgs e)
         {
             _showModel.CopyJointShow(_showWindow.SelectedShow);
         }

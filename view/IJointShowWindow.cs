@@ -9,9 +9,9 @@ namespace BridgePresenter.View
         event EventHandler<EventArgs> ShowRequested;
 
         event EventHandler<EventArgs> CreateJointShowRequested;
-        event EventHandler<ShowEventArgs> EditShowRequested;
-        event EventHandler<ShowEventArgs> RemoveShowRequested;
-        event EventHandler<ShowEventArgs> CopyShowRequested;
+        event EventHandler<JointShowEventArgs> EditShowRequested;
+        event EventHandler<JointShowEventArgs> RemoveShowRequested;
+        event EventHandler<JointShowEventArgs> CopyShowRequested;
         IJointShow SelectedShow { get; }
 
         void CloseWindow();

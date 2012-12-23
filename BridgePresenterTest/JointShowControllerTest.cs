@@ -13,19 +13,19 @@ namespace BridgePresenterTest
         private const string NewName1 = "Renamed fake show 1";
 
         private JointShowController _controller;
-        private FakeShowWindow _fakeShowWindow;
-        private FakeShows _fakeShowModel;
+        private FakeJointShowWindow _fakeShowWindow;
+        private FakeJointShows _fakeShowModel;
         private FakeJointShowEditorWindowFactory _fakeFactory;
-        private ShowTester _showTester;
+        private JointShowTester _showTester;
 
         [SetUp]
         public void Setup()
         {
-            _fakeShowModel = new FakeShows();
-            _fakeShowWindow = new FakeShowWindow(_fakeShowModel);
+            _fakeShowModel = new FakeJointShows();
+            _fakeShowWindow = new FakeJointShowWindow(_fakeShowModel);
             _fakeFactory = new FakeJointShowEditorWindowFactory();
             _controller = new JointShowController(_fakeShowWindow, _fakeShowModel, _fakeFactory);
-            _showTester = new ShowTester(_fakeShowWindow, _fakeFactory);
+            _showTester = new JointShowTester(_fakeShowWindow, _fakeFactory);
         }
 
         [Test]

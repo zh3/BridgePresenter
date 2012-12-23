@@ -9,11 +9,11 @@ namespace BridgePresenter.View
         event EventHandler<EventArgs> AcceptRequested;
         event EventHandler<EventArgs> CancelRequested;
         event EventHandler<EventArgs> ImportRequested;
-        event EventHandler<PresentationEventArgs> AddToShowRequested;
-        event EventHandler<PresentationEventArgs> RemoveFromShowRequested;
-        event EventHandler<PresentationEventArgs> DeletePresentationRequested;
-        event EventHandler<PresentationEventArgs> MovePresentationUpRequested;
-        event EventHandler<PresentationEventArgs> MovePresentationDownRequested;
+        event EventHandler<ShowEventArgs> AddToShowRequested;
+        event EventHandler<ShowEventArgs> RemoveFromShowRequested;
+        event EventHandler<ShowEventArgs> DeletePresentationRequested;
+        event EventHandler<ShowEventArgs> MovePresentationUpRequested;
+        event EventHandler<ShowEventArgs> MovePresentationDownRequested;
 
         void ShowWindow();
         void CloseWindow();

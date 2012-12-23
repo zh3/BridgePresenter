@@ -180,20 +180,20 @@
     <Compile Include="Controller\IJointShowWindowFactory.cs" />
     <Compile Include="Controller\JointShowEditorController.cs" />
     <Compile Include="Controller\JointShowWindowFactory.cs" />
-    <Compile Include="Model\BaseShow.cs" />
-    <Compile Include="Model\BaseShows.cs" />
+    <Compile Include="Model\BaseJointShow.cs" />
+    <Compile Include="Model\BaseJointShows.cs" />
     <Compile Include="Model\IJointShow.cs" />
     <Compile Include="Model\IMessageShower.cs" />
-    <Compile Include="Model\IPresentation.cs" />
+    <Compile Include="Model\IShow.cs" />
     <Compile Include="Model\MessageShower.cs" />
-    <Compile Include="Model\NullShow.cs" />
-    <Compile Include="Model\BasePresentation.cs" />
-    <Compile Include="Model\Presentation.cs" />
+    <Compile Include="Model\NullJointShow.cs" />
+    <Compile Include="Model\BaseShow.cs" />
+    <Compile Include="Model\Show.cs" />
     <Compile Include="PresenterUtils.cs" />
     <Compile Include="View\BaseJointShowEditorWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\BaseShowWindow.cs">
+    <Compile Include="View\BaseJointShowWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\IJointShowEditorWindow.cs" />
@@ -217,10 +217,10 @@
     <Compile Include="View\MockJointShowEditorWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\MockShowWindow.cs">
+    <Compile Include="View\MockJointShowWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\PresentationEventArgs.cs" />
+    <Compile Include="View\ShowEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -258,7 +258,7 @@
     <Compile Include="BridgePresenterRibbon.Designer.cs">
       <DependentUpon>BridgePresenterRibbon.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\ShowEventArgs.cs" />
+    <Compile Include="View\JointShowEventArgs.cs" />
     <Compile Include="Model\JointShows.cs" />
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
