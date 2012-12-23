@@ -21,6 +21,9 @@ namespace BridgePresenterTest
         public FakeJointShowEditorWindow(IJointShow showModel) : base(showModel)
         {
             InitializeComponent();
+
+            fakeShowOrderListBox.DataSource = showModel.ShowOrderDataSource;
+            fakeImportedShowListBox.DataSource = showModel.ImportedShowsDataSource;
         }
 
         public void FireOnAcceptRequested()

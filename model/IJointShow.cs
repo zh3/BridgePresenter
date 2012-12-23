@@ -9,5 +9,13 @@ namespace BridgePresenter.Model
         object ImportedShowsDataSource { get; }
 
         string Name { get; set; }
+
+        IShow AddShow(string path);
+        IShow[] AddShows(string[] paths);
+        void RemoveShow(string path);
+        void RemoveShow(IShow show);
+        void AddShowToShowOrder(IShow show);
+        void RemoveShowFromShowOrder(int showIndex);
+        void DeleteShow(IJointShow show);
     }
 }

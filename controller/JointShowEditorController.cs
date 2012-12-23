@@ -49,7 +49,8 @@ namespace BridgePresenter.Controller
         protected void window_ImportRequested(object sender, EventArgs e)
         {
             string[] pathsToImport = _window.PromptForPresentationsToImport();
-            
+
+            _showToEdit.AddShows(pathsToImport);
         }
 
         protected void window_AddToShowRequested(object sender, ShowEventArgs e)

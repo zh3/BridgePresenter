@@ -15,8 +15,8 @@ namespace BridgePresenter.Model
 
         public event EventHandler<EventArgs> ShowUpdated;
 
-        public object ShowOrderDataSource { get { return _importedShows; } }
-        public object ImportedShowsDataSource { get { return _showOrderList; } }
+        public object ShowOrderDataSource { get { return _showOrderList; } }
+        public object ImportedShowsDataSource { get { return _importedShows; } }
 
         public string Name
         {
@@ -29,6 +29,47 @@ namespace BridgePresenter.Model
                     OnShowUpdated();
                 }
             }
+        }
+
+        public IShow AddShow(string path)
+        {
+            IShow newShow = new Show(path);
+            _importedShows.Add(new Show(path));
+            return newShow;
+        }
+
+        public IShow[] AddShows(string[] paths)
+        {
+            IShow[] shows = new IShow[paths.Length];
+            for (int i = 0; i < paths.Length; i++ )
+                shows[i] = AddShow(paths[i]);
+
+            return shows;
+        }
+
+        public void RemoveShow(string path)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveShow(IShow show)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddShowToShowOrder(IShow show)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveShowFromShowOrder(int showIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteShow(IJointShow show)
+        {
+            throw new NotImplementedException();
         }
 
         public BaseJointShow(string name)

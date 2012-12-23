@@ -32,7 +32,7 @@
             this.jointShowNameTextBox = new System.Windows.Forms.TextBox();
             this.showOrderLabel = new System.Windows.Forms.Label();
             this.presentationsLabel = new System.Windows.Forms.Label();
-            this.presentationListBox = new System.Windows.Forms.ListBox();
+            this.importedShowsListBox = new System.Windows.Forms.ListBox();
             this.orderListBox = new System.Windows.Forms.ListBox();
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
@@ -90,19 +90,21 @@
             this.presentationsLabel.TabIndex = 3;
             this.presentationsLabel.Text = "Presentations:";
             // 
-            // presentationListBox
+            // importedShowsListBox
             // 
-            this.presentationListBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.presentationListBox.FormattingEnabled = true;
-            this.presentationListBox.Location = new System.Drawing.Point(3, 23);
-            this.presentationListBox.Name = "presentationListBox";
-            this.presentationListBox.Size = new System.Drawing.Size(193, 177);
-            this.presentationListBox.TabIndex = 4;
+            this.importedShowsListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.importedShowsListBox.FormattingEnabled = true;
+            this.importedShowsListBox.HorizontalScrollbar = true;
+            this.importedShowsListBox.Location = new System.Drawing.Point(3, 23);
+            this.importedShowsListBox.Name = "importedShowsListBox";
+            this.importedShowsListBox.Size = new System.Drawing.Size(193, 177);
+            this.importedShowsListBox.TabIndex = 4;
             // 
             // orderListBox
             // 
             this.orderListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.orderListBox.FormattingEnabled = true;
+            this.orderListBox.HorizontalScrollbar = true;
             this.orderListBox.Location = new System.Drawing.Point(292, 23);
             this.orderListBox.Name = "orderListBox";
             this.orderListBox.Size = new System.Drawing.Size(193, 177);
@@ -164,7 +166,7 @@
             this.presentationsPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.presentationsPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.presentationsPanel.Controls.Add(this.addRemovePanel, 1, 1);
-            this.presentationsPanel.Controls.Add(this.presentationListBox, 0, 1);
+            this.presentationsPanel.Controls.Add(this.importedShowsListBox, 0, 1);
             this.presentationsPanel.Controls.Add(this.presentationsLabel, 0, 0);
             this.presentationsPanel.Controls.Add(this.orderListBox, 2, 1);
             this.presentationsPanel.Controls.Add(this.showOrderLabel, 2, 0);
@@ -224,6 +226,7 @@
             // importPresentationDialog
             // 
             this.importPresentationDialog.Filter = "Powerpoint presentations|*.ppt;*.pptx";
+            this.importPresentationDialog.Multiselect = true;
             // 
             // importButton
             // 
@@ -279,7 +282,7 @@
         private System.Windows.Forms.TextBox jointShowNameTextBox;
         private System.Windows.Forms.Label showOrderLabel;
         private System.Windows.Forms.Label presentationsLabel;
-        private System.Windows.Forms.ListBox presentationListBox;
+        private System.Windows.Forms.ListBox importedShowsListBox;
         private System.Windows.Forms.ListBox orderListBox;
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Button cancelButton;

@@ -22,12 +22,15 @@ namespace BridgePresenter.View
 
         public override IShow ImportedSelectedShow
         {
-            get { return presentationListBox.SelectedItem as IShow; }
+            get { return importedShowsListBox.SelectedItem as IShow; }
         }
 
         public JointShowEditorWindow(IJointShow model) : base(model)
         {
             InitializeComponent();
+
+            orderListBox.DataSource = model.ShowOrderDataSource;
+            importedShowsListBox.DataSource = model.ImportedShowsDataSource;
         }
 
         public override string[] PromptForPresentationsToImport()
