@@ -17,6 +17,8 @@ namespace BridgePresenter.Model
 
         public object ShowOrderDataSource { get { return _showOrderList; } }
         public object ImportedShowsDataSource { get { return _importedShows; } }
+        public int ShowOrderShowsCount { get { return _showOrderList.Count; } }
+        public int ImportedShowsCount { get { return _importedShows.Count; } }
 
         public string Name
         {
@@ -49,11 +51,14 @@ namespace BridgePresenter.Model
 
         public void DeleteShow(string path)
         {
-            throw new NotImplementedException();
+            DeleteShow(_importedShows.First((show) => show.Path == path));
         }
 
         public void DeleteShow(IShow show)
         {
+            while (_showOrderList.Remove(show))
+                ;
+
             while (_importedShows.Remove(show))
                 ;
         }
@@ -66,6 +71,23 @@ namespace BridgePresenter.Model
         public void RemoveShowFromShowOrder(int showIndex)
         {
             _showOrderList.RemoveAt(showIndex);
+        }
+
+        public void MoveShowUpInShowOrder(int showIndex)
+        {
+            SwapShows(showIndex, showIndex - 1);
+        }
+
+        public void MoveShowDownInShowOrder(int showIndex)
+        {
+            SwapShows(showIndex, showIndex + 1);
+        }
+
+        private void SwapShows(int index1, int index2)
+        {
+            IShow temp = _showOrderList[index1];
+            _showOrderList[index1] = _showOrderList[index2];
+            _showOrderList[index2] = temp;
         }
 
         public BaseJointShow(string name)

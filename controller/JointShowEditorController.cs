@@ -60,7 +60,8 @@ namespace BridgePresenter.Controller
 
         protected void window_RemoveFromShowRequested(object sender, ShowEventArgs e)
         {
-            _showToEdit.RemoveShowFromShowOrder(_window.ShowOrderSelectedShowIndex);
+            if (_window.ShowOrderSelectedShowIndex >= 0)
+                _showToEdit.RemoveShowFromShowOrder(_window.ShowOrderSelectedShowIndex);
         }
 
         protected void window_DeletePresentationRequested(object sender, ShowEventArgs e)
@@ -70,12 +71,24 @@ namespace BridgePresenter.Controller
 
         protected void window_MovePresentationUpRequested(object sender, ShowEventArgs e)
         {
+            int selectedIndex = _window.ShowOrderSelectedShowIndex;
 
+            if (selectedIndex > 0)
+            {
+                _showToEdit.MoveShowUpInShowOrder(_window.ShowOrderSelectedShowIndex);
+                _window.ShowOrderSelectedShowIndex = selectedIndex - 1;
+            }
         }
 
         protected void window_MovePresentationDownRequested(object sender, ShowEventArgs e)
         {
+            int selectedIndex = _window.ShowOrderSelectedShowIndex;
 
+            if (selectedIndex < _showToEdit.ShowOrderShowsCount - 1)
+            {
+                _showToEdit.MoveShowDownInShowOrder(_window.ShowOrderSelectedShowIndex);
+                _window.ShowOrderSelectedShowIndex = selectedIndex + 1;
+            }
         }
     }
 }

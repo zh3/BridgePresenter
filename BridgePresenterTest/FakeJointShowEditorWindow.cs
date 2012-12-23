@@ -34,6 +34,7 @@ namespace BridgePresenterTest
         public override int ShowOrderSelectedShowIndex
         {
             get { return fakeShowOrderListBox.SelectedIndex; }
+            set { fakeShowOrderListBox.SelectedIndex = value; }
         }
 
         public override IShow ImportedSelectedShow
@@ -49,11 +50,6 @@ namespace BridgePresenterTest
         public void SelectImportedPresentation(string path)
         {
             SelectPresentation(path, fakeImportedShowListBox);
-        }
-
-        public void SelectShowOrderPresentation(int index)
-        {
-            fakeShowOrderListBox.SelectedIndex = index;
         }
 
         private void SelectPresentation(string path, ListBox listBox)

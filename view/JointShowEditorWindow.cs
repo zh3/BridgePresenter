@@ -18,6 +18,7 @@ namespace BridgePresenter.View
         public override int ShowOrderSelectedShowIndex
         {
             get { return orderListBox.SelectedIndex; }
+            set { orderListBox.SelectedIndex = value; }
         }
 
         public override IShow ImportedSelectedShow

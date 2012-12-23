@@ -8,6 +8,8 @@ namespace BridgePresenter.Model
         object ShowOrderDataSource { get; }
         object ImportedShowsDataSource { get; }
 
+        int ShowOrderShowsCount { get; }
+        int ImportedShowsCount { get; }
         string Name { get; set; }
 
         IShow AddShow(string path);
@@ -16,5 +18,7 @@ namespace BridgePresenter.Model
         void DeleteShow(IShow show);
         void AddShowToShowOrder(IShow show);
         void RemoveShowFromShowOrder(int showIndex);
+        void MoveShowUpInShowOrder(int showIndex);
+        void MoveShowDownInShowOrder(int showIndex);
     }
 }

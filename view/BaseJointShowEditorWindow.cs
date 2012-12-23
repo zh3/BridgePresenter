@@ -17,7 +17,7 @@ namespace BridgePresenter.View
         public event EventHandler<ShowEventArgs> DeletePresentationRequested;
         public event EventHandler<ShowEventArgs> MovePresentationUpRequested;
         public event EventHandler<ShowEventArgs> MovePresentationDownRequested;
-        public abstract int ShowOrderSelectedShowIndex { get; }
+        public abstract int ShowOrderSelectedShowIndex { get; set; }
         public abstract IShow ImportedSelectedShow { get; }
 
         protected BaseJointShowEditorWindow(IJointShow showModel)

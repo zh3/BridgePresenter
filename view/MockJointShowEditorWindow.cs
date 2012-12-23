@@ -1,4 +1,5 @@
-﻿using BridgePresenter.Model;
+﻿using System;
+using BridgePresenter.Model;
 
 namespace BridgePresenter.View
 {
@@ -22,6 +23,7 @@ namespace BridgePresenter.View
         public override int ShowOrderSelectedShowIndex
         {
             get { throw new System.NotImplementedException(); }
+            set { throw new System.NotImplementedException();}
         }
 
         public override IShow ImportedSelectedShow
