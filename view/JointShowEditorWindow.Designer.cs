@@ -223,7 +223,7 @@
             // 
             // importPresentationDialog
             // 
-            this.importPresentationDialog.FileName = "openFileDialog1";
+            this.importPresentationDialog.Filter = "Powerpoint presentations|*.ppt;*.pptx";
             // 
             // importButton
             // 

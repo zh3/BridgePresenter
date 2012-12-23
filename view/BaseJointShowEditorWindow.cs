@@ -99,6 +99,7 @@ namespace BridgePresenter.View
             OnCancelRequested();
         }
 
+        public abstract string[] PromptForPresentationsToImport();
         public abstract void ShowWindow();
     }
 }

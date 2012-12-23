@@ -1,4 +1,5 @@
-﻿using BridgePresenter.Model;
+﻿using System.Windows.Forms;
+using BridgePresenter.Model;
 
 namespace BridgePresenter.View
 {
@@ -17,6 +18,13 @@ namespace BridgePresenter.View
         public JointShowEditorWindow(IJointShow model) : base(model)
         {
             InitializeComponent();
+        }
+
+        public override string[] PromptForPresentationsToImport()
+        {
+            DialogResult result = importPresentationDialog.ShowDialog();
+
+            return (result == DialogResult.OK) ? importPresentationDialog.FileNames : null;
         }
 
         public override void ShowWindow()

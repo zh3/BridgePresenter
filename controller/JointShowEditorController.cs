@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 using BridgePresenter.Model;
 using BridgePresenter.View;
 
@@ -15,7 +16,7 @@ namespace BridgePresenter.Controller
             _window = window;
             _showToEdit = showToEdit;
             _messageShower = messageShower;
-
+            
             _window.AcceptRequested += window_AcceptRequested;
             _window.CancelRequested += window_CancelRequested;
             _window.ImportRequested += window_ImportRequested;
@@ -43,12 +44,11 @@ namespace BridgePresenter.Controller
 
         protected void window_CancelRequested(object sender, EventArgs e)
         {
-            
         }
 
         protected void window_ImportRequested(object sender, EventArgs e)
         {
-
+            _window.PromptForPresentationsToImport();
         }
 
         protected void window_AddToShowRequested(object sender, PresentationEventArgs e)

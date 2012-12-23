@@ -17,5 +17,6 @@ namespace BridgePresenter.View
 
         void ShowWindow();
         void CloseWindow();
+        string[] PromptForPresentationsToImport();
     }
 }

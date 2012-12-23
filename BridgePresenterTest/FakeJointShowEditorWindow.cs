@@ -5,7 +5,9 @@ namespace BridgePresenterTest
 {
     public class FakeJointShowEditorWindow : BaseJointShowEditorWindow
     {
-        public string JointShowName { get; set; }
+        public string JointShowName;
+        public string[] PresentationsToImport;
+
         public override string ShowName
         {
             get { return JointShowName; }
@@ -53,6 +55,11 @@ namespace BridgePresenterTest
         public void FireMovePresentationDownRequested()
         {
             OnMovePresentationDownRequested();
+        }
+
+        public override string[] PromptForPresentationsToImport()
+        {
+            return PresentationsToImport;
         }
 
         public override void ShowWindow()
