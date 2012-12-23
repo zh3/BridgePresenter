@@ -28,10 +28,5 @@ namespace BridgePresenter.View
         {
             throw new System.NotImplementedException();
         }
-
-        public override void CloseWindow()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

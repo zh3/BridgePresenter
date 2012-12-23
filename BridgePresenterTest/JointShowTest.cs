@@ -39,5 +39,15 @@ namespace BridgePresenterTest
             _fakeJointShowEditorWindow.FireOnAcceptRequested();
             Assert.AreEqual(1, updateCount, "Unexpected update registered");
         }
+
+        [Test]
+        public void TestJointShowFilesImported()
+        {
+            string[] presentationPaths = new [] {"file 1", "file 2", "file 3"};
+
+            _fakeJointShowEditorWindow.PresentationsToImport = presentationPaths;
+
+            
+        }
     }
 }

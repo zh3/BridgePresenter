@@ -66,6 +66,9 @@
     <Compile Include="JointShowTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="JointShowTester.cs" />
+    <EmbeddedResource Include="FakeJointShowEditorWindow.resx">
+      <DependentUpon>FakeJointShowEditorWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FakeJointShowWindow.resx">
       <DependentUpon>FakeJointShowWindow.cs</DependentUpon>
     </EmbeddedResource>
