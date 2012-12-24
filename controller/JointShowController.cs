@@ -37,7 +37,7 @@ namespace BridgePresenter.Controller
 
         protected void showWindow_ShowRequested(object sender, EventArgs e)
         {
-            _showModel.Show();
+            _showModel.Show(_showWindow.SelectedShow);
         }
 
         protected void showWindow_CreateJointShowRequested(object sender, EventArgs e)

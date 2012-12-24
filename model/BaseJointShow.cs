@@ -19,6 +19,7 @@ namespace BridgePresenter.Model
         public object ImportedShowsDataSource { get { return _importedShows; } }
         public int ShowOrderShowsCount { get { return _showOrderList.Count; } }
         public int ImportedShowsCount { get { return _importedShows.Count; } }
+        public List<IShow> ShowOrderShows { get { return _showOrderList.ToList(); } }
 
         public string Name
         {

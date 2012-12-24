@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BridgePresenter.Model
 {
@@ -10,6 +11,7 @@ namespace BridgePresenter.Model
 
         int ShowOrderShowsCount { get; }
         int ImportedShowsCount { get; }
+        List<IShow> ShowOrderShows { get; } 
         string Name { get; set; }
 
         IShow AddShow(string path);

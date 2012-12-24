@@ -75,7 +75,7 @@ namespace BridgePresenter.View
 
         public override void ShowWindow()
         {
-            ShowDialog();
+            Show();
         }
     }
 }

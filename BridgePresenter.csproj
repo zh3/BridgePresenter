@@ -185,10 +185,12 @@
     <Compile Include="Model\IJointShow.cs" />
     <Compile Include="Model\IMessageShower.cs" />
     <Compile Include="Model\IShow.cs" />
+    <Compile Include="Model\ISlideShowManager.cs" />
     <Compile Include="Model\MessageShower.cs" />
     <Compile Include="Model\NullJointShow.cs" />
     <Compile Include="Model\BaseShow.cs" />
     <Compile Include="Model\Show.cs" />
+    <Compile Include="Model\SlideShowManager.cs" />
     <Compile Include="PresenterUtils.cs" />
     <Compile Include="View\BaseJointShowEditorWindow.cs">
       <SubType>Form</SubType>

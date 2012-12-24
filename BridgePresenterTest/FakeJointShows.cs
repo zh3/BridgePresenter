@@ -18,7 +18,7 @@ namespace BridgePresenterTest
             PresentationCount = 0;
         }
 
-        public override void Show()
+        public override void Show(IJointShow selectedShow)
         {
             PresentationCount++;
         }

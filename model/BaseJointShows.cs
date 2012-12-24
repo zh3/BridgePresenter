@@ -8,16 +8,17 @@ namespace BridgePresenter.Model
 {
     public abstract class BaseJointShows : IJointShows
     {
+        private ISlideShowManager _slideShowManager;
         protected BindingList<IJointShow> _jointShows;
 
         public event EventHandler<EventArgs> ShowUpdated;
         public abstract object DataSource { get; }
-        public abstract void Show();
         public abstract void CopyJointShow(IJointShow show);
 
         protected BaseJointShows()
         {
             _jointShows = new BindingList<IJointShow>();
+            _slideShowManager = new SlideShowManager();
         }
 
         protected virtual void OnShowUpdated()
@@ -46,6 +47,11 @@ namespace BridgePresenter.Model
         {
             show.ShowUpdated -= newShow_ShowUpdated;
             _jointShows.Remove(show);
+        }
+
+        public virtual void Show(IJointShow show)
+        {
+            _slideShowManager.Show(show);
         }
     }
 }
