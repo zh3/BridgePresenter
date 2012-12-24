@@ -59,6 +59,7 @@ namespace BridgePresenterTest
         [Test]
         public void TestShowFiresModel()
         {
+            _showTester.CreateFakeJointShow(OrigName1);
             _fakeShowWindow.FireOnShowRequested();
             _fakeShowWindow.FireOnShowRequested();
 
@@ -121,6 +122,26 @@ namespace BridgePresenterTest
             fakeEditorWindow.CloseWindow();
 
             Assert.AreEqual(0, _fakeShowWindow.NumDisplayedJointShows, "Empty joint show not removed");
+        }
+
+        [Test]
+        public void TestCannotEditWhenSelectionEmpty()
+        {
+            _fakeShowWindow.FireOnEditShowRequested();
+
+            Assert.IsNull(_fakeFactory.FakeWindow);
+        }
+
+        [Test]
+        public void TestRemoveWhenSelectionEmpty()
+        {
+            _fakeShowWindow.FireOnRemoveShowRequested();
+        }
+
+        [Test]
+        public void TestShowWhenSelectionEmpty()
+        {
+            _fakeShowWindow.FireOnShowRequested();
         }
     }
 }

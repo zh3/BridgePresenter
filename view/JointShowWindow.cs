@@ -21,7 +21,7 @@ namespace BridgePresenter.View
                 if (selectedItem != null && selectedItem is IJointShow)
                     return jointShowList.SelectedItem as IJointShow;
 
-                return new NullJointShow();
+                return null;
             }
         }
 

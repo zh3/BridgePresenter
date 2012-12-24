@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using BridgePresenter;
 using BridgePresenter.Model;
+using NUnit.Framework;
 
 namespace BridgePresenterTest
 {
@@ -20,6 +21,7 @@ namespace BridgePresenterTest
 
         public override void Show(IJointShow selectedShow)
         {
+            Assert.NotNull(selectedShow);
             PresentationCount++;
         }
 
