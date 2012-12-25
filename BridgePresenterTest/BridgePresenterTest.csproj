@@ -63,6 +63,7 @@
     </Compile>
     <Compile Include="JointShowControllerTest.cs" />
     <Compile Include="JointShowModelTest.cs" />
+    <Compile Include="JointShowPersistentLoaderTest.cs" />
     <Compile Include="JointShowTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="JointShowTester.cs" />

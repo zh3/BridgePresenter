@@ -5,6 +5,7 @@ using System.Text;
 
 namespace BridgePresenter.Model
 {
+    [Serializable()]
     public class Show : BaseShow
     {
         public Show(string path) : base(path)

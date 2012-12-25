@@ -7,6 +7,7 @@ using System.Windows.Forms;
 
 namespace BridgePresenter.Model
 {
+    [Serializable()]
     public class BaseJointShow : IJointShow
     {
         private string _name;
