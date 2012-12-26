@@ -11,27 +11,47 @@ namespace BridgePresenter.Model
 {
     public class JointShowPersistentLoader : IJointShowPersistentLoader
     {
-        public void StoreJointShows(string path, BindingList<IJointShow> shows)
+        private readonly string _bridgePresenterDataPath 
+            = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "BridgePresenter");
+        private const string TempFileName = "BridgePresenterTemp.dat";
+
+        public void StoreJointShows(string fileName, BindingList<IJointShow> shows)
         {
-            Stream testFileStream = File.Create(path);
+            string filePath = Path.Combine(_bridgePresenterDataPath, fileName);
+            FileInfo fileInfo = new FileInfo(filePath);
+
+            if (fileInfo.Directory != null)
+                fileInfo.Directory.Create();
+
+            Stream testFileStream = File.Create(filePath);
             BinaryFormatter serializer = new BinaryFormatter();
             serializer.Serialize(testFileStream, shows);
             testFileStream.Close();
         }
 
-        public BindingList<IJointShow> LoadJointShows(string path)
+        public BindingList<IJointShow> LoadJointShows(string fileName)
         {
             BindingList<IJointShow> shows;
-            if (File.Exists(path))
+            if (File.Exists(Path.Combine(_bridgePresenterDataPath, fileName)))
             {
-                Stream testFileStream = File.OpenRead(path);
+                Stream testFileStream = File.OpenRead(Path.Combine(_bridgePresenterDataPath, fileName));
                 BinaryFormatter deserializer = new BinaryFormatter();
                 shows = (BindingList<IJointShow>)deserializer.Deserialize(testFileStream);
                 testFileStream.Close();
                 return shows;
             }
 
-            throw new FileNotFoundException("File not found: " + path);
+            throw new FileNotFoundException("File not found: " + fileName);
+        }
+
+        public void StoreTemporaryJointShows(BindingList<IJointShow> shows)
+        {
+            StoreJointShows(TempFileName, shows);
+        }
+
+        public BindingList<IJointShow> LoadTemporaryJointShows()
+        {
+            return LoadJointShows(TempFileName);
         }
     }
 }

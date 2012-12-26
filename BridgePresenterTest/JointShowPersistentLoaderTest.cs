@@ -10,7 +10,7 @@ namespace BridgePresenterTest
 {
     public class JointShowPersistentLoaderTest
     {
-        private const string SAVE_PATH = @"C:\Windows\Temp\BridgePresenter.dat";
+        private const string SaveName = @"BridgePresenter.dat";
         private JointShowPersistentLoader _loader;
 
         [SetUp]
@@ -30,14 +30,43 @@ namespace BridgePresenterTest
             shows.Add(testShow2);
             shows.Add(testShow3);
 
-            _loader.StoreJointShows(SAVE_PATH, shows);
+            _loader.StoreJointShows(SaveName, shows);
 
-            BindingList<IJointShow> loadedShows = _loader.LoadJointShows(SAVE_PATH);
+            BindingList<IJointShow> loadedShows = _loader.LoadJointShows(SaveName);
             AssertMatchShows(shows, loadedShows);
         }
 
         [Test]
         public void TestSaveAndLoadJointShowsWithPresentations()
+        {
+            BindingList<IJointShow> shows = CreateTestShows();
+
+            _loader.StoreJointShows(SaveName, shows);
+
+            BindingList<IJointShow> loadedShows = _loader.LoadJointShows(SaveName);
+            AssertMatchShows(shows, loadedShows);
+        }
+
+        private void AssertMatchShows(BindingList<IJointShow> sourceShows, BindingList<IJointShow> loadedShows)
+        {
+            Assert.AreEqual(sourceShows.Count, loadedShows.Count);
+
+            foreach (IJointShow jointShow in loadedShows)
+            {
+                IJointShow matchingSourceShow = sourceShows.First(sourceShow => sourceShow.Name == jointShow.Name);
+                Assert.NotNull(matchingSourceShow);
+
+                BindingList<IShow> importedShows = (BindingList<IShow>)matchingSourceShow.ImportedShowsDataSource;
+                BindingList<IShow> showOrderShows = (BindingList<IShow>)matchingSourceShow.ShowOrderDataSource;
+                foreach (IShow showOrderShow in jointShow.ShowOrderShows)
+                    Assert.IsTrue(importedShows.Any(show => show.Path == showOrderShow.Path));
+
+                foreach (IShow importedShow in showOrderShows)
+                    Assert.IsTrue(importedShows.Any(show => show.Path == importedShow.Path));
+            }
+        }
+        
+        private BindingList<IJointShow> CreateTestShows()
         {
             BindingList<IJointShow> shows = new BindingList<IJointShow>();
             IJointShow testJointShow1 = new JointShow("Test show 1");
@@ -66,29 +95,18 @@ namespace BridgePresenterTest
             shows.Add(testJointShow2);
             shows.Add(testJointShow3);
 
-            _loader.StoreJointShows(SAVE_PATH, shows);
-
-            BindingList<IJointShow> loadedShows = _loader.LoadJointShows(SAVE_PATH);
-            AssertMatchShows(shows, loadedShows);
+            return shows;
         }
 
-        private void AssertMatchShows(BindingList<IJointShow> sourceShows, BindingList<IJointShow> loadedShows)
+        [Test]
+        public void TestTemporarySaveAndLoadJointShows()
         {
-            Assert.AreEqual(sourceShows.Count, loadedShows.Count);
+            BindingList<IJointShow> shows = CreateTestShows();
 
-            foreach (IJointShow jointShow in loadedShows)
-            {
-                IJointShow matchingSourceShow = sourceShows.First(sourceShow => sourceShow.Name == jointShow.Name);
-                Assert.NotNull(matchingSourceShow);
+            _loader.StoreTemporaryJointShows(shows);
 
-                BindingList<IShow> importedShows = (BindingList<IShow>)matchingSourceShow.ImportedShowsDataSource;
-                BindingList<IShow> showOrderShows = (BindingList<IShow>)matchingSourceShow.ShowOrderDataSource;
-                foreach (IShow showOrderShow in jointShow.ShowOrderShows)
-                    Assert.IsTrue(importedShows.Any(show => show.Path == showOrderShow.Path));
-
-                foreach (IShow importedShow in showOrderShows)
-                    Assert.IsTrue(importedShows.Any(show => show.Path == importedShow.Path));
-            }
+            BindingList<IJointShow> loadedShows = _loader.LoadTemporaryJointShows();
+            AssertMatchShows(shows, loadedShows);
         }
     }
 }

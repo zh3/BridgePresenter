@@ -8,7 +8,9 @@ namespace BridgePresenter.Model
 {
     public interface IJointShowPersistentLoader
     {
-        void StoreJointShows(string path, BindingList<IJointShow> shows);
-        BindingList<IJointShow> LoadJointShows(string path);
+        void StoreJointShows(string fileName, BindingList<IJointShow> shows);
+        BindingList<IJointShow> LoadJointShows(string fileName);
+        void StoreTemporaryJointShows(BindingList<IJointShow> shows);
+        BindingList<IJointShow> LoadTemporaryJointShows();
     }
 }
