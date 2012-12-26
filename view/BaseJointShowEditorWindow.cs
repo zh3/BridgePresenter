@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 using BridgePresenter.Model;
 
@@ -7,6 +8,7 @@ namespace BridgePresenter.View
     public abstract class BaseJointShowEditorWindow : Form, IJointShowEditorWindow
     {
         private IJointShow _showModel;
+        private bool _accepted;
 
         public abstract string ShowName { get; }
         public event EventHandler<EventArgs> AcceptRequested;
@@ -27,6 +29,7 @@ namespace BridgePresenter.View
 
         protected void OnAcceptRequested()
         {
+            _accepted = true;
             EventHandler<EventArgs> acceptRequested = AcceptRequested;
 
             if (acceptRequested != null)
@@ -89,18 +92,17 @@ namespace BridgePresenter.View
                 onMovePresentationDownRequested(this, new ShowEventArgs());
         }
 
-        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            OnCancelRequested();
-            
-            base.OnClosing(e);
+            base.OnFormClosing(e);
+
+            if (!_accepted)
+                OnCancelRequested();
         }
 
-        public virtual void CloseWindow()
-        {
-            OnCancelRequested();
-        }
 
+
+        public abstract void CloseWindow();
         public abstract string[] PromptForPresentationsToImport();
         public abstract void ShowWindow();
     }

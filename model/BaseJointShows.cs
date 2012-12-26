@@ -8,17 +8,28 @@ namespace BridgePresenter.Model
 {
     public abstract class BaseJointShows : IJointShows
     {
-        private ISlideShowManager _slideShowManager;
+        protected const string DefaultDataFileName = "BridgePresenter.dat";
+
+        protected string DataFileName;
+        protected JointShowPersistentLoader _persistentLoader;
+        protected ISlideShowManager _slideShowManager;
         protected BindingList<IJointShow> _jointShows;
 
         public event EventHandler<EventArgs> ShowUpdated;
         public abstract object DataSource { get; }
         public abstract void CopyJointShow(IJointShow show);
 
-        protected BaseJointShows()
+        protected BaseJointShows() : this(DefaultDataFileName)
         {
-            _jointShows = new BindingList<IJointShow>();
+        }
+
+        protected BaseJointShows(string dataFileName)
+        {
+            _persistentLoader = new JointShowPersistentLoader();
             _slideShowManager = new SlideShowManager();
+
+            DataFileName = dataFileName;
+            LoadFromFile();
         }
 
         protected virtual void OnShowUpdated()
@@ -53,5 +64,8 @@ namespace BridgePresenter.Model
         {
             _slideShowManager.Show(show);
         }
+
+        public abstract void CommitToFile();
+        public abstract void LoadFromFile();
     }
 }

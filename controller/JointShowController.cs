@@ -45,6 +45,7 @@ namespace BridgePresenter.Controller
         {
             IJointShow jointShow = _showModel.CreateJointShow();
             Tuple<IJointShowEditorWindow, JointShowEditorController> mwc = _editorWindowFactory.CreateEditorWindow(jointShow);
+            mwc.Item1.AcceptRequested += window_AcceptRequested;
             mwc.Item1.CancelRequested += delegate
             {
                 if (jointShow.Name == string.Empty)
@@ -58,9 +59,21 @@ namespace BridgePresenter.Controller
             if (_showWindow.SelectedShow != null)
             {
                 Tuple<IJointShowEditorWindow, JointShowEditorController> mwc = _editorWindowFactory.CreateEditorWindow(_showWindow.SelectedShow);
+                mwc.Item1.AcceptRequested += window_AcceptRequested;
+                mwc.Item1.CancelRequested += window_CancelReqested;
 
                 mwc.Item1.ShowWindow();
             }
+        }
+
+        void window_AcceptRequested(object sender, EventArgs e)
+        {
+            _showModel.CommitToFile();
+        }
+
+        void window_CancelReqested(object sender, EventArgs e)
+        {
+            _showModel.LoadFromFile();
         }
 
         protected void showWindow_RemoveShowRequested(object sender, JointShowEventArgs e)

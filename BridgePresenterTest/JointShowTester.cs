@@ -9,10 +9,17 @@ namespace BridgePresenterTest
 {
     class JointShowTester
     {
+        public const string TestFilename = "BridgePresenterTest.dat";
+
         private FakeJointShowWindow _fakeShowWindow;
         private FakeJointShowEditorWindowFactory _fakeFactory;
 
         public FakeMessageShower FakeMessageShower { get { return _fakeFactory.FakeMessageShower; } }
+
+        public static void ResetTestFile()
+        {
+            JointShowPersistentLoader.ResetFile(TestFilename);
+        }
 
         public JointShowTester(FakeJointShowWindow fakeShowWindow, FakeJointShowEditorWindowFactory fakeFactory)
         {
@@ -31,6 +38,30 @@ namespace BridgePresenterTest
             _fakeShowWindow.SelectShow(origName);
             FakeJointShowEditorWindow fakeEditorWindow = OpenFakeEditorWindow().Item1;
             fakeEditorWindow.JointShowName = newName;
+            fakeEditorWindow.FireOnAcceptRequested();
+        }
+
+        public void EditorWindowImportShows(string jointShowName, string[] showPathNames)
+        {
+            _fakeShowWindow.SelectShow(jointShowName);
+            FakeJointShowEditorWindow fakeEditorWindow = OpenFakeEditorWindow().Item1;
+            fakeEditorWindow.PresentationsToImport = showPathNames;
+            fakeEditorWindow.FireOnImportRequested();
+
+            fakeEditorWindow.FireOnAcceptRequested();
+        }
+
+        public void EditorWindowAddShowsToShowOrder(string jointShowName, string[] showPathNames)
+        {
+            _fakeShowWindow.SelectShow(jointShowName);
+            FakeJointShowEditorWindow fakeEditorWindow = OpenFakeEditorWindow().Item1;
+
+            foreach (string pathName in showPathNames)
+            {
+                fakeEditorWindow.SelectImportedPresentation(pathName);
+                fakeEditorWindow.FireOnAddToShowRequested();
+            }
+
             fakeEditorWindow.FireOnAcceptRequested();
         }
 

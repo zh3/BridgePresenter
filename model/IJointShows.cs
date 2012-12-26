@@ -11,5 +11,7 @@ namespace BridgePresenter.Model
         IJointShow CreateJointShow();
         void RemoveJointShow(IJointShow show);
         void CopyJointShow(IJointShow show);
+        void CommitToFile();
+        void LoadFromFile();
     }
 }

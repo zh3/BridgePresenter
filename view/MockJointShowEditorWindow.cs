@@ -31,6 +31,11 @@ namespace BridgePresenter.View
             get { throw new System.NotImplementedException(); }
         }
 
+        public override void CloseWindow()
+        {
+            throw new NotImplementedException();
+        }
+
         public override string[] PromptForPresentationsToImport()
         {
             throw new System.NotImplementedException();

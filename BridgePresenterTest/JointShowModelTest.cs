@@ -20,7 +20,13 @@ namespace BridgePresenterTest
         [SetUp]
         public void Setup()
         {
-            _jointShowsModel = new JointShows();
+            JointShowTester.ResetTestFile();
+            Initialize();
+        }
+        
+        private void Initialize()
+        {
+            _jointShowsModel = new JointShows(JointShowTester.TestFilename);
             _fakeShowWindow = new FakeJointShowWindow(_jointShowsModel);
             _fakeFactory = new FakeJointShowEditorWindowFactory();
             _controller = new JointShowController(_fakeShowWindow, _jointShowsModel, _fakeFactory);
@@ -84,6 +90,38 @@ namespace BridgePresenterTest
             Assert.AreEqual(2, _fakeShowWindow.ShowUpdateCount, "First edit did not trigger update");
             _showTester.EditorWindowChangeName(OrigName1, NewName2);
             Assert.AreEqual(3, _fakeShowWindow.ShowUpdateCount, "Second edit did not trigger update");
+        }
+
+        [Test]
+        public void TestJointShowsChangesPersist()
+        {
+            SetupTestJointShow();
+            CheckTestJointShowSetup();
+
+            Initialize();
+
+            CheckTestJointShowSetup();
+        }
+
+        private void SetupTestJointShow()
+        {
+            _showTester.CreateFakeJointShow(OrigName1);
+
+            _fakeShowWindow.SelectShow(OrigName1);
+            _showTester.EditorWindowImportShows(OrigName1, new[] { "path1", "path2", "path3" });
+            _showTester.EditorWindowAddShowsToShowOrder(OrigName1, new[] { "path1", "path2", "path2", "path1", "path3" });
+        }
+
+        private void CheckTestJointShowSetup()
+        {
+            _fakeShowWindow.SelectShow(OrigName1);
+            FakeJointShowEditorWindow fakeEditorWindow = _showTester.OpenFakeEditorWindow().Item1;
+
+            Assert.AreEqual(fakeEditorWindow.ShowOrderItems[0].Path, "path1");
+            Assert.AreEqual(fakeEditorWindow.ShowOrderItems[1].Path, "path2");
+            Assert.AreEqual(fakeEditorWindow.ShowOrderItems[2].Path, "path2");
+            Assert.AreEqual(fakeEditorWindow.ShowOrderItems[3].Path, "path1");
+            Assert.AreEqual(fakeEditorWindow.ShowOrderItems[4].Path, "path3");
         }
     }
 }

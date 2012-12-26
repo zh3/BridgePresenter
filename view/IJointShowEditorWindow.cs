@@ -6,6 +6,8 @@ namespace BridgePresenter.View
     public interface IJointShowEditorWindow
     {
         string ShowName { get; }
+        IShow ImportedSelectedShow { get; }
+        int ShowOrderSelectedShowIndex { get; set; }
 
         event EventHandler<EventArgs> AcceptRequested;
         event EventHandler<EventArgs> CancelRequested;
@@ -15,8 +17,6 @@ namespace BridgePresenter.View
         event EventHandler<ShowEventArgs> DeletePresentationRequested;
         event EventHandler<ShowEventArgs> MovePresentationUpRequested;
         event EventHandler<ShowEventArgs> MovePresentationDownRequested;
-        IShow ImportedSelectedShow { get; }
-        int ShowOrderSelectedShowIndex { get; set; }
 
         void ShowWindow();
         void CloseWindow();

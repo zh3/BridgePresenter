@@ -2,7 +2,7 @@
 
 namespace BridgePresenter.Model
 {
-    [Serializable()]
+    [Serializable]
     public class JointShow : BaseJointShow
     {
         public JointShow(string name) : base(name)

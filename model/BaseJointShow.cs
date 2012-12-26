@@ -7,13 +7,14 @@ using System.Windows.Forms;
 
 namespace BridgePresenter.Model
 {
-    [Serializable()]
+    [Serializable]
     public class BaseJointShow : IJointShow
     {
         private string _name;
         private BindingList<IShow> _importedShows;
         private BindingList<IShow> _showOrderList;
 
+        [field:NonSerialized]
         public event EventHandler<EventArgs> ShowUpdated;
 
         public object ShowOrderDataSource { get { return _showOrderList; } }

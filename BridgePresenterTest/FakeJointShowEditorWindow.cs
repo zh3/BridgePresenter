@@ -68,6 +68,7 @@ namespace BridgePresenterTest
         {
             InitializeComponent();
 
+            JointShowName = showModel.Name;
             fakeShowOrderListBox.DataSource = showModel.ShowOrderDataSource;
             fakeImportedShowListBox.DataSource = showModel.ImportedShowsDataSource;
         }
@@ -119,6 +120,11 @@ namespace BridgePresenterTest
 
         public override void ShowWindow()
         {
+        }
+
+        public override void CloseWindow()
+        {
+            OnFormClosing(new FormClosingEventArgs(CloseReason.UserClosing, false));
         }
 
         private void InitializeComponent()

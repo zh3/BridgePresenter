@@ -32,5 +32,15 @@ namespace BridgePresenterTest
         protected override void OnShowUpdated()
         {
         }
+
+        public override void CommitToFile()
+        {
+        }
+
+        public override void LoadFromFile()
+        {
+            if (_jointShows == null)
+                _jointShows = new BindingList<IJointShow>();
+        }
     }
 }

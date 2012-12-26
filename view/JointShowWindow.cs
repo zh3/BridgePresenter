@@ -18,8 +18,8 @@ namespace BridgePresenter.View
             {
                 object selectedItem = jointShowList.SelectedItem;
                 
-                if (selectedItem != null && selectedItem is IJointShow)
-                    return jointShowList.SelectedItem as IJointShow;
+                if (selectedItem is IJointShow)
+                    return selectedItem as IJointShow;
 
                 return null;
             }

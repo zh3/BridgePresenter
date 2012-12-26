@@ -18,7 +18,15 @@ namespace BridgePresenterTest
 
         public override IJointShow SelectedShow
         {
-            get { return (IJointShow)fakeShowListBox.SelectedItem; }
+            get
+            {
+                object selectedItem = fakeShowListBox.SelectedItem;
+
+                if (selectedItem is IJointShow)
+                    return selectedItem as IJointShow;
+
+                return null;
+            }
         }
 
         public FakeJointShowWindow(IJointShows model) : base(model)

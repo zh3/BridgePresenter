@@ -10,12 +10,13 @@ namespace BridgePresenterTest
 {
     public class JointShowPersistentLoaderTest
     {
-        private const string SaveName = @"BridgePresenter.dat";
+        private const string SaveName = @"BridgePresenterPersistentLoaderTest.dat";
         private JointShowPersistentLoader _loader;
 
         [SetUp]
         public void Setup()
         {
+            JointShowPersistentLoader.ResetFile(SaveName);
             _loader = new JointShowPersistentLoader();
         }
 
