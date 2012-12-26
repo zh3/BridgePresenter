@@ -49,7 +49,7 @@ namespace BridgePresenter.Model
             return newShow;
         }
 
-        void newShow_ShowUpdated(object sender, EventArgs e)
+        protected void newShow_ShowUpdated(object sender, EventArgs e)
         {
             OnShowUpdated();
         }

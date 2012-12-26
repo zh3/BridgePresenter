@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Linq;
 
 namespace BridgePresenter.Model
 {
@@ -17,7 +18,13 @@ namespace BridgePresenter.Model
 
         public override void CopyJointShow(IJointShow show)
         {
-            throw new NotImplementedException();
+            IJointShow showCopy = PresenterUtils.DeepClone(show);
+            showCopy.ShowUpdated += newShow_ShowUpdated;
+            
+            while (_jointShows.Any(jointShow=>jointShow.Name == showCopy.Name))
+                showCopy.Name += " - Copy";
+
+            _jointShows.Add(showCopy);
         }
 
         public override void CommitToFile()
