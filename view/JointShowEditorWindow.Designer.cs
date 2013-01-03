@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(JointShowEditorWindow));
             this.jointShowName = new System.Windows.Forms.Label();
             this.jointShowNameTextBox = new System.Windows.Forms.TextBox();
             this.showOrderLabel = new System.Windows.Forms.Label();
@@ -264,6 +265,7 @@
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.jointShowNameTextBox);
             this.Controls.Add(this.jointShowName);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(435, 286);
             this.Name = "JointShowEditorWindow";
             this.Text = "Define Joint Show";

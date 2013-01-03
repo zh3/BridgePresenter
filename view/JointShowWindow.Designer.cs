@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(JointShowWindow));
             this.jointShowList = new System.Windows.Forms.ListBox();
             this.newButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
@@ -129,6 +130,7 @@
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.newButton);
             this.Controls.Add(this.jointShowList);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "JointShowWindow";

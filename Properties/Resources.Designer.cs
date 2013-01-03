@@ -60,9 +60,23 @@ namespace BridgePresenter.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap bridgePresenterLogo {
+            get {
+                object obj = ResourceManager.GetObject("bridgePresenterLogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap downArrow {
             get {
                 object obj = ResourceManager.GetObject("downArrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap launchButton {
+            get {
+                object obj = ResourceManager.GetObject("launchButton", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

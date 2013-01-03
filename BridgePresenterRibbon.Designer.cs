@@ -57,6 +57,7 @@
             // jointSlideShowMenu
             // 
             this.jointSlideShowMenu.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.jointSlideShowMenu.Image = global::BridgePresenter.Properties.Resources.launchButton;
             this.jointSlideShowMenu.Items.Add(this.setupJointShowsButton);
             this.jointSlideShowMenu.ItemSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
             this.jointSlideShowMenu.Label = "Joint Slide Show";
