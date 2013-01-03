@@ -49,6 +49,14 @@ namespace BridgePresenterTest
         }
 
         [Test]
+        public void TestNoErrorOnNullImport()
+        {
+            _fakeJointShowEditorWindow.PresentationsToImport = null;
+            _fakeJointShowEditorWindow.FireOnImportRequested();
+            Assert.AreEqual(0, _fakeJointShowEditorWindow.NumImportedShowsDisplayed, "Shows unexpectedly imported");
+        }
+
+        [Test]
         public void TestJointShowDelete()
         {
             SetupPresentations();
