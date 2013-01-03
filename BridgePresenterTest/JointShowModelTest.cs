@@ -29,7 +29,7 @@ namespace BridgePresenterTest
             _jointShowsModel = new JointShows(JointShowTester.TestFilename);
             _fakeShowWindow = new FakeJointShowWindow(_jointShowsModel);
             _fakeFactory = new FakeJointShowEditorWindowFactory();
-            _controller = new JointShowController(_fakeShowWindow, _jointShowsModel, _fakeFactory);
+            _controller = new JointShowController(_fakeShowWindow, _jointShowsModel, _fakeFactory, new FakeMessageShower());
             _showTester = new JointShowTester(_fakeShowWindow, _fakeFactory);
         }
 

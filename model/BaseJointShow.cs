@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -22,6 +23,19 @@ namespace BridgePresenter.Model
         public int ShowOrderShowsCount { get { return _showOrderList.Count; } }
         public int ImportedShowsCount { get { return _importedShows.Count; } }
         public List<IShow> ShowOrderShows { get { return _showOrderList.ToList(); } }
+        public HashSet<IShow> InvalidShowOrderShows 
+        {
+            get
+            {
+                HashSet<IShow> invalidShows = new HashSet<IShow>();
+
+                foreach (IShow show in ShowOrderShows)
+                    if (!File.Exists(show.Path))
+                        invalidShows.Add(show);
+
+                return invalidShows;
+            }
+        }
 
         public string Name
         {

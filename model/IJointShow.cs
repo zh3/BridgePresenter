@@ -11,7 +11,8 @@ namespace BridgePresenter.Model
 
         int ShowOrderShowsCount { get; }
         int ImportedShowsCount { get; }
-        List<IShow> ShowOrderShows { get; } 
+        List<IShow> ShowOrderShows { get; }
+        HashSet<IShow> InvalidShowOrderShows { get; }
         string Name { get; set; }
 
         IShow AddShow(string path);
