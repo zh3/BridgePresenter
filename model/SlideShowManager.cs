@@ -25,10 +25,12 @@ namespace BridgePresenter.Model
         private int _slideShowIndex = 0;
         public virtual void Show(IJointShow jointShow)
         {
+            List<IShow> shows = jointShow.ShowOrderShows;
+            if (shows.Count == 0) return;
+
             _application = new PowerPoint.Application();
             _applicationPresentations = _application.Presentations;
 
-            List<IShow> shows = jointShow.ShowOrderShows;
             _openedPresentations = new PowerPoint.Presentation[shows.Count];
             _openedWindows = new PowerPoint.SlideShowWindow[shows.Count];
             _existingPresentations = _applicationPresentations.Cast<PowerPoint.Presentation>().ToList();

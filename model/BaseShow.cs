@@ -17,7 +17,7 @@ namespace BridgePresenter.Model
 
         public override string ToString()
         {
-            return Path;
+            return string.Format("{0} - {1}", System.IO.Path.GetFileName(Path), Path);
         }
     }
 }
