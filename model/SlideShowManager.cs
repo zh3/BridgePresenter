@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using Microsoft.Office.Core;
 using PowerPoint = Microsoft.Office.Interop.PowerPoint;
@@ -10,19 +7,9 @@ namespace BridgePresenter.Model
 {
     public class SlideShowManager : ISlideShowManager
     {
-        private enum SlideShowPosition
-        {
-            ShowStart,
-            ShowEnd
-        }
-
         private PowerPoint.Application _application;
         private PowerPoint.Presentations _applicationPresentations;
-        private PowerPoint.Presentation[] _openedPresentations;
-        private PowerPoint.SlideShowWindow[] _openedWindows;
-        private List<PowerPoint.Presentation> _existingPresentations; 
 
-        private int _slideShowIndex = 0;
         public virtual void Show(IJointShow jointShow)
         {
             List<IShow> shows = jointShow.ShowOrderShows;
@@ -31,98 +18,33 @@ namespace BridgePresenter.Model
             _application = new PowerPoint.Application();
             _applicationPresentations = _application.Presentations;
 
-            _openedPresentations = new PowerPoint.Presentation[shows.Count];
-            _openedWindows = new PowerPoint.SlideShowWindow[shows.Count];
-            _existingPresentations = _applicationPresentations.Cast<PowerPoint.Presentation>().ToList();
+            PowerPoint.Presentation joinedPresentation = _applicationPresentations.Add();
 
             for (int i = 0; i < shows.Count; i++)
             {
-                _openedPresentations[i] 
+                PowerPoint.Presentation sourcePresentation
                     = _applicationPresentations.Open(shows[i].Path, MsoTriState.msoFalse, MsoTriState.msoTrue, MsoTriState.msoFalse);
-                AddDummySlides(_openedPresentations[i]);
-                _openedWindows[i] = _openedPresentations[i].SlideShowSettings.Run();
+                CopySlides(sourcePresentation, joinedPresentation);
+                sourcePresentation.Close();
             }
 
-
-            _slideShowIndex = 0;
-            ActivateSlideShow(0, SlideShowPosition.ShowStart);
-
-            _application.SlideShowEnd += application_SlideShowEnd;
-            _application.SlideShowNextSlide += application_SlideShowNextSlide;
+            joinedPresentation.SlideShowSettings.Run();
         }
 
-        private void AddDummySlides(PowerPoint.Presentation presentation)
+        private void CopySlides(PowerPoint.Presentation sourcePresentation, PowerPoint.Presentation destPresentation)
         {
-            PowerPoint.CustomLayout customLayout = presentation.SlideMaster.CustomLayouts[1];
+            PowerPoint.Slides sourceSlides = sourcePresentation.Slides;
+            PowerPoint.Slides destSlides = destPresentation.Slides;
 
-            presentation.Slides.AddSlide(presentation.Slides.Count + 1, customLayout);
-            presentation.Slides.AddSlide(1, customLayout);
-        }
-        
-        private void application_SlideShowNextSlide(PowerPoint.SlideShowWindow Wn)
-        {
-            _application.SlideShowNextSlide -= application_SlideShowNextSlide;
-
-            int slideIndex = Wn.View.Slide.SlideIndex;
-            PowerPoint.Presentation openPresentation = Wn.Presentation;
-            if (slideIndex == openPresentation.Slides.Count && _slideShowIndex < _openedPresentations.Length - 1)
+            for (int i = 1; i <= sourceSlides.Count; i++)
             {
-                _slideShowIndex++;
-                ActivateSlideShow(_slideShowIndex, SlideShowPosition.ShowStart);
-            }
-            else if (slideIndex == 1)
-            {
-                MoveToPreviousPresentation();
-            }
+                sourceSlides[i].Copy();
 
-            _application.SlideShowNextSlide += application_SlideShowNextSlide;
-        }
+                if (destSlides.Count > 0)
+                    destSlides[destSlides.Count].Select();
 
-        private void MoveToPreviousPresentation()
-        {
-            if (_slideShowIndex > 0)
-            {
-                _slideShowIndex--;
-                ActivateSlideShow(_slideShowIndex, SlideShowPosition.ShowEnd);
-            }
-            else
-            {
-                ActivateSlideShow(_slideShowIndex, SlideShowPosition.ShowStart);
-            }
-        }
-
-        private void ActivateSlideShow(int index, SlideShowPosition position)
-        {
-            PowerPoint.SlideShowWindow window = _openedWindows[index];
-            window.Activate();
-            SetSlideShowPosition(window, position);
-        }
-
-        private void SetSlideShowPosition(PowerPoint.SlideShowWindow window, SlideShowPosition position)
-        {
-            switch (position)
-            {
-                case SlideShowPosition.ShowStart:
-                    window.View.GotoSlide(2);
-                    break;
-                case SlideShowPosition.ShowEnd:
-                    window.View.GotoSlide(window.Presentation.Slides.Count - 1);
-                    break;
-            }
-        }
-
-        void application_SlideShowEnd(PowerPoint.Presentation pres)
-        {
-            _application.SlideShowNextSlide -= application_SlideShowNextSlide;
-            _application.SlideShowEnd -= application_SlideShowEnd;
-
-            foreach (PowerPoint.Presentation presentation in _applicationPresentations)
-            {
-                if (!_existingPresentations.Contains(presentation))
-                {
-                    presentation.SlideShowWindow.View.Exit();
-                    presentation.Close();
-                }
+                destSlides.Application.CommandBars.ExecuteMso("PasteSourceFormatting");
+                Application.DoEvents();
             }
         }
     }
