@@ -42,9 +42,14 @@ namespace BridgePresenter.Controller
         protected void showWindow_ShowRequested(object sender, EventArgs e)
         {
             IJointShow selectedShow = _showWindow.SelectedShow;
-            HashSet<IShow> invalidShows = selectedShow.InvalidShowOrderShows;
+            if (selectedShow == null)
+            {
+                _messageShower.ShowErrorMessage("No presentation selected", "Please select a presentation");
+                return;
+            }
 
-            if (selectedShow != null && invalidShows.Count == 0)
+            HashSet<IShow> invalidShows = selectedShow.InvalidShowOrderShows;
+            if (invalidShows.Count == 0)
                 _showModel.Show(selectedShow);
             else
                 _messageShower.ShowErrorMessage("Missing presentations", 

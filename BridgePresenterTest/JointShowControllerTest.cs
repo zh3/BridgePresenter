@@ -11,11 +11,13 @@ namespace BridgePresenterTest
         private const string OrigName1 = "Fake show 1";
         private const string OrigName2 = "Fake show 2";
         private const string NewName1 = "Renamed fake show 1";
+        private const string InvalidPath = "InvalidPath1";
 
         private JointShowController _controller;
         private FakeJointShowWindow _fakeShowWindow;
         private FakeJointShows _fakeShowModel;
         private FakeJointShowEditorWindowFactory _fakeFactory;
+        private FakeMessageShower _jointShowFakeMessageShower;
         private JointShowTester _showTester;
 
         [SetUp]
@@ -24,7 +26,9 @@ namespace BridgePresenterTest
             _fakeShowModel = new FakeJointShows();
             _fakeShowWindow = new FakeJointShowWindow(_fakeShowModel);
             _fakeFactory = new FakeJointShowEditorWindowFactory();
-            _controller = new JointShowController(_fakeShowWindow, _fakeShowModel, _fakeFactory, new FakeMessageShower());
+            _jointShowFakeMessageShower = new FakeMessageShower();
+            _controller = new JointShowController(_fakeShowWindow, _fakeShowModel, _fakeFactory, _jointShowFakeMessageShower);
+
             _showTester = new JointShowTester(_fakeShowWindow, _fakeFactory);
         }
 
@@ -142,6 +146,23 @@ namespace BridgePresenterTest
         public void TestShowWhenSelectionEmpty()
         {
             _fakeShowWindow.FireOnShowRequested();
+
+            Assert.AreEqual("Please select a presentation", _jointShowFakeMessageShower.LastErrorMessage);
+        }
+
+        [Test]
+        public void TestShowWhenSelectionInvalid()
+        {
+            _showTester.CreateFakeJointShow(OrigName1);
+
+            _fakeShowWindow.SelectShow(OrigName1);
+            _showTester.EditorWindowImportShows(OrigName1, new[] { InvalidPath });
+            _showTester.EditorWindowAddShowsToShowOrder(OrigName1, new[] { InvalidPath });
+
+            _fakeShowWindow.FireOnShowRequested();
+
+            Assert.IsTrue(_jointShowFakeMessageShower.LastErrorMessage.Contains("Could not find presentations:"));
+            Assert.IsTrue(_jointShowFakeMessageShower.LastErrorMessage.Contains(InvalidPath));
         }
     }
 }
