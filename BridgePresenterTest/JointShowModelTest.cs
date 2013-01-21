@@ -123,5 +123,20 @@ namespace BridgePresenterTest
             Assert.AreEqual(fakeEditorWindow.ShowOrderItems[3].Path, "path1");
             Assert.AreEqual(fakeEditorWindow.ShowOrderItems[4].Path, "path3");
         }
+
+        [Test]
+        public void TestRemoveJointShowPersists()
+        {
+            _showTester.CreateFakeJointShow(OrigName1);
+            _showTester.CreateFakeJointShow(NewName1);
+            Assert.AreEqual(2, _fakeShowWindow.NumDisplayedJointShows);
+
+            _fakeShowWindow.FireOnRemoveShowRequested();
+            Assert.AreEqual(1, _fakeShowWindow.NumDisplayedJointShows);
+
+            _fakeShowWindow.CloseWindow();
+            Initialize();
+            Assert.AreEqual(1, _fakeShowWindow.NumDisplayedJointShows);
+        }
     }
 }

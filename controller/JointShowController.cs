@@ -99,7 +99,10 @@ namespace BridgePresenter.Controller
         protected void showWindow_RemoveShowRequested(object sender, JointShowEventArgs e)
         {
             if (_showWindow.SelectedShow != null)
+            {
                 _showModel.RemoveJointShow(_showWindow.SelectedShow);
+                _showModel.CommitToFile();
+            }
         }
 
         protected void showWindow_CopyShowRequested(object sender, JointShowEventArgs e)
