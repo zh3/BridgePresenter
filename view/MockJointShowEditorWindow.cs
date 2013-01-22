@@ -22,8 +22,10 @@ namespace BridgePresenter.View
 
         public override int ShowOrderSelectedShowIndex
         {
-            get { throw new System.NotImplementedException(); }
-            set { throw new System.NotImplementedException();}
+            get;
+            set;
+            //get { throw new System.NotImplementedException(); }
+            //set { throw new System.NotImplementedException();}
         }
 
         public override IShow ImportedSelectedShow

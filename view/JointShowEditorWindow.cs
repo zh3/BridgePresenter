@@ -17,13 +17,13 @@ namespace BridgePresenter.View
 
         public override int ShowOrderSelectedShowIndex
         {
-            get { return orderListBox.SelectedIndex; }
-            set { orderListBox.SelectedIndex = value; }
+            get { return orderView.SelectedRows.Count > 0 ? orderView.SelectedRows[0].Index : -1; }
+            set { orderView.Rows[value].Selected = true; }
         }
 
         public override IShow ImportedSelectedShow
         {
-            get { return importedShowsListBox.SelectedItem as IShow; }
+            get { return importedShowsView.SelectedRows[0].DataBoundItem as IShow; }
         }
 
         public JointShowEditorWindow(IJointShow model) : base(model)
@@ -31,8 +31,8 @@ namespace BridgePresenter.View
             InitializeComponent();
 
             jointShowNameTextBox.Text = model.Name;
-            orderListBox.DataSource = model.ShowOrderDataSource;
-            importedShowsListBox.DataSource = model.ImportedShowsDataSource;
+            orderView.DataSource = model.ShowOrderDataSource;
+            importedShowsView.DataSource = model.ImportedShowsDataSource;
         }
 
         public override string[] PromptForPresentationsToImport()

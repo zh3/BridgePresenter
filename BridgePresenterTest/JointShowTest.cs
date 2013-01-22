@@ -86,11 +86,19 @@ namespace BridgePresenterTest
         {
             SetupPresentations();
 
-            _fakeJointShowEditorWindow.FireOnAddToShowRequested();
             AddPresentationToShowOrder(PresentationPaths[0]);
 
             Assert.IsTrue(ContainsPresentationWithPath(_fakeJointShowEditorWindow.ShowOrderItems, PresentationPaths[0]),
                 "Presentation not added successfully");
+        }
+
+        [Test]
+        public void TestAddToShowOrderNoneSelected()
+        {
+            SetupPresentations();
+
+            // Test no error occurs on add even if no imported presentation is selected
+            _fakeJointShowEditorWindow.FireOnAddToShowRequested();
         }
 
         private static bool ContainsPresentationWithPath(IEnumerable<IShow> shows, string path)

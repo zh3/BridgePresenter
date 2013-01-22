@@ -1,13 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace BridgePresenter.Model
 {
     [Serializable]
     public class BaseShow : IShow
     {
+        public string Name 
+        { 
+            get { return System.IO.Path.GetFileNameWithoutExtension(Path); } 
+        }
+
         public string Path { get; private set; }
 
         public BaseShow(string path)

@@ -33,8 +33,6 @@
             this.jointShowNameTextBox = new System.Windows.Forms.TextBox();
             this.showOrderLabel = new System.Windows.Forms.Label();
             this.presentationsLabel = new System.Windows.Forms.Label();
-            this.importedShowsListBox = new System.Windows.Forms.ListBox();
-            this.orderListBox = new System.Windows.Forms.ListBox();
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
@@ -44,12 +42,16 @@
             this.orderPanel = new System.Windows.Forms.Panel();
             this.downButton = new System.Windows.Forms.Button();
             this.upButton = new System.Windows.Forms.Button();
+            this.importedShowsView = new System.Windows.Forms.DataGridView();
+            this.orderView = new System.Windows.Forms.DataGridView();
             this.importPresentationDialog = new System.Windows.Forms.OpenFileDialog();
             this.importButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.presentationsPanel.SuspendLayout();
             this.addRemovePanel.SuspendLayout();
             this.orderPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.importedShowsView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderView)).BeginInit();
             this.SuspendLayout();
             // 
             // jointShowName
@@ -90,26 +92,6 @@
             this.presentationsLabel.Size = new System.Drawing.Size(74, 20);
             this.presentationsLabel.TabIndex = 3;
             this.presentationsLabel.Text = "Presentations:";
-            // 
-            // importedShowsListBox
-            // 
-            this.importedShowsListBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.importedShowsListBox.FormattingEnabled = true;
-            this.importedShowsListBox.HorizontalScrollbar = true;
-            this.importedShowsListBox.Location = new System.Drawing.Point(3, 23);
-            this.importedShowsListBox.Name = "importedShowsListBox";
-            this.importedShowsListBox.Size = new System.Drawing.Size(193, 177);
-            this.importedShowsListBox.TabIndex = 4;
-            // 
-            // orderListBox
-            // 
-            this.orderListBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.orderListBox.FormattingEnabled = true;
-            this.orderListBox.HorizontalScrollbar = true;
-            this.orderListBox.Location = new System.Drawing.Point(292, 23);
-            this.orderListBox.Name = "orderListBox";
-            this.orderListBox.Size = new System.Drawing.Size(193, 177);
-            this.orderListBox.TabIndex = 5;
             // 
             // okButton
             // 
@@ -167,11 +149,11 @@
             this.presentationsPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.presentationsPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.presentationsPanel.Controls.Add(this.addRemovePanel, 1, 1);
-            this.presentationsPanel.Controls.Add(this.importedShowsListBox, 0, 1);
             this.presentationsPanel.Controls.Add(this.presentationsLabel, 0, 0);
-            this.presentationsPanel.Controls.Add(this.orderListBox, 2, 1);
             this.presentationsPanel.Controls.Add(this.showOrderLabel, 2, 0);
             this.presentationsPanel.Controls.Add(this.orderPanel, 3, 1);
+            this.presentationsPanel.Controls.Add(this.importedShowsView, 0, 1);
+            this.presentationsPanel.Controls.Add(this.orderView, 2, 1);
             this.presentationsPanel.Location = new System.Drawing.Point(12, 39);
             this.presentationsPanel.Name = "presentationsPanel";
             this.presentationsPanel.RowCount = 2;
@@ -224,6 +206,36 @@
             this.upButton.UseVisualStyleBackColor = true;
             this.upButton.Click += new System.EventHandler(this.upButton_Click);
             // 
+            // importedShowsView
+            // 
+            this.importedShowsView.AllowUserToAddRows = false;
+            this.importedShowsView.AllowUserToDeleteRows = false;
+            this.importedShowsView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.importedShowsView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.importedShowsView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.importedShowsView.Location = new System.Drawing.Point(3, 23);
+            this.importedShowsView.MultiSelect = false;
+            this.importedShowsView.Name = "importedShowsView";
+            this.importedShowsView.RowHeadersVisible = false;
+            this.importedShowsView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.importedShowsView.Size = new System.Drawing.Size(193, 177);
+            this.importedShowsView.TabIndex = 13;
+            // 
+            // orderView
+            // 
+            this.orderView.AllowUserToAddRows = false;
+            this.orderView.AllowUserToDeleteRows = false;
+            this.orderView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.orderView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.orderView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.orderView.Location = new System.Drawing.Point(292, 23);
+            this.orderView.MultiSelect = false;
+            this.orderView.Name = "orderView";
+            this.orderView.RowHeadersVisible = false;
+            this.orderView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.orderView.Size = new System.Drawing.Size(193, 177);
+            this.orderView.TabIndex = 14;
+            // 
             // importPresentationDialog
             // 
             this.importPresentationDialog.Filter = "Powerpoint presentations|*.ppt;*.pptx";
@@ -273,6 +285,8 @@
             this.presentationsPanel.PerformLayout();
             this.addRemovePanel.ResumeLayout(false);
             this.orderPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.importedShowsView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,8 +298,6 @@
         private System.Windows.Forms.TextBox jointShowNameTextBox;
         private System.Windows.Forms.Label showOrderLabel;
         private System.Windows.Forms.Label presentationsLabel;
-        private System.Windows.Forms.ListBox importedShowsListBox;
-        private System.Windows.Forms.ListBox orderListBox;
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button addButton;
@@ -298,5 +310,7 @@
         private System.Windows.Forms.OpenFileDialog importPresentationDialog;
         private System.Windows.Forms.Button importButton;
         private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.DataGridView importedShowsView;
+        private System.Windows.Forms.DataGridView orderView;
     }
 }
