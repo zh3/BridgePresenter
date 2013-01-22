@@ -310,7 +310,7 @@
         private System.Windows.Forms.OpenFileDialog importPresentationDialog;
         private System.Windows.Forms.Button importButton;
         private System.Windows.Forms.Button deleteButton;
-        private System.Windows.Forms.DataGridView importedShowsView;
-        private System.Windows.Forms.DataGridView orderView;
+        protected System.Windows.Forms.DataGridView importedShowsView;
+        protected System.Windows.Forms.DataGridView orderView;
     }
 }

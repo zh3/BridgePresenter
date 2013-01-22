@@ -19,8 +19,46 @@ namespace BridgePresenter.View
         public event EventHandler<ShowEventArgs> DeletePresentationRequested;
         public event EventHandler<ShowEventArgs> MovePresentationUpRequested;
         public event EventHandler<ShowEventArgs> MovePresentationDownRequested;
-        public abstract int ShowOrderSelectedShowIndex { get; set; }
-        public abstract IShow ImportedSelectedShow { get; }
+
+        //public int ShowOrderSelectedShowIndex 
+        //{
+        //    get { return ShowOrderView.SelectedRows.Count > 0 ? ShowOrderView.SelectedRows[0].Index : -1; }
+        //    set { ShowOrderView.Rows[value].Selected = true; }
+        //}
+
+        //public IShow ImportedSelectedShow
+        //{
+        //    get { return ImportedShowsView.SelectedRows[0].DataBoundItem as IShow; }
+        //}
+
+        public int ShowOrderSelectedShowIndex
+        {
+            get { return ShowOrderView.SelectedRows.Count > 0 ? ShowOrderView.SelectedRows[0].Index : -1; }
+            set
+            {
+                if (value == -1)
+                {
+                    foreach (DataGridViewRow row in ShowOrderView.SelectedRows)
+                        row.Selected = false;
+                }
+                else
+                {
+                    ShowOrderView.Rows[value].Selected = true;
+                }
+            }
+        }
+
+        public IShow ImportedSelectedShow
+        {
+            get
+            {
+                return ImportedShowsView.SelectedRows.Count > 0
+                  ? ImportedShowsView.SelectedRows[0].DataBoundItem as IShow : null;
+            }
+        }
+
+        protected abstract DataGridView ShowOrderView { get; }
+        protected abstract DataGridView ImportedShowsView { get; }
 
         protected BaseJointShowEditorWindow(IJointShow showModel)
         {

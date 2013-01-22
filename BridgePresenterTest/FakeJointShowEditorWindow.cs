@@ -28,27 +28,14 @@ namespace BridgePresenterTest
             get { return (from DataGridViewRow row in fakeShowOrderView.Rows select (IShow)row.DataBoundItem).ToList(); }
         }
 
-        public override int ShowOrderSelectedShowIndex
+        protected override DataGridView ShowOrderView
         {
-            get { return fakeShowOrderView.SelectedRows.Count > 0 ? fakeShowOrderView.SelectedRows[0].Index : -1; }
-            set
-            {
-                if (value == -1)
-                {
-                    foreach (DataGridViewRow row in fakeShowOrderView.SelectedRows)
-                        row.Selected = false;
-                }
-                else
-                {
-                    fakeShowOrderView.Rows[value].Selected = true;
-                }
-            }
+            get { return fakeShowOrderView; }
         }
 
-        public override IShow ImportedSelectedShow
+        protected override DataGridView ImportedShowsView
         {
-            get { return fakeImportedShowView.SelectedRows.Count > 0 
-                    ? fakeImportedShowView.SelectedRows[0].DataBoundItem as IShow : null; }
+            get { return fakeImportedShowView; }
         }
 
         public override string ShowName
@@ -150,19 +137,27 @@ namespace BridgePresenterTest
             // 
             // fakeImportedShowView
             // 
+            this.fakeImportedShowView.AllowUserToAddRows = false;
+            this.fakeImportedShowView.AllowUserToDeleteRows = false;
             this.fakeImportedShowView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.fakeImportedShowView.Location = new System.Drawing.Point(44, 37);
             this.fakeImportedShowView.MultiSelect = false;
             this.fakeImportedShowView.Name = "fakeImportedShowView";
+            this.fakeImportedShowView.RowHeadersVisible = false;
+            this.fakeImportedShowView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.fakeImportedShowView.Size = new System.Drawing.Size(194, 54);
             this.fakeImportedShowView.TabIndex = 2;
             // 
             // fakeShowOrderView
             // 
+            this.fakeShowOrderView.AllowUserToAddRows = false;
+            this.fakeShowOrderView.AllowUserToDeleteRows = false;
             this.fakeShowOrderView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.fakeShowOrderView.Location = new System.Drawing.Point(44, 145);
             this.fakeShowOrderView.MultiSelect = false;
             this.fakeShowOrderView.Name = "fakeShowOrderView";
+            this.fakeShowOrderView.RowHeadersVisible = false;
+            this.fakeShowOrderView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.fakeShowOrderView.Size = new System.Drawing.Size(166, 86);
             this.fakeShowOrderView.TabIndex = 3;
             // 

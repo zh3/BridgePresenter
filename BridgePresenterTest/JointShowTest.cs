@@ -61,6 +61,7 @@ namespace BridgePresenterTest
         {
             SetupPresentations();
 
+            //_fakeJointShowEditorWindow.SelectImportedPresentation(PresentationPaths[0]);
             _fakeJointShowEditorWindow.FireDeletePresentationRequested();
             Assert.AreEqual(2, _fakeJointShowEditorWindow.NumImportedShowsDisplayed, "Show not correctly deleted");
 

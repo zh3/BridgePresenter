@@ -15,15 +15,14 @@ namespace BridgePresenter.View
             get { return jointShowNameTextBox.Text; }
         }
 
-        public override int ShowOrderSelectedShowIndex
+        protected override DataGridView ShowOrderView
         {
-            get { return orderView.SelectedRows.Count > 0 ? orderView.SelectedRows[0].Index : -1; }
-            set { orderView.Rows[value].Selected = true; }
+            get { return orderView; }
         }
 
-        public override IShow ImportedSelectedShow
+        protected override DataGridView ImportedShowsView
         {
-            get { return importedShowsView.SelectedRows[0].DataBoundItem as IShow; }
+            get { return importedShowsView; }
         }
 
         public JointShowEditorWindow(IJointShow model) : base(model)
