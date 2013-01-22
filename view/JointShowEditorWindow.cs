@@ -32,6 +32,12 @@ namespace BridgePresenter.View
             jointShowNameTextBox.Text = model.Name;
             orderView.DataSource = model.ShowOrderDataSource;
             importedShowsView.DataSource = model.ImportedShowsDataSource;
+            importedShowsView.CellDoubleClick += importedShowsView_CellDoubleClick;
+        }
+
+        private void importedShowsView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            OnAddToShowRequested();
         }
 
         public override string[] PromptForPresentationsToImport()
