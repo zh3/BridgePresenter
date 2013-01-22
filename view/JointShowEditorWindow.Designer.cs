@@ -71,13 +71,13 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.jointShowNameTextBox.Location = new System.Drawing.Point(113, 13);
             this.jointShowNameTextBox.Name = "jointShowNameTextBox";
-            this.jointShowNameTextBox.Size = new System.Drawing.Size(432, 20);
+            this.jointShowNameTextBox.Size = new System.Drawing.Size(659, 20);
             this.jointShowNameTextBox.TabIndex = 1;
             // 
             // showOrderLabel
             // 
             this.showOrderLabel.AutoSize = true;
-            this.showOrderLabel.Location = new System.Drawing.Point(292, 0);
+            this.showOrderLabel.Location = new System.Drawing.Point(405, 0);
             this.showOrderLabel.Name = "showOrderLabel";
             this.showOrderLabel.Size = new System.Drawing.Size(84, 13);
             this.showOrderLabel.TabIndex = 2;
@@ -96,7 +96,7 @@
             // okButton
             // 
             this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.okButton.Location = new System.Drawing.Point(389, 248);
+            this.okButton.Location = new System.Drawing.Point(616, 327);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 6;
@@ -108,7 +108,7 @@
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(470, 248);
+            this.cancelButton.Location = new System.Drawing.Point(697, 327);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 7;
@@ -119,7 +119,7 @@
             // addButton
             // 
             this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.addButton.Location = new System.Drawing.Point(3, 62);
+            this.addButton.Location = new System.Drawing.Point(3, 102);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(78, 23);
             this.addButton.TabIndex = 8;
@@ -130,7 +130,7 @@
             // removeButton
             // 
             this.removeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.removeButton.Location = new System.Drawing.Point(3, 91);
+            this.removeButton.Location = new System.Drawing.Point(3, 131);
             this.removeButton.Name = "removeButton";
             this.removeButton.Size = new System.Drawing.Size(78, 23);
             this.removeButton.TabIndex = 9;
@@ -159,7 +159,7 @@
             this.presentationsPanel.RowCount = 2;
             this.presentationsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.presentationsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.presentationsPanel.Size = new System.Drawing.Size(533, 203);
+            this.presentationsPanel.Size = new System.Drawing.Size(760, 282);
             this.presentationsPanel.TabIndex = 10;
             // 
             // addRemovePanel
@@ -167,9 +167,9 @@
             this.addRemovePanel.Controls.Add(this.addButton);
             this.addRemovePanel.Controls.Add(this.removeButton);
             this.addRemovePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.addRemovePanel.Location = new System.Drawing.Point(202, 23);
+            this.addRemovePanel.Location = new System.Drawing.Point(315, 23);
             this.addRemovePanel.Name = "addRemovePanel";
-            this.addRemovePanel.Size = new System.Drawing.Size(84, 177);
+            this.addRemovePanel.Size = new System.Drawing.Size(84, 256);
             this.addRemovePanel.TabIndex = 11;
             // 
             // orderPanel
@@ -177,9 +177,9 @@
             this.orderPanel.Controls.Add(this.downButton);
             this.orderPanel.Controls.Add(this.upButton);
             this.orderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.orderPanel.Location = new System.Drawing.Point(491, 23);
+            this.orderPanel.Location = new System.Drawing.Point(717, 23);
             this.orderPanel.Name = "orderPanel";
-            this.orderPanel.Size = new System.Drawing.Size(39, 177);
+            this.orderPanel.Size = new System.Drawing.Size(40, 256);
             this.orderPanel.TabIndex = 12;
             // 
             // downButton
@@ -187,7 +187,7 @@
             this.downButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.downButton.BackgroundImage = global::BridgePresenter.Properties.Resources.downArrow;
             this.downButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.downButton.Location = new System.Drawing.Point(4, 91);
+            this.downButton.Location = new System.Drawing.Point(5, 131);
             this.downButton.Name = "downButton";
             this.downButton.Size = new System.Drawing.Size(33, 33);
             this.downButton.TabIndex = 1;
@@ -199,7 +199,7 @@
             this.upButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.upButton.BackgroundImage = global::BridgePresenter.Properties.Resources.upArrow;
             this.upButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.upButton.Location = new System.Drawing.Point(4, 52);
+            this.upButton.Location = new System.Drawing.Point(5, 92);
             this.upButton.Name = "upButton";
             this.upButton.Size = new System.Drawing.Size(33, 33);
             this.upButton.TabIndex = 0;
@@ -218,7 +218,7 @@
             this.importedShowsView.Name = "importedShowsView";
             this.importedShowsView.RowHeadersVisible = false;
             this.importedShowsView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.importedShowsView.Size = new System.Drawing.Size(193, 177);
+            this.importedShowsView.Size = new System.Drawing.Size(306, 256);
             this.importedShowsView.TabIndex = 13;
             // 
             // orderView
@@ -228,12 +228,12 @@
             this.orderView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.orderView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.orderView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.orderView.Location = new System.Drawing.Point(292, 23);
+            this.orderView.Location = new System.Drawing.Point(405, 23);
             this.orderView.MultiSelect = false;
             this.orderView.Name = "orderView";
             this.orderView.RowHeadersVisible = false;
             this.orderView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.orderView.Size = new System.Drawing.Size(193, 177);
+            this.orderView.Size = new System.Drawing.Size(306, 256);
             this.orderView.TabIndex = 14;
             // 
             // importPresentationDialog
@@ -244,7 +244,7 @@
             // importButton
             // 
             this.importButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.importButton.Location = new System.Drawing.Point(12, 248);
+            this.importButton.Location = new System.Drawing.Point(12, 327);
             this.importButton.Name = "importButton";
             this.importButton.Size = new System.Drawing.Size(75, 23);
             this.importButton.TabIndex = 11;
@@ -255,7 +255,7 @@
             // deleteButton
             // 
             this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.deleteButton.Location = new System.Drawing.Point(93, 248);
+            this.deleteButton.Location = new System.Drawing.Point(93, 327);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
             this.deleteButton.TabIndex = 12;
@@ -269,7 +269,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(557, 283);
+            this.ClientSize = new System.Drawing.Size(784, 362);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.importButton);
             this.Controls.Add(this.presentationsPanel);
