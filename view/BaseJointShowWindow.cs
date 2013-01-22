@@ -11,6 +11,7 @@ namespace BridgePresenter.View
         public abstract IJointShow SelectedShow { get; }
         public event EventHandler<EventArgs> CloseWindowRequested;
         public event EventHandler<EventArgs> ShowRequested;
+        public event EventHandler<EventArgs> GenerateRequested;
         public event EventHandler<EventArgs> CreateJointShowRequested;
         public event EventHandler<JointShowEventArgs> EditShowRequested;
         public event EventHandler<JointShowEventArgs> RemoveShowRequested;
@@ -35,6 +36,14 @@ namespace BridgePresenter.View
 
             if (showRequested != null)
                 showRequested(this, new EventArgs());
+        }
+
+        protected void OnGenerateRequested()
+        {
+            EventHandler<EventArgs> generateRequested = GenerateRequested;
+
+            if (generateRequested != null)
+                generateRequested(this, new EventArgs());
         }
 
         protected void OnCreateJointShowRequested()

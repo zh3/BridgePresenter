@@ -10,7 +10,7 @@ namespace BridgePresenter.Model
         private PowerPoint.Application _application;
         private PowerPoint.Presentations _applicationPresentations;
 
-        public virtual void Show(IJointShow jointShow)
+        public virtual void Show(IJointShow jointShow, bool launchShow)
         {
             List<IShow> shows = jointShow.ShowOrderShows;
             if (shows.Count == 0) return;
@@ -28,7 +28,8 @@ namespace BridgePresenter.Model
                 sourcePresentation.Close();
             }
 
-            joinedPresentation.SlideShowSettings.Run();
+            if (launchShow)
+                joinedPresentation.SlideShowSettings.Run();
         }
 
         private void CopySlides(PowerPoint.Presentation sourcePresentation, PowerPoint.Presentation destPresentation)

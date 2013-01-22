@@ -68,6 +68,11 @@ namespace BridgePresenter.View
             OnShowRequested();
         }
 
+        private void generateButton_Click(object sender, EventArgs e)
+        {
+            OnGenerateRequested();
+        }
+
         public override void CloseWindow()
         {
             Close();

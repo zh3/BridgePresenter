@@ -71,6 +71,16 @@ namespace BridgePresenterTest
         }
 
         [Test]
+        public void TestGenerateFiresModel()
+        {
+            _showTester.CreateFakeJointShow(OrigName1);
+            _fakeShowWindow.FireOnGenerateRequested();
+            _fakeShowWindow.FireOnGenerateRequested();
+
+            Assert.AreEqual(2, _fakeShowModel.GenerateCount);
+        }
+
+        [Test]
         public void TestCreateNamed()
         {
             IJointShow fakeShow = _showTester.CreateFakeJointShow(OrigName1);

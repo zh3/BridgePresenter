@@ -61,9 +61,9 @@ namespace BridgePresenter.Model
             _jointShows.Remove(show);
         }
 
-        public virtual void Show(IJointShow show)
+        public virtual void GeneratePresentation(IJointShow jointShow, bool launchPresentation)
         {
-            _slideShowManager.Show(show);
+            _slideShowManager.Show(jointShow, launchPresentation);
         }
 
         public abstract void CommitToFile();

@@ -27,6 +27,7 @@ namespace BridgePresenter.Controller
 
             _showWindow.CloseWindowRequested += showWindow_CloseWindowRequested;
             _showWindow.ShowRequested += showWindow_ShowRequested;
+            _showWindow.GenerateRequested += showWindow_GenerateRequested;
             _showWindow.CreateJointShowRequested += showWindow_CreateJointShowRequested;
             _showWindow.EditShowRequested += showWindow_EditShowRequested;
             _showWindow.RemoveShowRequested += showWindow_RemoveShowRequested;
@@ -43,6 +44,16 @@ namespace BridgePresenter.Controller
 
         protected void showWindow_ShowRequested(object sender, EventArgs e)
         {
+            DispatchGeneratePresentationToModel(true);
+        }
+
+        protected void showWindow_GenerateRequested(object sender, EventArgs e)
+        {
+            DispatchGeneratePresentationToModel(false);
+        }
+
+        private void DispatchGeneratePresentationToModel(bool show)
+        {
             IJointShow selectedShow = _showWindow.SelectedShow;
             if (selectedShow == null)
             {
@@ -52,9 +63,9 @@ namespace BridgePresenter.Controller
 
             HashSet<IShow> invalidShows = selectedShow.InvalidShowOrderShows;
             if (invalidShows.Count == 0)
-                _showModel.Show(selectedShow);
+                _showModel.GeneratePresentation(selectedShow, show);
             else
-                _messageShower.ShowErrorMessage("Missing presentations", 
+                _messageShower.ShowErrorMessage("Missing presentations",
                     string.Format("Could not find presentations:\n {0}", DisplayInvalidPaths(invalidShows)));
         }
 

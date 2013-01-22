@@ -7,6 +7,7 @@ namespace BridgePresenter.View
     {
         event EventHandler<EventArgs> CloseWindowRequested;
         event EventHandler<EventArgs> ShowRequested;
+        event EventHandler<EventArgs> GenerateRequested;
 
         event EventHandler<EventArgs> CreateJointShowRequested;
         event EventHandler<JointShowEventArgs> EditShowRequested;

@@ -36,6 +36,7 @@
             this.copyButton = new System.Windows.Forms.Button();
             this.closeButton = new System.Windows.Forms.Button();
             this.showButton = new System.Windows.Forms.Button();
+            this.generateButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // jointShowList
@@ -97,7 +98,7 @@
             // 
             this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.closeButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.closeButton.Location = new System.Drawing.Point(368, 267);
+            this.closeButton.Location = new System.Drawing.Point(287, 267);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(75, 23);
             this.closeButton.TabIndex = 5;
@@ -116,6 +117,17 @@
             this.showButton.UseVisualStyleBackColor = true;
             this.showButton.Click += new System.EventHandler(this.showButton_Click);
             // 
+            // generateButton
+            // 
+            this.generateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.generateButton.Location = new System.Drawing.Point(368, 267);
+            this.generateButton.Name = "generateButton";
+            this.generateButton.Size = new System.Drawing.Size(75, 23);
+            this.generateButton.TabIndex = 7;
+            this.generateButton.Text = "Generate";
+            this.generateButton.UseVisualStyleBackColor = true;
+            this.generateButton.Click += new System.EventHandler(this.generateButton_Click);
+            // 
             // JointShowWindow
             // 
             this.AcceptButton = this.closeButton;
@@ -123,6 +135,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.closeButton;
             this.ClientSize = new System.Drawing.Size(536, 302);
+            this.Controls.Add(this.generateButton);
             this.Controls.Add(this.showButton);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.copyButton);
@@ -149,5 +162,6 @@
         private System.Windows.Forms.Button copyButton;
         private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.Button showButton;
+        private System.Windows.Forms.Button generateButton;
     }
 }

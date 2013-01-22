@@ -8,7 +8,7 @@ namespace BridgePresenter.Model
         event EventHandler<EventArgs> ShowUpdated;
         object DataSource { get; }
 
-        void Show(IJointShow show);
+        void GeneratePresentation(IJointShow jointShow, bool launchPresentation);
         IJointShow CreateJointShow();
         void RemoveJointShow(IJointShow show);
         void CopyJointShow(IJointShow show);

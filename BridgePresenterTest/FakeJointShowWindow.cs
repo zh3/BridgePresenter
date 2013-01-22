@@ -60,6 +60,11 @@ namespace BridgePresenterTest
             OnShowRequested();
         }
 
+        public void FireOnGenerateRequested()
+        {
+            OnGenerateRequested();
+        }
+
         public void FireOnCreateJointShowRequested()
         {
             OnCreateJointShowRequested();

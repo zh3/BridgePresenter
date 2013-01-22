@@ -2,6 +2,6 @@
 {
     public interface ISlideShowManager
     {
-        void Show(IJointShow jointShow);
+        void Show(IJointShow jointShow, bool launchShow);
     }
 }
