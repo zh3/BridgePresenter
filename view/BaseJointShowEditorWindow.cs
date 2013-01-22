@@ -20,17 +20,6 @@ namespace BridgePresenter.View
         public event EventHandler<ShowEventArgs> MovePresentationUpRequested;
         public event EventHandler<ShowEventArgs> MovePresentationDownRequested;
 
-        //public int ShowOrderSelectedShowIndex 
-        //{
-        //    get { return ShowOrderView.SelectedRows.Count > 0 ? ShowOrderView.SelectedRows[0].Index : -1; }
-        //    set { ShowOrderView.Rows[value].Selected = true; }
-        //}
-
-        //public IShow ImportedSelectedShow
-        //{
-        //    get { return ImportedShowsView.SelectedRows[0].DataBoundItem as IShow; }
-        //}
-
         public int ShowOrderSelectedShowIndex
         {
             get { return ShowOrderView.SelectedRows.Count > 0 ? ShowOrderView.SelectedRows[0].Index : -1; }

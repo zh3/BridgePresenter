@@ -210,7 +210,7 @@
             // 
             this.importedShowsView.AllowUserToAddRows = false;
             this.importedShowsView.AllowUserToDeleteRows = false;
-            this.importedShowsView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.importedShowsView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.importedShowsView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.importedShowsView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.importedShowsView.Location = new System.Drawing.Point(3, 23);
@@ -225,7 +225,7 @@
             // 
             this.orderView.AllowUserToAddRows = false;
             this.orderView.AllowUserToDeleteRows = false;
-            this.orderView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.orderView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.orderView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.orderView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.orderView.Location = new System.Drawing.Point(292, 23);
