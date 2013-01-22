@@ -19,7 +19,7 @@ namespace BridgePresenter.Model
         IShow[] AddShows(string[] paths);
         void DeleteShow(string path);
         void DeleteShow(IShow show);
-        void AddShowToShowOrder(IShow show);
+        void AddShowToShowOrder(IShow show, int index);
         void RemoveShowFromShowOrder(int showIndex);
         void MoveShowUpInShowOrder(int showIndex);
         void MoveShowDownInShowOrder(int showIndex);

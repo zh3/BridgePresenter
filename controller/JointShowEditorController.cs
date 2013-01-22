@@ -57,7 +57,12 @@ namespace BridgePresenter.Controller
         protected void window_AddToShowRequested(object sender, ShowEventArgs e)
         {
             if (_window.ImportedSelectedShow != null)
-                _showToEdit.AddShowToShowOrder(_window.ImportedSelectedShow);
+            {
+                int newSelectedIndex = _window.ShowOrderSelectedShowIndex + 1;
+
+                _showToEdit.AddShowToShowOrder(_window.ImportedSelectedShow, newSelectedIndex);
+                _window.ShowOrderSelectedShowIndex = newSelectedIndex;
+            }
         }
 
         protected void window_RemoveFromShowRequested(object sender, ShowEventArgs e)

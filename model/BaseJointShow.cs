@@ -80,9 +80,10 @@ namespace BridgePresenter.Model
                 ;
         }
 
-        public void AddShowToShowOrder(IShow show)
+        public void AddShowToShowOrder(IShow show, int index)
         {
-            _showOrderList.Add(show);
+            _showOrderList.Insert(index, show);
+            //_showOrderList.Add(show);
         }
 
         public void RemoveShowFromShowOrder(int showIndex)

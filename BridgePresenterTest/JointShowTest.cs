@@ -87,10 +87,29 @@ namespace BridgePresenterTest
         {
             SetupPresentations();
 
-            AddPresentationToShowOrder(PresentationPaths[0]);
+            AppendPresentationToShowOrder(PresentationPaths[0]);
 
             Assert.IsTrue(ContainsPresentationWithPath(_fakeJointShowEditorWindow.ShowOrderItems, PresentationPaths[0]),
                 "Presentation not added successfully");
+        }
+
+        [Test]
+        public void TestAddToShowOrderAtCursorPositon()
+        {
+            SetupPresentations();
+
+            AppendPresentationToShowOrder(PresentationPaths[0]);
+            AppendPresentationToShowOrder(PresentationPaths[1]);
+            AppendPresentationToShowOrder(PresentationPaths[2]);
+
+            _fakeJointShowEditorWindow.ShowOrderSelectedShowIndex = 1;
+            AddPresentationToShowOrder(PresentationPaths[1]);
+
+            Assert.AreEqual(PresentationPaths[0], _fakeJointShowEditorWindow.ShowOrderItems[0].Path);
+            Assert.AreEqual(PresentationPaths[1], _fakeJointShowEditorWindow.ShowOrderItems[1].Path);
+            Assert.AreEqual(PresentationPaths[1], _fakeJointShowEditorWindow.ShowOrderItems[2].Path);
+            Assert.AreEqual(PresentationPaths[2], _fakeJointShowEditorWindow.ShowOrderItems[3].Path);
+            Assert.AreEqual(_fakeJointShowEditorWindow.ShowOrderSelectedShowIndex, 2);
         }
 
         [Test]
@@ -112,10 +131,10 @@ namespace BridgePresenterTest
         {
             SetupPresentations();
 
-            AddPresentationToShowOrder(PresentationPaths[0]);
-            AddPresentationToShowOrder(PresentationPaths[1]);
-            AddPresentationToShowOrder(PresentationPaths[2]);
-            AddPresentationToShowOrder(PresentationPaths[0]);
+            AppendPresentationToShowOrder(PresentationPaths[0]);
+            AppendPresentationToShowOrder(PresentationPaths[1]);
+            AppendPresentationToShowOrder(PresentationPaths[2]);
+            AppendPresentationToShowOrder(PresentationPaths[0]);
 
             RemovePresentationFromShowOrder(2);
 
@@ -123,6 +142,13 @@ namespace BridgePresenterTest
             Assert.AreEqual(PresentationPaths[0], shows[0].Path);
             Assert.AreEqual(PresentationPaths[1], shows[1].Path);
             Assert.AreEqual(PresentationPaths[0], shows[2].Path);
+        }
+
+        private void AppendPresentationToShowOrder(string path)
+        {
+            _fakeJointShowEditorWindow.ShowOrderSelectedShowIndex = _fakeJointShowEditorWindow.ShowOrderItems.Count - 1;
+
+            AddPresentationToShowOrder(path);
         }
 
         private void AddPresentationToShowOrder(string path)
@@ -148,11 +174,11 @@ namespace BridgePresenterTest
         {
             SetupPresentations();
 
-            AddPresentationToShowOrder(PresentationPaths[0]);
-            AddPresentationToShowOrder(PresentationPaths[1]);
-            AddPresentationToShowOrder(PresentationPaths[2]);
-            AddPresentationToShowOrder(PresentationPaths[2]);
-            AddPresentationToShowOrder(PresentationPaths[1]);
+            AppendPresentationToShowOrder(PresentationPaths[0]);
+            AppendPresentationToShowOrder(PresentationPaths[1]);
+            AppendPresentationToShowOrder(PresentationPaths[2]);
+            AppendPresentationToShowOrder(PresentationPaths[2]);
+            AppendPresentationToShowOrder(PresentationPaths[1]);
 
             _fakeJointShowEditorWindow.SelectImportedPresentation(PresentationPaths[2]);
             _fakeJointShowEditorWindow.FireDeletePresentationRequested();
@@ -170,11 +196,11 @@ namespace BridgePresenterTest
         {
             SetupPresentations();
 
-            AddPresentationToShowOrder(PresentationPaths[0]);
-            AddPresentationToShowOrder(PresentationPaths[1]);
-            AddPresentationToShowOrder(PresentationPaths[2]);
-            AddPresentationToShowOrder(PresentationPaths[2]);
-            AddPresentationToShowOrder(PresentationPaths[1]);
+            AppendPresentationToShowOrder(PresentationPaths[0]);
+            AppendPresentationToShowOrder(PresentationPaths[1]);
+            AppendPresentationToShowOrder(PresentationPaths[2]);
+            AppendPresentationToShowOrder(PresentationPaths[2]);
+            AppendPresentationToShowOrder(PresentationPaths[1]);
 
             _fakeJointShowEditorWindow.ShowOrderSelectedShowIndex = 2;
             _fakeJointShowEditorWindow.FireMovePresentationUpRequested();
@@ -203,11 +229,11 @@ namespace BridgePresenterTest
         {
             SetupPresentations();
 
-            AddPresentationToShowOrder(PresentationPaths[0]);
-            AddPresentationToShowOrder(PresentationPaths[1]);
-            AddPresentationToShowOrder(PresentationPaths[2]);
-            AddPresentationToShowOrder(PresentationPaths[2]);
-            AddPresentationToShowOrder(PresentationPaths[1]);
+            AppendPresentationToShowOrder(PresentationPaths[0]);
+            AppendPresentationToShowOrder(PresentationPaths[1]);
+            AppendPresentationToShowOrder(PresentationPaths[2]);
+            AppendPresentationToShowOrder(PresentationPaths[2]);
+            AppendPresentationToShowOrder(PresentationPaths[1]);
 
             _fakeJointShowEditorWindow.ShowOrderSelectedShowIndex = 2;
             _fakeJointShowEditorWindow.FireMovePresentationDownRequested();
@@ -232,9 +258,9 @@ namespace BridgePresenterTest
 
             SetupPresentations();
 
-            AddPresentationToShowOrder(PresentationPaths[0]);
-            AddPresentationToShowOrder(PresentationPaths[1]);
-            AddPresentationToShowOrder(PresentationPaths[2]);
+            AppendPresentationToShowOrder(PresentationPaths[0]);
+            AppendPresentationToShowOrder(PresentationPaths[1]);
+            AppendPresentationToShowOrder(PresentationPaths[2]);
 
             _fakeJointShowEditorWindow.ShowOrderSelectedShowIndex = 2;
             _fakeJointShowEditorWindow.FireMovePresentationDownRequested();

@@ -77,28 +77,33 @@ namespace BridgePresenterTest
             IJointShow testJointShow3 = new JointShow("Test show 3");
             IShow testJointShow1Show1 = testJointShow1.AddShow("Test show test path");
             IShow testJointShow1Show2 = testJointShow1.AddShow("Test show 1 test path 2");
-            testJointShow1.AddShowToShowOrder(testJointShow1Show1);
-            testJointShow1.AddShowToShowOrder(testJointShow1Show2);
+            AppendShowToShowOrder(testJointShow1, testJointShow1Show1);
+            AppendShowToShowOrder(testJointShow1, testJointShow1Show2);
 
             IShow testJointShow2Show1 = testJointShow2.AddShow("Test show test path");
             IShow testJointShow2Show2 = testJointShow2.AddShow("Test show 2 test path 1");
             IShow testJointShow2Show3 = testJointShow2.AddShow("Test show 2 test path 2");
             IShow testJointShow2Show4 = testJointShow2.AddShow("Test show 2 test path 3");
-            testJointShow2.AddShowToShowOrder(testJointShow2Show3);
-            testJointShow2.AddShowToShowOrder(testJointShow2Show1);
-            testJointShow2.AddShowToShowOrder(testJointShow2Show2);
-            testJointShow2.AddShowToShowOrder(testJointShow2Show4);
+            AppendShowToShowOrder(testJointShow2, testJointShow2Show3);
+            AppendShowToShowOrder(testJointShow2, testJointShow2Show1);
+            AppendShowToShowOrder(testJointShow2, testJointShow2Show2);
+            AppendShowToShowOrder(testJointShow2, testJointShow2Show4);
 
             IShow testJointShow3Show1 = testJointShow3.AddShow("Test show 3 test path 1");
-            testJointShow3.AddShowToShowOrder(testJointShow3Show1);
-            testJointShow3.AddShowToShowOrder(testJointShow3Show1);
-            testJointShow3.AddShowToShowOrder(testJointShow3Show1);
+            AppendShowToShowOrder(testJointShow3, testJointShow3Show1);
+            AppendShowToShowOrder(testJointShow3, testJointShow3Show1);
+            AppendShowToShowOrder(testJointShow3, testJointShow3Show1);
 
             shows.Add(testJointShow1);
             shows.Add(testJointShow2);
             shows.Add(testJointShow3);
 
             return shows;
+        }
+
+        private void AppendShowToShowOrder(IJointShow jointShow, IShow show)
+        {
+            jointShow.AddShowToShowOrder(show, jointShow.ShowOrderShowsCount);
         }
 
         [Test]
