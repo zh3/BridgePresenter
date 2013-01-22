@@ -88,11 +88,12 @@ namespace BridgePresenterTest
         public override void CloseWindow()
         {
             WindowClosed = true;
+            OnClosing(new CancelEventArgs());
         }
 
         public override void ShowWindow()
         {
-            
+            OnLoad(new EventArgs());
         }
 
         private void InitializeComponent()

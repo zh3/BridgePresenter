@@ -5,7 +5,7 @@ using BridgePresenter.Model;
 
 namespace BridgePresenter.View
 {
-    public abstract class BaseJointShowEditorWindow : Form, IJointShowEditorWindow
+    public abstract class BaseJointShowEditorWindow : BaseForm, IJointShowEditorWindow
     {
         private IJointShow _showModel;
         private bool _accepted;
@@ -99,8 +99,6 @@ namespace BridgePresenter.View
             if (!_accepted)
                 OnCancelRequested();
         }
-
-
 
         public abstract void CloseWindow();
         public abstract string[] PromptForPresentationsToImport();

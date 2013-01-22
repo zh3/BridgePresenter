@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 using BridgePresenter.Model;
@@ -120,11 +122,13 @@ namespace BridgePresenterTest
 
         public override void ShowWindow()
         {
+            OnLoad(new EventArgs());
         }
 
         public override void CloseWindow()
         {
             OnFormClosing(new FormClosingEventArgs(CloseReason.UserClosing, false));
+            OnClosing(new CancelEventArgs());
         }
 
         private void InitializeComponent()

@@ -4,7 +4,7 @@ using BridgePresenter.Model;
 
 namespace BridgePresenter.View
 {
-    public abstract class BaseJointShowWindow : Form, IJointShowWindow
+    public abstract class BaseJointShowWindow : BaseForm, IJointShowWindow
     {
         protected IJointShows Model;
 

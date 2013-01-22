@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace BridgePresenter.Model
 {
@@ -10,7 +8,5 @@ namespace BridgePresenter.Model
     {
         void StoreJointShows(string fileName, BindingList<IJointShow> shows);
         BindingList<IJointShow> LoadJointShows(string fileName);
-        void StoreTemporaryJointShows(BindingList<IJointShow> shows);
-        BindingList<IJointShow> LoadTemporaryJointShows();
     }
 }
